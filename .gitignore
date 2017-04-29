@@ -64,29 +64,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-
-# built application files
-*.apk
-*.ap_
-
-# files for the dex VM
-*.dex
-
-# Java class files
-*.class
-
-# generated files
-bin/
-gen/
-
-#NativeScript
-platforms/
-lib/
-frameworks/
-/samples/app/tns_modules
-/samples/lib
-libs/
-temp/
-.settings/
-node_modules/
