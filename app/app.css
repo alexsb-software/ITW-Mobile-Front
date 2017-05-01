@@ -9,26 +9,38 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-@import '../node_modules/nativescript-theme-core/css/core.light.android.css';
+@import '../node_modules/nativescript-theme-core/css/core.dark.android.css';
+@import '../node_modules/nativescript-theme-core/css/core.dark.ios.css';
 
-.drawerContentText {
-    font-size: 13;
-    padding: 10;
+.sidedrawerMain{
+    background-color: #eee;
+    color: #808080;
 }
-
 .sideStackLayout {
-    background-color: gray;
+    background-color:#eee;
 }
 
 .sideTitleStackLayout {
     padding: 10;
+    height: 30%;
     text-align: center;
+    background-color: #2196F3;
+    color: #fff;
 }
 
 .sideLabel {
     padding: 10;
+    text-align: center;
+}
+.sideLabelActive{
+    background-color: #42A5F5;
+    color: #fff;
 }
 
-.sideLightGrayLabel {
-    background-color: lightgray;
+.blue{
+    background-color: #2196F3;
+}
+
+ActionBar{
+    color: #fff;
 }

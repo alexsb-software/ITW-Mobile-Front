@@ -1,22 +1,21 @@
-<RadSideDrawer tkExampleTitle tkToggleNavButton>
-    <StackLayout tkDrawerContent class="sideStackLayout">
+<ActionBar title="ITW'17" class="blue">
+    <NavigationButton text="Go Back" android.systemIcon="res://ic_menu_black"></NavigationButton>
+
+    <ActionItem ios.systemIcon="res://ic_menu_black" ios.position="left"></ActionItem>
+</ActionBar>
+<RadSideDrawer>
+    <StackLayout tkDrawerContent class="sidedrawerMain">
         <StackLayout class="sideTitleStackLayout">
-            <Label text="Navigation Menu"></Label>
+            <Label text="Logo"></Label>
+            <Image src="https://placehold.it/150x100"></Image>
         </StackLayout>
         <StackLayout class="sideStackLayout">
-            <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
-            <Label text="Social" class="sideLabel"></Label>
-            <Label text="Promotions" class="sideLabel"></Label>
-            <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
-            <Label text="Important" class="sideLabel"></Label>
-            <Label text="Starred" class="sideLabel"></Label>
-            <Label text="Sent Mail" class="sideLabel"></Label>
-            <Label text="Drafts" class="sideLabel"></Label>
+            <Label text="Home" class="sideLabel sideLabelActive" [nsRouterLink]="['home']"></Label>
+            <Label text="Notifications" class="sideLabel" [nsRouterLink]="['notifications']" (tap)="closeDrawer()"></Label>
+
         </StackLayout>
     </StackLayout>
     <StackLayout tkMainContent>
-        <page-router-outlet></page-router-outlet>
+        <router-outlet></router-outlet>
     </StackLayout>
 </RadSideDrawer>
-
-
