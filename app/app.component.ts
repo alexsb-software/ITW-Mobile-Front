@@ -24,7 +24,10 @@ export class AppComponent implements OnInit{
 
     @ViewChild(RadSideDrawerComponent) private drawer:RadSideDrawerComponent;
 
+    openDrawer(){
+        this.drawer.sideDrawer.toggleDrawerState();
+    }
     closeDrawer(){
-        this.drawer.sideDrawer.closeDrawer()
+        this.drawer.sideDrawer.closeDrawer();
     }
 }
