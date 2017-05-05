@@ -1,33 +1,9 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {RadSideDrawerComponent} from "nativescript-telerik-ui/sidedrawer/angular";
-import application = require('application');
+import { Component } from "@angular/core";
 
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html",
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
 
-    public ios = null;
-    public android = null;
-
-    ngOnInit(){
-        if(application.ios){
-            this.ios = true;
-            this.android = false
-        }
-        else if(application.android){
-            this.android = true;
-            this.ios = false
-        }
-    }
-
-    @ViewChild(RadSideDrawerComponent) private drawer:RadSideDrawerComponent;
-
-    openDrawer(){
-        this.drawer.sideDrawer.toggleDrawerState();
-    }
-    closeDrawer(){
-        this.drawer.sideDrawer.closeDrawer();
-    }
 }
