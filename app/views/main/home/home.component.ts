@@ -1,5 +1,6 @@
-import { Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
+import {PostsService} from "../../../services/posts.service";
 
 @Component({
     moduleId:module.id,
@@ -7,11 +8,19 @@ import {Router} from "@angular/router";
     templateUrl: "./home.component.html",
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
 
-    constructor(private router:Router){}
+    public postsData;
 
-    navigateTo(){
-        this.router.navigate(['map'])
+    constructor(private router:Router, private postsService:PostsService){}
+
+    ngOnInit(){
+        this.postsService.getPosts().subscribe((res) => {
+            this.postsData = res;
+        })
+    }
+
+    navigateTo(arr){
+        this.router.navigate(arr)
     }
 }
