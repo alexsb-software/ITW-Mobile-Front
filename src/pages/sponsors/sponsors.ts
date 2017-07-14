@@ -46,6 +46,7 @@ export class SponsorsPage {
       imgs: this.silver
     }
   ];
+  pageTitle: string = "SPONSORS";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

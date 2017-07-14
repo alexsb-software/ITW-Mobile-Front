@@ -14,6 +14,7 @@ import {SponsorsPage} from "../pages/sponsors/sponsors";
 import {SpeakerPage} from "../pages/speaker/speaker";
 import {UpdatesPage} from "../pages/updates/updates";
 import {SignupPage} from "../pages/signup/signup";
+import { HeaderComponent } from '../components/header/header';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {SignupPage} from "../pages/signup/signup";
     SponsorsPage,
     SpeakerPage,
     UpdatesPage,
-    SignupPage
+    SignupPage,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import {SignupPage} from "../pages/signup/signup";
     SponsorsPage,
     SpeakerPage,
     UpdatesPage,
-    SignupPage
+    SignupPage,
+    HeaderComponent
   ],
   providers: [
     StatusBar,

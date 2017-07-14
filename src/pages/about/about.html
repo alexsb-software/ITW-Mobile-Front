@@ -1,15 +1,13 @@
 <ion-header>
-  <ion-navbar color="primary"  >
-    <ion-title>ABOUT ITW</ion-title>
-  </ion-navbar>
+  <header [pageTitle]="pageTitle"></header>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <ion-grid>
     <ion-row>
       <ion-col width-50 *ngFor="let button of aboutButton">
         <button style="width:100%; background-color: white;">
-          <ion-icon class="icon-big" name="{{button.iconName}}">
+          <ion-icon [ngStyle]="{'color': button.color }" class="icon-big" name="{{button.iconName}}">
           </ion-icon><br>
             {{button.buttonTitle}}
         </button>

@@ -15,15 +15,16 @@ export class AboutPage {
   map: any;
    directionsService: any;
    directionsDisplay: any ;
-  aboutButton: AboutButtons[] =[{iconName:'logo-facebook',buttonTitle:'FaceBook',color: 0x007aff },
-    {iconName:'logo-twitter',buttonTitle:'Twitter',color: 0x007aff },
-    {iconName:'globe',buttonTitle:'AlexSB',color: 0x007aff },
-    {iconName:'bulb',buttonTitle:'ITW',color: 0xffff0 }
+  aboutButton: AboutButtons[] =[{iconName:'logo-facebook',buttonTitle:'FaceBook',color: '#3b5998' },
+    {iconName:'logo-twitter',buttonTitle:'Twitter',color: '#0084b4' },
+    {iconName:'globe',buttonTitle:'AlexSB',color: '#000000' },
+    {iconName:'bulb',buttonTitle:'#ITW',color: '#02bfdd' }
     ];
   lat: number = 31.2089;
   lng: number = 29.9092;
   latLng = new google.maps.LatLng(this.lat, this.lng);
-  constructor(private geolocation: Geolocation, public navCtrl: NavController, public navParams: NavParams) {
+  pageTitle:string = "About ITW";
+  constructor(private geolocation: Geolocation, private navCtrl: NavController, private navParams: NavParams) {
   }
 
   ionViewDidLoad() {
