@@ -14,10 +14,19 @@ export class HomePage implements OnInit{
 
   ngOnInit(){
     this.postsGetter.getData().subscribe(
-      success => {this.posts = success; console.log(success)},
+      success => this.posts = success,
       err => console.log(err)
     )
   }
+
+  loadMore(infinteScroll){
+    this.postsGetter.getMore().subscribe(
+      data => { this.posts.push(...data); infinteScroll.complete() },
+      err => { console.log(err); infinteScroll.complete() }
+    )
+  }
+
+  //TODO:hashtag clickable to new post page with that hashtag
 
 
 }

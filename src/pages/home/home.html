@@ -51,7 +51,7 @@
     </ion-col>
 
     <ion-col col-4 class="map-col">
-      <img src="assets/img/map.jpg">
+      <ion-img src="assets/img/map.jpg"></ion-img>
     </ion-col>
 
   </ion-row>
@@ -82,6 +82,10 @@
 
       </ion-card-content>
     </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
   </div>
 

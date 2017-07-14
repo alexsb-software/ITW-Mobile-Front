@@ -11,9 +11,19 @@ page-home {
       padding:0;
     }
 
+    ion-img{
+      background: #fff;
+
+      img{
+        margin:0 auto;
+      }
+    }
+
+
     .itw-back{
       width:100%;
       height:60vh;
+      display: block;
     }
 
     .info-text{
@@ -27,16 +37,23 @@ page-home {
     }
     .map-col{
       padding: 0;
+
+      ion-img{
+        width:100%;
+        height:100%;
+      }
     }
 
     .updates-head{
       text-align: center;
       background: #007aff;
+      display: block;
 
       h2{
         color:#fff;
         margin: 0;
         padding: 1.2rem;
+        display: block;
       }
     }
 

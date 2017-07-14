@@ -19,4 +19,8 @@ export class PostsGetterProvider {
     return this.http.get("assets/API/posts.json").map(success => success.json())
   }
 
+  getMore(){
+    return this.http.get("assets/API/posts.json").map(success => success.json())
+  }
+
 }
