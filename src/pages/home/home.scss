@@ -1,3 +1,58 @@
 page-home {
 
+  ion-content{
+
+    ion-row{
+      color: #007aff;
+    }
+
+    ion-col{
+      margin: 0;
+      padding:0;
+    }
+
+    .itw-back{
+      width:100%;
+      height:60vh;
+    }
+
+    .info-text{
+      margin-top: 0.2rem;
+    }
+    .no-margin{
+      margin:0;
+    }
+    .icon-big{
+      font-size: 3.7rem;
+    }
+    .map-col{
+      padding: 0;
+    }
+
+    .updates-head{
+      text-align: center;
+      background: #007aff;
+
+      h2{
+        color:#fff;
+        margin: 0;
+        padding: 1.2rem;
+      }
+    }
+
+    .updates-cont{
+      .hashtag-section{
+        margin-top: 0.8rem;
+
+        ion-badge{
+          margin: 0.3rem;
+          background: #cfcfcf;
+          color: #000;
+          font-weight: normal;
+        }
+      }
+
+    }
+  }
+
 }

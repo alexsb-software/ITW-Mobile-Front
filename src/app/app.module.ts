@@ -13,6 +13,8 @@ import {SponsorsPage} from "../pages/sponsors/sponsors";
 import {SpeakerPage} from "../pages/speaker/speaker";
 import {UpdatesPage} from "../pages/updates/updates";
 import {SignupPage} from "../pages/signup/signup";
+import { PostsGetterProvider } from '../providers/posts-getter/posts-getter';
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {SignupPage} from "../pages/signup/signup";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -43,7 +46,8 @@ import {SignupPage} from "../pages/signup/signup";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PostsGetterProvider
   ]
 })
 export class AppModule {}
