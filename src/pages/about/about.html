@@ -1,52 +1,51 @@
 <ion-header>
   <ion-navbar color="primary"  >
-    <ion-title style="background-color: #007aff">ABOUT ITW</ion-title>
+    <ion-title>ABOUT ITW</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
   <ion-grid>
     <ion-row>
       <ion-col width-50 *ngFor="let button of aboutButton">
         <button style="width:100%; background-color: white;">
-          <ion-icon name="{{button.iconName}}">
+          <ion-icon class="icon-big" name="{{button.iconName}}">
           </ion-icon><br>
             {{button.buttonTitle}}
         </button>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <br>
-  <p style="font-size: large">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-  </p>
-  <ion-grid style="font-size: large;">
-    <ion-row justify-content-start>
-      <ion-col col-2 padding-top="5px">
-        <ion-icon ios="ios-compass" md="ios-compass-outline"></ion-icon>
-      </ion-col>
-      <ion-col col-9>
-        <br>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text       </ion-col>
-    </ion-row>
-    <ion-row justify-content-start>
-      <ion-col col-2 padding-top="5px">
-        <ion-icon ios="ios-compass" md="ios-compass-outline"></ion-icon>
-      </ion-col>
-      <ion-col col-9>
-        <br>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text       </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="background">
+    <div padding class="transbox">
+      <p style="font-size: large">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      <ion-row class="info">
+        <ion-col col-13>
+          <ion-row>
+            <ion-col col-2>
+              <ion-icon name="calendar" class="icon-big"></ion-icon>
+            </ion-col>
+            <ion-col col-10 class="info-text">
+              <h6 class="no-margin"> Monday, March 20th to Thursday, March 23rd</h6>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-2>
+              <ion-icon name="pin" class="icon-big"></ion-icon>
+            </ion-col>
+            <ion-col col-10 class="info-text">
+              <h6 class="no-margin"> Bibliotheca Alexandrina</h6>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
   <button ion-button icon-only class="NavButton" (click)="drawDirections()">
-    <ion-icon ios="ios-navigate" md="ios-navigate-outline"> Navigate</ion-icon>
+    <ion-icon name="navigate"> Navigate</ion-icon>
   </button>
-  <br>
   <div #map id="map" position="relative"></div>
-  <!--
-    <agm-map [latitude]="lat" [longitude]="lng" position="relative">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    </agm-map>
--->
 </ion-content>
 
