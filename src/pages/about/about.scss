@@ -1,3 +1,43 @@
 page-about {
 
 }
+ion-icon {
+  font-size: 50px; //Preferred size here
+}
+.floated {
+  display:inline-block;
+  margin-left:10px;
+  margin-right:10px;
+  margin-bottom: -20px;
+}
+.textFloating {
+  display:inline-block;
+}
+.text-on-bottom > .button-inner {
+  flex-direction: column;
+}
+agm-map {
+  height: 500px;
+}
+.NavButton{
+  position: absolute;
+  z-index: 10;
+  width: 150px;
+  margin-top: 90px;
+}
+.ios, .md {
+
+  page-about {
+
+    .scroll {
+      height: 100%
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+}

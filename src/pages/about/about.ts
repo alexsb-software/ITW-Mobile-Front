@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, NavParams } from 'ionic-angular';
+import {AboutButtons} from "../../model/aboutButtons.model";
 
-/**
- * Generated class for the AboutPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+declare var google;
 
 @Component({
   selector: 'page-about',
@@ -14,11 +11,67 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+   directionsService: any;
+   directionsDisplay: any ;
+  aboutButton: AboutButtons[] =[{iconName:'logo-facebook',buttonTitle:'FaceBook',color: 0x007aff },
+    {iconName:'logo-twitter',buttonTitle:'Twitter',color: 0x007aff },
+    {iconName:'globe',buttonTitle:'AlexSB',color: 0x007aff },
+    {iconName:'bulb',buttonTitle:'ITW',color: 0xffff0 }
+    ];
+  lat: number = 31.2089;
+  lng: number = 29.9092;
+  latLng = new google.maps.LatLng(this.lat, this.lng);
+  constructor(private geolocation: Geolocation, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
+    this.loadMap();
   }
+  goBack(){
+    console.log("back");
+  }
+  drawDirections(){
+      this.geolocation.getCurrentPosition().then(
+        (position)=>{
+          let myLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+          this.calculateAndDisplayRoute(this.directionsService,this.directionsDisplay,myLatLng);
+        }).catch(
+        (error)=> console.log(error)
+      );
+  }
+  loadMap(){
+    this.directionsService = new google.maps.DirectionsService;
+    this.directionsDisplay = new google.maps.DirectionsRenderer;
+    let mapOptions = {
+      center: this.latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.directionsDisplay.setMap(this.map);
+   /*
+   new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.latLng
+    });
+    */
+  }
+  calculateAndDisplayRoute(directionsService, directionsDisplay,myLatLng) {
+  directionsService.route({
+    origin: myLatLng,
+    destination: this.latLng,
+    travelMode: 'DRIVING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
 
 }
