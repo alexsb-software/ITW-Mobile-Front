@@ -14,7 +14,7 @@
 
     <ion-fab-list side="top" >
       <button ion-fab color="primary"><ion-icon name="share"></ion-icon></button>
-      <button ion-fab color="primary"><ion-icon name="chatbubbles"></ion-icon></button>
+      <button ion-fab color="primary" (click)="navToNewPost()"><ion-icon name="chatbubbles"></ion-icon></button>
       <button ion-fab color="primary"><ion-icon name="pin"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
@@ -62,6 +62,12 @@
   </div>
 
   <div class="updates-cont">
+
+    <ion-card class="new_post" (click)="navToNewPost()">
+      <ion-card-content>
+        <h2><ion-icon name="create"></ion-icon> Write a new post </h2>
+      </ion-card-content>
+    </ion-card>
 
     <ion-card *ngFor="let post of posts">
 

@@ -1,0 +1,27 @@
+page-new-post {
+  ion-header{
+
+  }
+  ion-content {
+    .hashtags-cont{
+      margin-top: 4rem;
+    }
+
+
+    .hashtag-btn{
+      float: right;
+      margin-top: 0.8rem;
+    }
+
+    ion-footer{
+      text-align: center;
+
+      .submit-btn{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+  }
+}

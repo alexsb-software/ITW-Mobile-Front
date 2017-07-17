@@ -15,6 +15,7 @@ import {UpdatesPage} from "../pages/updates/updates";
 import {SignupPage} from "../pages/signup/signup";
 import { PostsGetterProvider } from '../providers/posts-getter/posts-getter';
 import {HttpModule} from "@angular/http";
+import {NewPostPage} from "../pages/new-post/new-post";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HttpModule} from "@angular/http";
     SponsorsPage,
     SpeakerPage,
     UpdatesPage,
-    SignupPage
+    SignupPage,
+    NewPostPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import {HttpModule} from "@angular/http";
     SponsorsPage,
     SpeakerPage,
     UpdatesPage,
-    SignupPage
+    SignupPage,
+    NewPostPage
   ],
   providers: [
     StatusBar,

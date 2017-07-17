@@ -58,6 +58,17 @@ page-home {
     }
 
     .updates-cont{
+      .new_post{
+        ion-card-content{
+          text-align: center;
+
+          h2{
+            font-size: 2rem;
+          }
+
+        }
+      }
+
       .hashtag-section{
         margin-top: 0.8rem;
 
