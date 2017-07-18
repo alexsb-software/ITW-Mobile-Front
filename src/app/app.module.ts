@@ -13,7 +13,7 @@ import {SponsorsPage} from "../pages/sponsors/sponsors";
 import {SpeakerPage} from "../pages/speaker/speaker";
 import {UpdatesPage} from "../pages/updates/updates";
 import {SignupPage} from "../pages/signup/signup";
-import { PostsGetterProvider } from '../providers/posts-getter/posts-getter';
+import { PostsProvider } from '../providers/posts/posts';
 import {HttpModule} from "@angular/http";
 import {NewPostPage} from "../pages/new-post/new-post";
 
@@ -50,7 +50,7 @@ import {NewPostPage} from "../pages/new-post/new-post";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PostsGetterProvider
+    PostsProvider
   ]
 })
 export class AppModule {}

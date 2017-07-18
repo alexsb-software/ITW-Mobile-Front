@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
-import {PostsGetterProvider} from "../../providers/posts-getter/posts-getter";
+import {PostsProvider} from "../../providers/posts/posts";
 import {NewPostPage} from "../new-post/new-post";
 
 @Component({
@@ -10,7 +10,7 @@ import {NewPostPage} from "../new-post/new-post";
 export class HomePage implements OnInit{
   posts:any[];
 
-  constructor(public navCtrl: NavController, public postsGetter: PostsGetterProvider,public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public postsGetter: PostsProvider, public modalCtrl: ModalController) {
   }
 
   ngOnInit(): void{
@@ -27,12 +27,11 @@ export class HomePage implements OnInit{
     )
   }
 
-  navToNewPost():void{
-    let modal = this.modalCtrl.create(NewPostPage);
+  navToNewPost(param):void{
+    let modal = this.modalCtrl.create(NewPostPage,param? {hashtag: param}: {});
     modal.present()
   }
 
-  //TODO:hashtag clickable to new post page with that hashtag
   //TODO: FAB btns
 
 

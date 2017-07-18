@@ -5,12 +5,23 @@ page-new-post {
   ion-content {
     .hashtags-cont{
       margin-top: 4rem;
+
+      ion-chip{
+        margin: 0.3rem;
+
+        ion-label{
+          font-weight: bold;
+          font-size: 1.4rem;
+          margin-right: 0;
+        }
+      }
     }
 
 
     .hashtag-btn{
       float: right;
       margin-top: 0.8rem;
+      margin-right: 1.2rem;
     }
 
     ion-footer{
@@ -18,6 +29,7 @@ page-new-post {
 
       .submit-btn{
         width: 90%;
+        height: 4.5rem;
         margin-left: auto;
         margin-right: auto;
       }

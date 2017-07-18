@@ -65,7 +65,7 @@
 
     <ion-card class="new_post" (click)="navToNewPost()">
       <ion-card-content>
-        <h2><ion-icon name="create"></ion-icon> Write a new post </h2>
+        <h2><ion-icon md="ios-create" ios="ios-create"></ion-icon> Write a new post </h2>
       </ion-card-content>
     </ion-card>
 
@@ -83,7 +83,7 @@
         <p>{{post.content}}</p>
 
         <div class="hashtag-section">
-          <ion-badge *ngFor="let hashtag of post.hashtags">{{ hashtag.title }}</ion-badge>
+          <ion-badge *ngFor="let hashtag of post.hashtags" (click)="navToNewPost(hashtag.title)">{{ hashtag.title }}</ion-badge>
         </div>
 
       </ion-card-content>
