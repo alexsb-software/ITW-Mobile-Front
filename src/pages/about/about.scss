@@ -30,12 +30,17 @@ page-about {
     color:  #007aff;
   }
   div.background {
-    background: url(https://image.freepik.com/free-psd/abstract-background-design_1297-87.jpg) repeat;
+    background-image: url(https://raw.githubusercontent.com/alexsb-software/ITW-Mobile-Frontend/ionic/src/assets/img/itw-background-crop.jpeg);
+    background-size: cover;
+    background-position: center;
+
   }
   div.transbox {
-    background-color: #ffffff;
-    opacity: 0.6;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
+    background-color: rgba(255, 255, 255, .8);
+  }
+  p{
+    font-weight: bold;
+    font-size: 14px;
   }
 }
 

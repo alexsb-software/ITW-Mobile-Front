@@ -19,8 +19,10 @@ export class HeaderComponent {
 
   }
   goBack(){
-    //TODO
-    this.navCtrl.pop();
+    //just for testing ...
+    console.log(this.navCtrl);
+     //This line below will be execute
+    //this.navCtrl.pop();
   }
 
 }

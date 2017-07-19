@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
-import { NavController, NavParams } from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
 import {AboutButtons} from "../../model/aboutButtons.model";
 
 declare var google;
@@ -15,34 +15,39 @@ export class AboutPage {
   map: any;
    directionsService: any;
    directionsDisplay: any ;
-  aboutButton: AboutButtons[] =[{iconName:'logo-facebook',buttonTitle:'FaceBook',color: '#3b5998' },
-    {iconName:'logo-twitter',buttonTitle:'Twitter',color: '#0084b4' },
-    {iconName:'globe',buttonTitle:'AlexSB',color: '#000000' },
-    {iconName:'bulb',buttonTitle:'#ITW',color: '#02bfdd' }
+  aboutButton: AboutButtons[] =[{iconName:'logo-facebook',buttonTitle:'FaceBook',color: '#3b5998',link: 'http://www.fb.com/IEEE.AlexSB' },
+    {iconName:'logo-twitter',buttonTitle:'Twitter',color: '#0084b4',link: 'http://www.twitter.com' },
+    {iconName:'globe',buttonTitle:'AlexSB',color: '#000000',link: 'http://www.alexsb.org' },
+    {iconName:'bulb',buttonTitle:'#ITW',color: '#02bfdd',link: '#' }
     ];
   lat: number = 31.2089;
   lng: number = 29.9092;
   latLng = new google.maps.LatLng(this.lat, this.lng);
   pageTitle:string = "About ITW";
-  constructor(private geolocation: Geolocation, private navCtrl: NavController, private navParams: NavParams) {
-  }
+  constructor(private geolocation: Geolocation,private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutPage');
     this.loadMap();
   }
-  goBack(){
-    console.log("back");
-  }
+
   drawDirections(){
       this.geolocation.getCurrentPosition().then(
         (position)=>{
           let myLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
           this.calculateAndDisplayRoute(this.directionsService,this.directionsDisplay,myLatLng);
         }).catch(
-        (error)=> console.log(error)
+        (error)=>this.showAlert()
       );
   }
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Navigation',
+      subTitle: 'Please, switch on your location',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
   loadMap(){
     this.directionsService = new google.maps.DirectionsService;
     this.directionsDisplay = new google.maps.DirectionsRenderer;
@@ -65,7 +70,7 @@ export class AboutPage {
   directionsService.route({
     origin: myLatLng,
     destination: this.latLng,
-    travelMode: 'DRIVING'
+    travelMode: 'WALKING'
   }, function(response, status) {
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
