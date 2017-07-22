@@ -15,7 +15,7 @@ import {UpdatesPage} from "../pages/updates/updates";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AboutPage; //HomePage;
+  rootPage: any = HomePage; //HomePage;
 
   pages: Array<{title: string, component: any}>;
 

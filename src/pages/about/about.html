@@ -7,7 +7,7 @@
     <ion-row style="text-align: center;">
       <ion-col width-50 *ngFor="let button of aboutButton">
         <a href="{{ button.link }}">
-          <ion-icon [ngStyle]="{'color': button.color }" class="icon-big" name="{{button.iconName}}">
+            <ion-icon [ngStyle]="{'color': button.color }" class="icon-big" name="{{button.iconName}}">
           </ion-icon><br>
             {{button.buttonTitle}}
         </a>
