@@ -20,9 +20,9 @@ export class HeaderComponent {
   }
   goBack(){
     //just for testing ...
-    console.log(this.navCtrl);
+    //console.log(this.navCtrl);
      //This line below will be execute
-    //this.navCtrl.pop();
+    this.navCtrl.pop();
   }
 
 }
