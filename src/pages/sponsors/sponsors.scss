@@ -1,3 +1,34 @@
 page-sponsors {
-
+  .sponsor{
+    color: white;
+    font-size: 17px;
+    padding: 6px;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+  }
+  .platinum {
+    @extend .sponsor;
+    background-color: #444444;
+  }
+  .golden{
+    @extend .sponsor;
+    background-color: gold;
+  }
+  .silver{
+    @extend .sponsor;
+    background-color: silver;
+  }
+  img{
+    display: inline-block;
+    height: 150px;
+    width: 50%;
+  }
+  div{
+    text-align: center;
+  }
+  ion-header{
+    height: 100px;
+    background-color: #427feb;
+  }
 }

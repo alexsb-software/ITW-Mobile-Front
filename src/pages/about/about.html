@@ -1,18 +1,51 @@
-<!--
-  Generated template for the AboutPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>about</ion-title>
-  </ion-navbar>
-
+  <header [pageTitle]="pageTitle"></header>
 </ion-header>
 
+<ion-content>
+  <ion-grid>
+    <ion-row style="text-align: center;">
+      <ion-col width-50 *ngFor="let button of aboutButton">
+        <a href="{{ button.link }}">
+          <ion-icon [ngStyle]="{'color': button.color }" class="icon-big" name="{{button.iconName}}">
+          </ion-icon><br>
+            {{button.buttonTitle}}
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="background">
+    <div padding class="transbox">
+      <p>
+        Interact with Today's World (or simply ITW), it is the largest technical awareness conference organized by IEEE in Egypt. Organized by IEEE Alexandria Student Branch; ITW is a series of high-quality sessions and talks held in Bibliotheca Alexandria (BA) aiming at delivering the required up-to-date technical and nontechnical knowledge to Egypt's brightest engineering student and fresh graduates.
+      </p>
+      <ion-row class="info">
+        <ion-col col-13>
+          <ion-row>
+            <ion-col col-2>
+              <ion-icon name="calendar" class="icon-big"></ion-icon>
+            </ion-col>
+            <ion-col col-10 class="info-text">
+              <h6 class="no-margin"> Monday, March 20th to Thursday, March 23rd</h6>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-2>
+              <ion-icon name="pin" class="icon-big"></ion-icon>
+            </ion-col>
+            <ion-col col-10 class="info-text">
+              <h6 class="no-margin"> Bibliotheca Alexandrina</h6>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 
-<ion-content padding>
+  <button ion-button icon-only class="NavButton" (click)="drawDirections()">
+    <ion-icon name="navigate"> Navigate</ion-icon>
+  </button>
+  <div #map id="map" position="relative"></div>
 
 </ion-content>
+
