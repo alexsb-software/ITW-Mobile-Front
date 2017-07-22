@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import {HttpModule} from "@angular/http";
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,6 +17,8 @@ import {SpeakerPage} from "../pages/speaker/speaker";
 import {UpdatesPage} from "../pages/updates/updates";
 import {SignupPage} from "../pages/signup/signup";
 import { HeaderComponent } from '../components/header/header';
+import { PostsProvider } from '../providers/posts/posts';
+import {NewPostPage} from "../pages/new-post/new-post";
 
 @NgModule({
   declarations: [
@@ -26,11 +30,13 @@ import { HeaderComponent } from '../components/header/header';
     SpeakerPage,
     UpdatesPage,
     SignupPage,
-    HeaderComponent
+    HeaderComponent,
+    NewPostPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,13 +48,16 @@ import { HeaderComponent } from '../components/header/header';
     SpeakerPage,
     UpdatesPage,
     SignupPage,
-    HeaderComponent
+    HeaderComponent,
+    NewPostPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
+    PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+
   ]
 })
 export class AppModule {}
