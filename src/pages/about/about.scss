@@ -1,3 +1,65 @@
 page-about {
+  ion-content{
 
+    ion-row{
+      color: #007aff;
+    }
+
+    ion-col{
+      margin: 0;
+      padding:0;
+    }
+
+    .info-text{
+      margin-top: 0.2rem;
+    }
+    .no-margin{
+      margin:0;
+    }
+    .icon-big{
+      font-size: 3.7rem;
+    }
+  }
+  .NavButton{
+    position: absolute;
+    z-index: 10;
+    width: 150px;
+    margin-top: 90px;
+    margin-left: -7px;
+    background-color: white ;
+    color:  #007aff;
+  }
+  div.background {
+    background-image: url(https://raw.githubusercontent.com/alexsb-software/ITW-Mobile-Frontend/ionic/src/assets/img/itw-background-crop.jpeg);
+    background-size: cover;
+    background-position: center;
+
+  }
+  div.transbox {
+    background-color: rgba(255, 255, 255, .8);
+  }
+  p{
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+
+.ios, .md {
+
+  page-about {
+
+    .scroll {
+      height: 100%
+    }
+
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+
+  }
+  ion-header{
+    height: 100px;
+    background-color: #427feb;
+  }
 }
