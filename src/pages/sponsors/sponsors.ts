@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {Sponsor} from "../../model/sponsors..model";
+import {Sponsor} from "../../model/Sponsor.model";
 
 /**
  * Generated class for the SponsorsPage page.

@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import {AlertController} from 'ionic-angular';
-import {AboutButtons} from "../../model/aboutButtons.model";
+import {AboutButtons} from "../../model/AboutButton.model";
 
 declare var google;
 

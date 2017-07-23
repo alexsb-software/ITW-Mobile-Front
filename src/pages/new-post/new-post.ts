@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
 import {PostsProvider} from "../../providers/posts/posts";
+import {Hashtag} from "../../model/Hashtag.model";
 
 /**
  * Generated class for the NewPostPage page.
@@ -14,7 +15,7 @@ import {PostsProvider} from "../../providers/posts/posts";
 })
 export class NewPostPage {
 
-  hashtags:string[] = [];
+  hashtags:Hashtag[] = [];
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,public navParams:NavParams, public postsProvider: PostsProvider
   ,public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
@@ -32,7 +33,7 @@ export class NewPostPage {
 
   addHashtag(input):void{
     if(input.value !== '') {
-      this.hashtags.push(input.value);
+      this.hashtags.push({title: input.value});
       input.value = '';
     }
   }

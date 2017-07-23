@@ -1,3 +1,15 @@
 page-speakers {
+  ion-item{
+    ion-avatar{
+      ion-img{
+        width:70px !important;
+        height: 70px !important;
 
+        img{
+          width:70px !important;
+          height: 70px !important;
+        }
+      }
+    }
+  }
 }

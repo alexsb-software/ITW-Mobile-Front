@@ -19,6 +19,7 @@ import {SignupPage} from "../pages/signup/signup";
 import { HeaderComponent } from '../components/header/header';
 import { PostsProvider } from '../providers/posts/posts';
 import {NewPostPage} from "../pages/new-post/new-post";
+import { SpeakersProvider } from '../providers/speakers/speakers';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {NewPostPage} from "../pages/new-post/new-post";
     SplashScreen,
     Geolocation,
     PostsProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SpeakersProvider
 
   ]
 })

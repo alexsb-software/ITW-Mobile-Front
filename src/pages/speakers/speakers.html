@@ -13,6 +13,16 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let speaker of speakers" (click)="goToSpeaker(speaker.id)">
+      <ion-avatar item-start>
+        <ion-img src="{{speaker.avatar}}"></ion-img>
+      </ion-avatar>
+      <h2>{{ speaker.name }}</h2>
+      <p>{{ speaker.position }}</p>
+    </ion-item>
+  </ion-list>
+
 
 </ion-content>

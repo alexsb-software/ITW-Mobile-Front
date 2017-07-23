@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component, OnInit} from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {SpeakersProvider} from "../../providers/speakers/speakers";
+import {Speaker} from "../../model/Speaker.model";
+import {SpeakerPage} from "../speaker/speaker";
 
 /**
  * Generated class for the SpeakersPage page.
@@ -11,13 +14,25 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-speakers',
   templateUrl: 'speakers.html',
 })
-export class SpeakersPage {
+export class SpeakersPage implements OnInit{
+  speakers: Speaker[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public speakersProvider: SpeakersProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SpeakersPage');
+
+  ngOnInit(){
+    this.speakersProvider.getData().subscribe(success =>{
+      console.log(success);
+      this.speakers = success;
+      this.speakersProvider.speakers = success;
+    }, err =>{
+      console.log("error getting speakers", err);
+    })
+  }
+
+  goToSpeaker(id: number): void{
+    this.navCtrl.push(SpeakerPage, {id: id})
   }
 
 }
