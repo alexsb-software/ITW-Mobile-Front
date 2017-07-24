@@ -23,9 +23,8 @@ export class SpeakersProvider {
     let i;
     for (i=0; i<this.speakers.length; i++){
       if(this.speakers[i].id === id)
-        break;
+        return this.speakers[i]
     }
-    return this.speakers[i]
   }
 
   getData(){
