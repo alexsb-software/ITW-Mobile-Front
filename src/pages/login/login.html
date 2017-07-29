@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- <p *ngIf="submit" style="color: #ea6153;">Please fill out all details accurately.</p> -->
+    <ion-list>
+        <form [formGroup]="loginForm">
+            <ion-item>
+                <ion-label color="primary" floating>Enter Your Email</ion-label>
+                <ion-input type="email"  formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" floating>Enter Your Password</ion-label>
+                <ion-input type="password"  formControlName="password"></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button block color="primary" padding (click)="Login()">Login</button>
+            </ion-item>
+            <ion-item>
+                <button ion-button block color="danger" padding (click)="gotoSignup()">Sign Up</button>
+            </ion-item>
+        </form>
+    </ion-list>
+</ion-content>
+

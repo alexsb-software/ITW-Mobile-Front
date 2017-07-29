@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ModalController, NavController} from 'ionic-angular';
-import {PostsProvider} from "../../providers/posts/posts";
-import {NewPostPage} from "../new-post/new-post";
-import {Post} from "../../model/Post.model";
+import { Component, OnInit } from '@angular/core';
+import { ModalController, NavController } from 'ionic-angular';
+import { PostsProvider } from "../../providers/posts/posts";
+import { NewPostPage } from "../new-post/new-post";
+import { Post } from "../../model/Post.model";
 
 @Component({
   selector: 'page-home',
@@ -34,6 +34,4 @@ export class HomePage implements OnInit{
   }
 
   //TODO: FAB btns
-
-
 }

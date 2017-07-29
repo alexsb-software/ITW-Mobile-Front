@@ -4,11 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import {SpeakersPage} from "../pages/speakers/speakers";
-import {SponsorsPage} from "../pages/sponsors/sponsors";
-import {AboutPage} from "../pages/about/about";
-import {UpdatesPage} from "../pages/updates/updates";
-
+import { SpeakersPage } from "../pages/speakers/speakers";
+import { SponsorsPage } from "../pages/sponsors/sponsors";
+import { AboutPage } from "../pages/about/about";
+import { UpdatesPage } from "../pages/updates/updates";
+import { LoginPage } from "../pages/login/login";
 @Component({
   templateUrl: 'app.html'
 })
@@ -29,6 +29,7 @@ export class MyApp {
       { title: 'Speakers', component: SpeakersPage },
       { title: 'Sponsors', component: SponsorsPage },
       { title: 'About ITW', component: AboutPage },
+      { title: 'Login', component: LoginPage}
     ];
 
   }
