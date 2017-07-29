@@ -16,7 +16,7 @@ import { HomePage } from "../home/home";
 })
 export class LoginPage {
   loginForm : FormGroup;
-  submit: boolean = false;
+  submit: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
     this.loginForm = formBuilder.group({
@@ -26,8 +26,11 @@ export class LoginPage {
   }
 
   Login () {
-    console.log("log in Done !",this.loginForm.value);
-    this.navCtrl.setRoot(HomePage);
+    console.log(this.loginForm.value);
+    this.loginForm.valid ? this.submit = true : this.submit = false;
+    if ( this.submit) {
+      this.navCtrl.setRoot(HomePage);
+    }
     
   }
   gotoSignup () {
