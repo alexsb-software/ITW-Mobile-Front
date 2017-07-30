@@ -1,0 +1,80 @@
+[
+  {
+    "start": "9:00 AM",
+    "end": "12:00 PB",
+    "day": 1,
+    "hashtag_id": 11,
+    "name": "Artificial Intelligence",
+    "report_link": "https://google.com",
+    "type": "lecture",
+    "available": true
+  },
+  {
+    "start": "9:00 AM",
+    "end": "12:00 PB",
+    "day": 1,
+    "hashtag_id": 11,
+    "name": "Artificial Intelligence",
+    "report_link": "https://google.com",
+    "type": "workshop",
+    "available": true
+  },{
+  "start": "9:00 AM",
+  "end": "12:00 PB",
+  "day": 1,
+  "hashtag_id": 11,
+  "name": "Artificial Intelligence",
+  "report_link": "https://google.com",
+  "type": "lecture",
+  "available": true
+},{
+  "start": "9:00 AM",
+  "end": "12:00 PB",
+  "day": 1,
+  "hashtag_id": 11,
+  "name": "Artificial Intelligence",
+  "report_link": "https://google.com",
+  "type": "lecture",
+  "available": false
+},
+  {
+    "start": "9:00 AM",
+    "end": "12:00 PB",
+    "day": 1,
+    "hashtag_id": 1,
+    "name": "Artificial Intelligence",
+    "report_link": "https://google.com",
+    "type": "lecture",
+    "available": true
+  },
+  {
+    "start": "9:00 AM",
+    "end": "12:00 PB",
+    "day": 2,
+    "hashtag_id": 5,
+    "name": "Artificial Intelligence",
+    "report_link": "https://google.com",
+    "type": "lecture",
+    "available": true
+  },
+  {
+    "start": "9:00 AM",
+    "end": "12:00 PB",
+    "day": 1,
+    "hashtag_id": 7,
+    "name": "Artificial Intelligence",
+    "report_link": "https://google.com",
+    "type": "lecture",
+    "available": true
+  },
+  {
+    "start": "9:00 AM",
+    "end": "12:00 PB",
+    "day": 2,
+    "hashtag_id": 4,
+    "name": "Artificial Intelligence",
+    "report_link": "https://google.com",
+    "type": "lecture",
+    "available": false
+  }
+]

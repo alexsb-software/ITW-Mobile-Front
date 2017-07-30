@@ -21,6 +21,10 @@ import { PostsProvider } from '../providers/posts/posts';
 import { NewPostPage } from "../pages/new-post/new-post";
 import { SpeakersProvider } from '../providers/speakers/speakers';
 import { LoginPage } from "../pages/login/login";
+import { SessionsProvider } from '../providers/sessions/sessions';
+import {Day1Page} from "../pages/agenda/day1/day1";
+import {Day2Page} from "../pages/agenda/day2/day2";
+import {AgendaPage} from "../pages/agenda/agenda";
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { LoginPage } from "../pages/login/login";
     SignupPage,
     HeaderComponent,
     NewPostPage,
-    LoginPage
+    LoginPage,
+    AgendaPage,
+    Day1Page,
+    Day2Page
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,10 @@ import { LoginPage } from "../pages/login/login";
     SignupPage,
     HeaderComponent,
     NewPostPage,
-    LoginPage
+    LoginPage,
+    AgendaPage,
+    Day1Page,
+    Day2Page
   ],
   providers: [
     StatusBar,
@@ -61,7 +71,8 @@ import { LoginPage } from "../pages/login/login";
     Geolocation,
     PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SpeakersProvider
+    SpeakersProvider,
+    SessionsProvider
 
   ]
 })

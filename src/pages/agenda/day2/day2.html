@@ -1,0 +1,11 @@
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let session of day2Sessions">
+      <h2>{{ session.name }}</h2>
+      <h4>From {{ session.start }} to {{ session.end }}</h4>
+      <h4>{{ session.type }}</h4>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

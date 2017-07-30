@@ -9,6 +9,7 @@ import { SponsorsPage } from "../pages/sponsors/sponsors";
 import { AboutPage } from "../pages/about/about";
 import { UpdatesPage } from "../pages/updates/updates";
 import { LoginPage } from "../pages/login/login";
+import {AgendaPage} from "../pages/agenda/agenda";
 @Component({
   templateUrl: 'app.html'
 })
@@ -29,6 +30,7 @@ export class MyApp {
       { title: 'Speakers', component: SpeakersPage },
       { title: 'Sponsors', component: SponsorsPage },
       { title: 'About ITW', component: AboutPage },
+      { title: 'Agenda', component: AgendaPage },
       { title: 'Login', component: LoginPage}
     ];
 
