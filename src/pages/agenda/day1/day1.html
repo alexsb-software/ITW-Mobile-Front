@@ -1,8 +1,12 @@
 <ion-content>
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="openFilter()">Button</button>
+  </ion-fab>
 
   <ion-list>
-    <ion-item *ngFor="let session of day1Sessions" class="session-list-item">
-      <h1 class="bold" style="color:#007aff; font-weight: bold; font-size: 2rem">{{ session.name }}</h1>
+    <ion-item *ngFor="let session of filteredSessions" class="session-list-item"
+              [ngClass]="{'blue': session.type == 'workshop', 'green': session.type == 'lecture', 'rose': session.type == 'gallery'}">
+      <h1 class="bold" style="font-weight: bold; font-size: 2rem">{{ session.name }}</h1>
       <h4> <ion-icon name="time" style="margin: 0.6rem 0.6rem 0"></ion-icon>From {{ session.start }} to {{ session.end }}</h4>
       <h4> <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
     </ion-item>

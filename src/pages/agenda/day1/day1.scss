@@ -1,0 +1,19 @@
+ion-content{
+  ion-item{
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
+  .session-list-item{
+    color: #fff;
+  }
+  .session-list-item.blue{
+    background: #60c1ff;
+  }
+  .session-list-item.green{
+    background: #74c2a7;
+  }
+  .session-list-item.rose{
+    background: #f1888d;
+  }
+}

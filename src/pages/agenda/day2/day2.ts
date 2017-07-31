@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
+import {PopoverController} from "ionic-angular";
+import {FilterPage} from "../filter/filter";
 
 @Component({
   selector: 'tab-day2',
@@ -10,7 +12,7 @@ export class Day2Page implements OnInit{
 
   day2Sessions: Session[];
 
-  constructor(public sessionsProvider: SessionsProvider) {
+  constructor(public sessionsProvider: SessionsProvider, public popOverCtrl: PopoverController) {
   }
 
   ngOnInit(){
@@ -22,5 +24,12 @@ export class Day2Page implements OnInit{
         this.day2Sessions = success.filter(session => session.day === 2)
       })
     }
+  }
+
+  openPopOver(ev){
+    let popover = this.popOverCtrl.create(FilterPage);
+    popover.present({
+      ev: ev
+    });
   }
 }

@@ -1,0 +1,25 @@
+<ion-content>
+
+  <ion-list radio-group [(ngModel)]="sessionCategory" (ngModelChange)="selectCategory($event)">
+
+    <ion-list-header>
+      Session Type
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Lecture</ion-label>
+      <ion-radio value="lecture"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Workshop</ion-label>
+      <ion-radio value="workshop"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gallery</ion-label>
+      <ion-radio value="gallery"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

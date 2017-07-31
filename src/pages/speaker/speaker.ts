@@ -20,9 +20,6 @@ export class SpeakerPage implements OnInit{
   constructor(public navCtrl: NavController, public navParams: NavParams, public speakersProvider: SpeakersProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SpeakerPage');
-  }
 
   ngOnInit(){
     //check if some page requested the speakers first
