@@ -7,6 +7,7 @@
     "name": "Artificial Intelligence",
     "report_link": "https://google.com",
     "type": "lecture",
+    "category": "computer",
     "available": true
   },
   {
@@ -17,6 +18,7 @@
     "name": "Artificial Intelligence",
     "report_link": "https://google.com",
     "type": "workshop",
+    "category": "civil",
     "available": true
   },{
   "start": "9:00 AM",
@@ -26,6 +28,7 @@
   "name": "Artificial Intelligence",
   "report_link": "https://google.com",
   "type": "lecture",
+  "category": "communication",
   "available": true
 },{
   "start": "9:00 AM",
@@ -35,6 +38,7 @@
   "name": "Artificial Intelligence",
   "report_link": "https://google.com",
   "type": "lecture",
+  "category": "computer",
   "available": false
 },
   {
@@ -45,7 +49,8 @@
     "name": "Artificial Intelligence",
     "report_link": "https://google.com",
     "type": "lecture",
-    "available": true
+    "available": true,
+    "category": "civil"
   },
   {
     "start": "9:00 AM",
@@ -55,7 +60,8 @@
     "name": "Artificial Intelligence",
     "report_link": "https://google.com",
     "type": "lecture",
-    "available": true
+    "available": true,
+    "category": "computer"
   },
   {
     "start": "9:00 AM",
@@ -65,7 +71,8 @@
     "name": "Artificial Intelligence",
     "report_link": "https://google.com",
     "type": "workshop",
-    "available": true
+    "available": true,
+    "category": "communication"
   },
   {
     "start": "9:00 AM",
@@ -75,6 +82,7 @@
     "name": "Artificial Intelligence",
     "report_link": "https://google.com",
     "type": "lecture",
-    "available": false
+    "available": false,
+    "category": "civil"
   }
 ]

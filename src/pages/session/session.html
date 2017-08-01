@@ -1,0 +1,49 @@
+<!--
+  Generated template for the SessionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ session.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="">
+    <h1>{{ session.name }}</h1>
+    <h3>{{ session.start }} <span>:</span> {{ session.end }}</h3>
+  </div>
+  <div class="description-container section-container">
+    <div class="description-head-container head-container">
+      <h2>Description</h2>
+    </div>
+    <div class="description-body-container body-container" padding>
+      {{ session.description }}
+    </div>
+  </div>
+  <div class="category-container section-container">
+    <div class="category-head-container head-container">
+      <h2>Category</h2>
+    </div>
+    <div class="categories-body-container body-container" padding>
+      <ion-badge>{{ session.category }}</ion-badge>
+    </div>
+  </div>
+  <div class="speakers-container section-container">
+    <div class="speakers-head-container head-container">
+      <h2>Category</h2>
+    </div>
+    <div class="speakers-body-container body-container" padding>
+      <ion-img *ngFor="let speaker of session.speakers" [src]="speaker.avatar"></ion-img>
+    </div>
+  </div>
+
+
+
+</ion-content>

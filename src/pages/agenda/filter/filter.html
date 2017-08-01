@@ -1,24 +1,27 @@
 <ion-content>
 
-  <ion-list radio-group [(ngModel)]="sessionCategory" (ngModelChange)="selectCategory($event)">
+  <ion-list id="first-list" radio-group [(ngModel)]="sessionType" (ngModelChange)="dismissFilter()">
 
     <ion-list-header>
       Session Type
     </ion-list-header>
 
-    <ion-item>
-      <ion-label>Lecture</ion-label>
-      <ion-radio value="lecture"></ion-radio>
+    <ion-item *ngFor="let type of types">
+      <ion-label>{{ type.toUpperCase() }}</ion-label>
+      <ion-radio [value]="type"></ion-radio>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Workshop</ion-label>
-      <ion-radio value="workshop"></ion-radio>
-    </ion-item>
+  </ion-list>
 
-    <ion-item>
-      <ion-label>Gallery</ion-label>
-      <ion-radio value="gallery"></ion-radio>
+  <ion-list radio-group [(ngModel)]="sessionCategory" (ngModelChange)="dismissFilter()">
+
+    <ion-list-header>
+      Session Category
+    </ion-list-header>
+
+    <ion-item *ngFor="let category of categories">
+      <ion-label>{{ category.toUpperCase() }}</ion-label>
+      <ion-radio [value]="category"></ion-radio>
     </ion-item>
 
   </ion-list>

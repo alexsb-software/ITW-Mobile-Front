@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ViewController} from "ionic-angular";
+import {NavParams, ViewController} from "ionic-angular";
 
 
 @Component({
@@ -8,12 +8,16 @@ import {ViewController} from "ionic-angular";
 })
 export class FilterPage{
   sessionCategory:string;
+  sessionType:string;
+  types:string[] = ['all', 'lecture', 'workshop', 'gallery'];
+  categories:string[] = ['all', 'computer', 'communication', 'civil'];
 
-  constructor(public viewCtrl: ViewController){
-
+  constructor(public viewCtrl: ViewController, public navParams: NavParams){
+    this.sessionCategory = this.navParams.get('category');
+    this.sessionType = this.navParams.get('type');
   }
 
-  selectCategory(event){
-    this.viewCtrl.dismiss({ type: event })
+  dismissFilter(){
+    this.viewCtrl.dismiss({ type: this.sessionType, category: this.sessionCategory })
   }
 }

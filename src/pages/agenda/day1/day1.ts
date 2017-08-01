@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
-import {AlertController, PopoverController} from "ionic-angular";
+import {ModalController} from "ionic-angular";
 import {FilterPage} from "../filter/filter";
 
 @Component({
@@ -12,9 +12,12 @@ export class Day1Page implements OnInit{
 
   day1Sessions: Session[];
   filteredSessions: Session[];
+  filterType:string;
+  filterCategory:string;
 
-  constructor(public sessionsProvider:SessionsProvider, public popOverCtrl: PopoverController, public alertCtrl: AlertController) {
-
+  constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController) {
+    this.filterType = 'all';
+    this.filterCategory = 'all';
   }
 
   ngOnInit(){
@@ -32,64 +35,34 @@ export class Day1Page implements OnInit{
     }
   }
 
-  openPopOver(event){
-    let popover = this.popOverCtrl.create(FilterPage, {}, {
+  openModal(event){
+    let modal = this.modalCtrl.create(FilterPage, {type: this.filterType, category: this.filterCategory}, {
       enableBackdropDismiss: true
     });
-    popover.onDidDismiss(data => {
-      if(data !== null)
-        this.filterSessions(data['type'])
+    modal.onDidDismiss(data => {
+      if(data !== null){
+        this.filterType = data['type']
+        this.filterCategory = data['category']
+        this.filterSessions()
+      }
     });
-    popover.present({
-      ev: event
-    });
+    modal.present();
   }
 
-  filterSessions(type){
-    this.filteredSessions = this.day1Sessions.filter(session => {
-      return session.type === type
-    })
+  filterSessions(){
+    if (this.filterType === 'all' && this.filterCategory === 'all') {
+      this.filteredSessions = this.day1Sessions;
+      return
+    }
+    else if (this.filterType === 'all')
+      this.filteredSessions = this.day1Sessions.filter(session => session.category === this.filterCategory);
+    else if (this.filterCategory === 'all')
+      this.filteredSessions = this.day1Sessions.filter(session => session.type=== this.filterType);
+    else
+      this.filteredSessions = this.day1Sessions.filter(session => {
+        return session.type === this.filterType && session.category === this.filterCategory
+      })
   }
 
-  openFilter(){
-    let prompt = this.alertCtrl.create({
-      title: 'Filter Sessions',
-      message: 'Select option',
-      inputs : [
-        {
-          type:'radio',
-          label:'Workshops',
-          value:'workshop'
-        },
-        {
-          type:'radio',
-          label:'Lectures',
-          value:'lecture'
-        },
-        {
-          type:'radio',
-          label:'Galleries',
-          value:'gallery'
-        }
-
-      ],
-      buttons : [
-        {
-          text: "Cancel",
-          handler: data => {
-            console.log("cancel clicked");
-          }
-        },
-        {
-          text: "Search",
-          handler: data => {
-            console.log(data);
-            this.filterSessions(data)
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
 
 }

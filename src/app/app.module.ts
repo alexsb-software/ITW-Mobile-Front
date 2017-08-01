@@ -26,6 +26,7 @@ import {Day1Page} from "../pages/agenda/day1/day1";
 import {Day2Page} from "../pages/agenda/day2/day2";
 import {AgendaPage} from "../pages/agenda/agenda";
 import {FilterPage} from "../pages/agenda/filter/filter";
+import {SessionPage} from "../pages/session/session";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {FilterPage} from "../pages/agenda/filter/filter";
     AgendaPage,
     Day1Page,
     Day2Page,
-    FilterPage
+    FilterPage,
+    SessionPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import {FilterPage} from "../pages/agenda/filter/filter";
     AgendaPage,
     Day1Page,
     Day2Page,
-    FilterPage
+    FilterPage,
+    SessionPage
   ],
   providers: [
     StatusBar,

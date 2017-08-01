@@ -10,13 +10,14 @@ import { AboutPage } from "../pages/about/about";
 import { UpdatesPage } from "../pages/updates/updates";
 import { LoginPage } from "../pages/login/login";
 import {AgendaPage} from "../pages/agenda/agenda";
+import {SessionPage} from "../pages/session/session";
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage; //HomePage;
+  rootPage: any = SessionPage; //HomePage;
 
   pages: Array<{title: string, component: any}>;
 

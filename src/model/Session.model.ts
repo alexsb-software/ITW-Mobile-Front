@@ -6,5 +6,6 @@ export interface Session{
   name: string,
   report_link: string,
   type: string,
+  category:string,
   available: boolean
 }

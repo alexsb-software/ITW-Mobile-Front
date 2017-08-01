@@ -1,6 +1,6 @@
 <ion-content>
   <ion-fab bottom right>
-    <button ion-fab color="primary" (click)="openFilter()">Button</button>
+    <button ion-fab color="primary" (click)="openModal($event)">Button</button>
   </ion-fab>
 
   <ion-list>
@@ -9,6 +9,8 @@
       <h1 class="bold" style="font-weight: bold; font-size: 2rem">{{ session.name }}</h1>
       <h4> <ion-icon name="time" style="margin: 0.6rem 0.6rem 0"></ion-icon>From {{ session.start }} to {{ session.end }}</h4>
       <h4> <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
+      <p>{{ session.type }}</p>
+      <p>{{ session.category }}</p>
     </ion-item>
   </ion-list>
 
