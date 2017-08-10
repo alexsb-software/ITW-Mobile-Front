@@ -7,7 +7,7 @@
     "name": "Artificial Intelligence",
     "report_link": "https://google.com",
     "type": "lecture",
-    "category": "computer",
+    "categories": ["computer", "civil"],
     "available": true
   },
   {
@@ -15,10 +15,10 @@
     "end": "12:00 PB",
     "day": 1,
     "hashtag_id": 11,
-    "name": "Artificial Intelligence",
+    "name": "Artificial Intelligence haha hoho hehehe",
     "report_link": "https://google.com",
     "type": "workshop",
-    "category": "civil",
+    "categories": ["communication", "civil"],
     "available": true
   },{
   "start": "9:00 AM",
@@ -28,7 +28,7 @@
   "name": "Artificial Intelligence",
   "report_link": "https://google.com",
   "type": "lecture",
-  "category": "communication",
+  "categories": ["computer", "communication"],
   "available": true
 },{
   "start": "9:00 AM",
@@ -38,7 +38,7 @@
   "name": "Artificial Intelligence",
   "report_link": "https://google.com",
   "type": "lecture",
-  "category": "computer",
+  "categories": ["computer", "communication"],
   "available": false
 },
   {
@@ -50,7 +50,7 @@
     "report_link": "https://google.com",
     "type": "lecture",
     "available": true,
-    "category": "civil"
+    "categories": ["computer", "civil"]
   },
   {
     "start": "9:00 AM",
@@ -61,7 +61,7 @@
     "report_link": "https://google.com",
     "type": "lecture",
     "available": true,
-    "category": "computer"
+    "categories": ["computer"]
   },
   {
     "start": "9:00 AM",
@@ -72,7 +72,7 @@
     "report_link": "https://google.com",
     "type": "workshop",
     "available": true,
-    "category": "communication"
+    "categories": ["communication"]
   },
   {
     "start": "9:00 AM",
@@ -83,6 +83,6 @@
     "report_link": "https://google.com",
     "type": "lecture",
     "available": false,
-    "category": "civil"
+    "categories": ["civil", "computer", "communication"]
   }
 ]

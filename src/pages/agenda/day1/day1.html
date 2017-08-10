@@ -1,16 +1,21 @@
 <ion-content>
   <ion-fab bottom right>
-    <button ion-fab color="primary" (click)="openModal($event)">Button</button>
+    <button ion-fab color="primary" (click)="openModal()"><ion-icon ios="ios-funnel" md="ios-funnel"></ion-icon></button>
   </ion-fab>
 
   <ion-list>
-    <ion-item *ngFor="let session of filteredSessions" class="session-list-item"
-              [ngClass]="{'blue': session.type == 'workshop', 'green': session.type == 'lecture', 'rose': session.type == 'gallery'}">
-      <h1 class="bold" style="font-weight: bold; font-size: 2rem">{{ session.name }}</h1>
-      <h4> <ion-icon name="time" style="margin: 0.6rem 0.6rem 0"></ion-icon>From {{ session.start }} to {{ session.end }}</h4>
-      <h4> <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
-      <p>{{ session.type }}</p>
-      <p>{{ session.category }}</p>
+    <ion-item *ngFor="let session of filteredSessions" class="sessions-list-item">
+      <ion-row>
+        <ion-col col-8 >
+          <h1>{{ session.name }}</h1>
+          <h4> <ion-icon name="time" style="margin: 0.6rem 0.6rem 0"></ion-icon>From {{ session.start }} to {{ session.end }}</h4>
+          <h4> <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
+        </ion-col>
+        <ion-col col-4 class="sessions-list-icons-container">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <ion-icon name="bookmark"></ion-icon>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-list>
 

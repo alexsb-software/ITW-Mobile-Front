@@ -4,16 +4,35 @@ ion-content{
       border-bottom: none !important;
     }
   }
-  .session-list-item{
+  .sessions-list-icons-container {
+    text-align: center;
+    ion-icon {
+      font-size: 3.5rem;
+      margin: 20% 1rem;
+      color: #aaa;
+    }
+  }
+  .sessions-list-item{
+    border-bottom: 1px solid #aaa;
     color: #fff;
+    h1 {
+      color: #007aff;
+      font-weight: bold;
+      font-size: 2rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    h4 {
+      color: #000;
+    }
   }
-  .session-list-item.blue{
-    background: #60c1ff;
+  .sessions-list-item.blue{
+    background: #a4e7ff;
   }
-  .session-list-item.green{
-    background: #74c2a7;
+  .sessions-list-item.green{
+    background: #a4fad8;
   }
-  .session-list-item.rose{
-    background: #f1888d;
+  .sessions-list-item.rose{
+    background: #ffc5ca;
   }
 }

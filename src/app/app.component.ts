@@ -17,7 +17,7 @@ import {SessionPage} from "../pages/session/session";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = SessionPage; //HomePage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
