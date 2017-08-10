@@ -10,7 +10,7 @@ import { AboutPage } from "../pages/about/about";
 import { UpdatesPage } from "../pages/updates/updates";
 import { LoginPage } from "../pages/login/login";
 import {AgendaPage} from "../pages/agenda/agenda";
-import {SessionPage} from "../pages/session/session";
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -48,6 +48,7 @@ export class MyApp {
 
   openPage(page) {
     // push instead of setRoot to make home is the default root
+    if (page.title === 'Home') return;
     this.nav.push(page.component);
   }
 }

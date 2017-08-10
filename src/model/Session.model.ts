@@ -1,11 +1,15 @@
-export interface Session{
-  start: string
-  end: string,
-  day: number,
-  hashtag_id: number,
-  name: string,
-  report_link: string,
-  type: string,
-  categories:string[],
-  available: boolean
+import {Speaker} from "./Speaker.model";
+export class Session{
+  id: number;
+  start: string;
+  end: string;
+  day: number;
+  description: string;
+  hashtag_id: number;
+  name: string;
+  report_link: string;
+  type: string;
+  categories:string[];
+  available: boolean;
+  speakers: Speaker[];
 }

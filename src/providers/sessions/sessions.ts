@@ -22,5 +22,13 @@ export class SessionsProvider {
     return this.http.get('assets/API/sessions.json').map(data => data.json())
   }
 
+  getSessionById (id: number) {
+    return this.sessions.find((session) => session.id === id)
+  }
+  //TODO
+  // getSessionById (id: number) {
+  //   return this.http.get('' + id).map(data => data.json())
+  // }
+
 
 }

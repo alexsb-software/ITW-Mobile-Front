@@ -4,7 +4,7 @@
   </ion-fab>
 
   <ion-list>
-    <ion-item *ngFor="let session of filteredSessions" class="sessions-list-item">
+    <ion-item *ngFor="let session of filteredSessions" class="sessions-list-item" (click)="goToSession(session.id)">
       <ion-row>
         <ion-col col-8 >
           <h1>{{ session.name }}</h1>

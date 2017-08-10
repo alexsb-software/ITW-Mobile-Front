@@ -18,11 +18,11 @@ export class SpeakerPage implements OnInit{
   speaker:Speaker;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public speakersProvider: SpeakersProvider) {
+    this.speaker = new Speaker()
   }
 
-
+  //TODO: change this to fetch speaker by id from api
   ngOnInit(){
-    //check if some page requested the speakers first
     if(this.speakersProvider.speakers.length < 1)
       this.speakersProvider.getData().subscribe(success =>{
         this.speakersProvider.speakers = success;

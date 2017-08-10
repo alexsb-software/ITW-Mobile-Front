@@ -16,7 +16,7 @@ export class SpeakersProvider {
   public speakers: Speaker[];
 
   constructor(public http: Http) {
-
+    this.speakers = []
   }
 
   getSpeakerById(id:number): Speaker{
@@ -26,6 +26,10 @@ export class SpeakersProvider {
         return this.speakers[i]
     }
   }
+  //TODO: uncomment
+  // getSpeakerById (id:number) {
+  //   return this.http.get('' + id).map(data => data.json())
+  // }
 
   getData(){
     return this.http.get('assets/API/speakers.json').map(data => data.json())

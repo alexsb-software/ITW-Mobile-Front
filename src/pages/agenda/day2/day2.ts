@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {App, ModalController} from "ionic-angular";
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
-import {ModalController} from "ionic-angular";
 import {FilterPage} from "../filter/filter";
+import {SessionPage} from "../../session/session";
 
 @Component({
   selector: 'tab-day2',
@@ -15,7 +16,7 @@ export class Day2Page implements OnInit{
   filterType:string;
   filterCategory:string;
 
-  constructor(public sessionsProvider: SessionsProvider, public modalCtrl: ModalController) {
+  constructor(public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public appCtrl: App) {
     this.filterType = 'all';
     this.filterCategory = 'all';
   }
@@ -60,6 +61,10 @@ export class Day2Page implements OnInit{
       this.filteredSessions = this.day2Sessions.filter(session => {
         return session.type === this.filterType && session.categories.indexOf(this.filterCategory) >= 0
       })
+  }
+
+  goToSession (id: number) {
+    this.appCtrl.getRootNav().push(SessionPage, {id: id})
   }
 
 }

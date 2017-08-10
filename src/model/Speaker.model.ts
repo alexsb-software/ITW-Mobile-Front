@@ -1,4 +1,4 @@
-export interface Speaker{
+export class Speaker{
   id: number;
   name: string;
   position: string;

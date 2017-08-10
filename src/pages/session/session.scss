@@ -1,18 +1,51 @@
 page-session {
-  .head-container{
+  .session-head-container {
     text-align: center;
-    background: #007aff;
-    display: block;
+  }
 
-    h2{
-      color:#fff;
-      margin: 0;
-      padding: 1.2rem;
-      display: block;
+  .section-container {
+    .head-container {
+      width:100%;
+      height: 35px;
+      background: #007aff;
+      padding: 5px 0 5px 15px;
+      font-weight: bold;
+      text-align: left;
+      box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.3);
+
+      h2{
+        margin: 0;
+        padding: 0;
+        color: #fff;
+      }
     }
   }
 
-  .section-container{
+  .description-body-container {
+    color: #555;
+  }
 
+  .categories-body-container {
+    ion-badge {
+      margin: 0.5rem;
+      background: #32db64;
+      font-size: 1.5rem;
+    }
+  }
+
+  .speakers-body-container {
+    text-align: center;
+    ion-img {
+      width: 80px;
+      height: 80px;
+      margin: 0.5rem;
+      border-radius: 50%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
   }
 }

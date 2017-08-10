@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component, OnInit} from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import {Session} from "../../model/Session.model";
+import {SessionsProvider} from "../../providers/sessions/sessions";
+import {SpeakerPage} from "../speaker/speaker";
 
 /**
  * Generated class for the SessionPage page.
@@ -11,13 +14,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-session',
   templateUrl: 'session.html',
 })
-export class SessionPage {
+export class SessionPage implements OnInit{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  session: Session;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public sessionsProvider: SessionsProvider) {
+    this.session = new Session()
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SessionPage');
+  //TODO: replace this to getSessionById only
+  ngOnInit () {
+    if (this.sessionsProvider.sessions.length < 1) {
+      this.sessionsProvider.getData().subscribe((success) => {
+        this.sessionsProvider.sessions = success.data
+        this.session = this.sessionsProvider.getSessionById(this.navParams.get('id'))
+      })
+    } else {
+      this.session = this.sessionsProvider.getSessionById(this.navParams.get('id'))
+    }
+  }
+
+  goToSpeaker (id: number) {
+    this.navCtrl.push(SpeakerPage, {id: id})
   }
 
 }
