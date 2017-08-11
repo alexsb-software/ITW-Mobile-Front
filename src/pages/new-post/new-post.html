@@ -34,7 +34,7 @@
 
   <div class="hashtags-cont" #hashtagCont>
     <ion-chip *ngFor="let hashtag of hashtags; let i = index" #chip{{i}}>
-      <ion-label>#{{hashtag.title}}</ion-label>
+      <ion-label>#{{hashtag}}</ion-label>
       <button ion-button clear color="dark" (click)="deleteChip(i)">
         <ion-icon name="close-circle"></ion-icon>
       </button>
