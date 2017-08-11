@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpModule } from "@angular/http";
+import {IonicStorageModule} from "@ionic/storage";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -27,6 +28,10 @@ import {Day2Page} from "../pages/agenda/day2/day2";
 import {AgendaPage} from "../pages/agenda/agenda";
 import {FilterPage} from "../pages/agenda/filter/filter";
 import {SessionPage} from "../pages/session/session";
+import { AppRoot } from "../pages/app_root/AppRoot";
+
+
+export const apiEndPoint = 'http://192.168.1.7:8000';
 
 @NgModule({
   declarations: [
@@ -45,12 +50,14 @@ import {SessionPage} from "../pages/session/session";
     Day1Page,
     Day2Page,
     FilterPage,
-    SessionPage
+    SessionPage,
+    AppRoot
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,7 +76,8 @@ import {SessionPage} from "../pages/session/session";
     Day1Page,
     Day2Page,
     FilterPage,
-    SessionPage
+    SessionPage,
+    AppRoot
   ],
   providers: [
     StatusBar,

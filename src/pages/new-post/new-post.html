@@ -16,7 +16,7 @@
     <ion-title>New Post</ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only color="secondary" (click)="sendPost(postInput.value)" [disabled]="postInput.value.length === 0">
+      <button ion-button icon-only color="secondary" (click)="sendPost(postInput.value)" [disabled]="postInput.value.length < 10">
         <ion-icon ios="md-checkmark" md="md-checkmark"></ion-icon>
       </button>
     </ion-buttons>
@@ -29,7 +29,7 @@
 
   <ion-item class="post-text">
     <ion-label floating>Write your post</ion-label>
-    <ion-textarea #postInput maxlength="140"></ion-textarea>
+    <ion-textarea #postInput maxlength="140" minlength="10"></ion-textarea>
   </ion-item>
 
   <div class="hashtags-cont" #hashtagCont>

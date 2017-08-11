@@ -1,39 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { SpeakersPage } from "../pages/speakers/speakers";
-import { SponsorsPage } from "../pages/sponsors/sponsors";
-import { AboutPage } from "../pages/about/about";
-import { UpdatesPage } from "../pages/updates/updates";
-import { LoginPage } from "../pages/login/login";
-import {AgendaPage} from "../pages/agenda/agenda";
+import {LoginPage} from "../pages/login/login";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  rootPage: any = LoginPage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Updates', component: UpdatesPage },
-      { title: 'Speakers', component: SpeakersPage },
-      { title: 'Sponsors', component: SponsorsPage },
-      { title: 'About ITW', component: AboutPage },
-      { title: 'Agenda', component: AgendaPage },
-      { title: 'Login', component: LoginPage}
-    ];
 
   }
 
@@ -46,9 +27,4 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    // push instead of setRoot to make home is the default root
-    if (page.title === 'Home') return;
-    this.nav.push(page.component);
-  }
 }

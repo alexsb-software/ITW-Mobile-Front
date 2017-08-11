@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from 'ionic-angular';
+import {Component, OnInit} from '@angular/core';
+import {ModalController, NavController} from 'ionic-angular';
 import { PostsProvider } from "../../providers/posts/posts";
 import { NewPostPage } from "../new-post/new-post";
 import { Post } from "../../model/Post.model";
@@ -33,5 +33,5 @@ export class HomePage implements OnInit{
     modal.present()
   }
 
-  //TODO: FAB btns
+
 }
