@@ -24,9 +24,6 @@ export class SignupPage {
     })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
-  }
   signUp () {
     console.log(this.signupForm.valid);
     this.signupForm.valid ? this.submit = true : this.submit = false;

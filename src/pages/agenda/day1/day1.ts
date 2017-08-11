@@ -55,12 +55,18 @@ export class Day1Page implements OnInit{
       return
     }
     else if (this.filterType === 'all')
-      this.filteredSessions = this.day1Sessions.filter(session => session.categories.indexOf(this.filterCategory) >= 0);
+      this.filteredSessions = this.day1Sessions.filter(session => {
+        return session.categories.find( (category) => {
+          return category.name === this.filterCategory
+        })
+      });
     else if (this.filterCategory === 'all')
       this.filteredSessions = this.day1Sessions.filter(session => session.type === this.filterType);
     else
       this.filteredSessions = this.day1Sessions.filter(session => {
-        return session.type === this.filterType && session.categories.indexOf(this.filterCategory) >= 0
+        return session.type === this.filterType && session.categories.find((category) => {
+          return category.name === this.filterCategory;
+          })
       })
   }
 

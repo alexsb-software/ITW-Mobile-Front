@@ -35,7 +35,7 @@
       <h2>Categories</h2>
     </div>
     <div class="categories-body-container body-container" padding>
-      <ion-badge *ngFor="let category of session.categories">{{ category }}</ion-badge>
+      <ion-badge *ngFor="let category of session.categories">{{ category.name }}</ion-badge>
     </div>
   </div>
   <div class="speakers-container section-container">

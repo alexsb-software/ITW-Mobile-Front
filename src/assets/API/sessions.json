@@ -10,8 +10,15 @@
     "type": "lecture",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ultricies est, ac dignissim mi. Morbi finibus quis enim malesuada convallis. Nunc dui est, elementum non blandit nec, ultricies eu dolor. Vestibulum vel maximus leo, condimentum rutrum erat.",
     "categories": [
-      "computer",
-      "civil"
+      {
+        "name": "civil"
+      },
+      {
+        "name": "computer"
+      },
+      {
+        "name": "communication"
+      }
     ],
     "available": true,
     "speakers": [
@@ -38,6 +45,14 @@
         "avatar": "https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/16997823_10155061046897272_6726127350262580654_n.jpg?oh=6922a7b793ba8d9feb6b3491abf4a9ee&oe=59F4DF9E",
         "position": "Apple Inc. CEO",
         "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ultricies est, ac dignissim mi. Morbi finibus quis enim malesuada convallis. Nunc dui est, elementum non blandit nec, ultricies eu dolor. Vestibulum vel maximus leo, condimentum rutrum erat. Aenean vel ex hendrerit, ultricies tortor nec, accumsan libero."
+      },
+      {
+        "id": 4,
+        "name": "Mahmoud Magdy",
+        "linkedin": "https://www.linkedin.com/",
+        "avatar": "https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/16997823_10155061046897272_6726127350262580654_n.jpg?oh=6922a7b793ba8d9feb6b3491abf4a9ee&oe=59F4DF9E",
+        "position": "Microsoft Inc. Co-Founder",
+        "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ultricies est, ac dignissim mi. Morbi finibus quis enim malesuada convallis. Nunc dui est, elementum non blandit nec, ultricies eu dolor. Vestibulum vel maximus leo, condimentum rutrum erat. Aenean vel ex hendrerit, ultricies tortor nec, accumsan libero."
       }
     ]
   },
@@ -52,8 +67,12 @@
     "type": "workshop",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ultricies est, ac dignissim mi. Morbi finibus quis enim malesuada convallis. Nunc dui est, elementum non blandit nec, ultricies eu dolor. Vestibulum vel maximus leo, condimentum rutrum erat.",
     "categories": [
-      "communication",
-      "civil"
+      {
+        "name": "civil"
+      },
+      {
+        "name": "computer"
+      }
     ],
     "available": true,
     "speakers": [
@@ -94,8 +113,12 @@
     "type": "lecture",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ultricies est, ac dignissim mi. Morbi finibus quis enim malesuada convallis. Nunc dui est, elementum non blandit nec, ultricies eu dolor. Vestibulum vel maximus leo, condimentum rutrum erat.",
     "categories": [
-      "computer",
-      "communication"
+      {
+        "name": "computer"
+      },
+      {
+        "name": "communication"
+      }
     ],
     "available": true,
     "speakers": [
@@ -136,8 +159,15 @@
     "type": "lecture",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ultricies est, ac dignissim mi. Morbi finibus quis enim malesuada convallis. Nunc dui est, elementum non blandit nec, ultricies eu dolor. Vestibulum vel maximus leo, condimentum rutrum erat.",
     "categories": [
-      "computer",
-      "communication"
+      {
+        "name": "civil"
+      },
+      {
+        "name": "computer"
+      },
+      {
+        "name": "communication"
+      }
     ],
     "available": false,
     "speakers": [
@@ -205,8 +235,12 @@
       }
     ],
     "categories": [
-      "computer",
-      "civil"
+      {
+        "name": "civil"
+      },
+      {
+        "name": "communication"
+      }
     ]
   },
   {
@@ -247,7 +281,9 @@
       }
     ],
     "categories": [
-      "computer"
+      {
+        "name": "computer"
+      }
     ]
   },
   {
@@ -288,7 +324,9 @@
       }
     ],
     "categories": [
-      "communication"
+      {
+        "name": "communication"
+      }
     ]
   },
   {
@@ -329,9 +367,15 @@
       }
     ],
     "categories": [
-      "civil",
-      "computer",
-      "communication"
+      {
+        "name": "civil"
+      },
+      {
+        "name": "computer"
+      },
+      {
+        "name": "communication"
+      }
     ]
   }
 ]

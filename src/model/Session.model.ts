@@ -9,7 +9,7 @@ export class Session{
   name: string;
   report_link: string;
   type: string;
-  categories:string[];
+  categories: { name:string }[];
   available: boolean;
   speakers: Speaker[];
 }
