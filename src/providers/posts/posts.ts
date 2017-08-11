@@ -16,11 +16,17 @@ export class PostsProvider {
 
   }
 
-  getData(){
+  getData(hashTag?: Hashtag){
+    if(hashTag){
+      return this.http.get("assets/API/posts.json").map(data => data.json())
+    }
     return this.http.get("assets/API/posts.json").map(data => data.json())
   }
 
-  getMore(){
+  getMore(hashTag?: Hashtag){
+    if(hashTag){
+      return this.http.get("assets/API/posts.json").map(data => data.json())
+    }
     return this.http.get("assets/API/posts.json").map(data => data.json())
   }
 

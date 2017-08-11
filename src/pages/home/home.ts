@@ -3,6 +3,7 @@ import { ModalController, NavController } from 'ionic-angular';
 import { PostsProvider } from "../../providers/posts/posts";
 import { NewPostPage } from "../new-post/new-post";
 import { Post } from "../../model/Post.model";
+import {PostsPage} from "../posts/posts";
 
 @Component({
   selector: 'page-home',
@@ -29,8 +30,7 @@ export class HomePage implements OnInit{
   }
 
   navToNewPost(param):void{
-    let modal = this.modalCtrl.create(NewPostPage,param? {hashtag: param}: {});
-    modal.present()
+    this.navCtrl.push(PostsPage,{hashTag: param});
   }
 
   //TODO: FAB btns
