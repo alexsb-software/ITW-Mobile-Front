@@ -27,6 +27,8 @@ import {Day2Page} from "../pages/agenda/day2/day2";
 import {AgendaPage} from "../pages/agenda/agenda";
 import {FilterPage} from "../pages/agenda/filter/filter";
 import {SessionPage} from "../pages/session/session";
+import {NativeStorage} from "@ionic-native/native-storage";
+import {Facebook} from "@ionic-native/facebook";
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import {SessionPage} from "../pages/session/session";
     PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpeakersProvider,
-    SessionsProvider
+    SessionsProvider,
+    NativeStorage,
+    Facebook
 
   ]
 })

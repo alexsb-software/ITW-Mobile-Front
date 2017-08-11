@@ -10,6 +10,7 @@ import { AboutPage } from "../pages/about/about";
 import { UpdatesPage } from "../pages/updates/updates";
 import { LoginPage } from "../pages/login/login";
 import {AgendaPage} from "../pages/agenda/agenda";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 @Component({
   templateUrl: 'app.html'
@@ -17,11 +18,11 @@ import {AgendaPage} from "../pages/agenda/agenda";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = SponsorsPage;//HomePage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform,public nativeStorage: NativeStorage, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
