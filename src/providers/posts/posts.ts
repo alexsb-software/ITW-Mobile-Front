@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {apiEndPoint} from "../../app/app.module";
 import { Storage } from "@ionic/storage"
+import {apiEndPoint} from "../../app/app.module";
 
 /*
   Generated class for the PostsProvider provider.
@@ -13,30 +13,18 @@ import { Storage } from "@ionic/storage"
 @Injectable()
 export class PostsProvider {
   user: any
-
+  pagination: number
   constructor(public http: Http, public storage: Storage) {
-    this.storage.get('user').then(data => {
-      this.user = JSON.parse(data)
-    })
+    this.pagination = 0;
   }
 
   getData(){
-    return this.http.get("assets/API/posts.json").map(data => data.json())
+    return this.http.get(apiEndPoint + '/posts').map(data => data.json())
   }
 
   getMore(){
-    return this.http.get("assets/API/posts.json").map(data => data.json())
+    return this.http.get(apiEndPoint + '/posts' + `/${++this.pagination}`).map(data => data.json())
   }
 
-  sendPost(text:string, hashtagsArr: string[]){
-    console.log(this.user)
-
-    return this.http.post(apiEndPoint + '/posts', {
-      user: this.user,
-      content: text,
-      hashtags: hashtagsArr
-    }).map(data => data.json())
-    //TODO: Authentication
-  }
 
 }

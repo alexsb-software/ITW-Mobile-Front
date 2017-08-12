@@ -23,16 +23,11 @@ export class Day1Page implements OnInit{
   }
 
   ngOnInit(){
-    if(this.sessionsProvider.sessions.length !== 0) {
-      this.day1Sessions = this.sessionsProvider.sessions.filter(session => session.day === 1);
+    this.sessionsProvider.getData().subscribe(success => {
+      this.sessionsProvider.sessions = success;
+      this.day1Sessions = success.filter(session => session.day === 1);
       this.filteredSessions = this.day1Sessions
-    } else {
-      this.sessionsProvider.getData().subscribe(success => {
-        this.sessionsProvider.sessions = success;
-        this.day1Sessions = success.filter(session => session.day === 1);
-        this.filteredSessions = this.day1Sessions
-      })
-    }
+    })
   }
 
   openModal(){

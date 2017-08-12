@@ -22,16 +22,11 @@ export class Day2Page implements OnInit{
   }
 
   ngOnInit(){
-    if(this.sessionsProvider.sessions.length !== 0) {
-      this.day2Sessions = this.sessionsProvider.sessions.filter(session => session.day === 2)
+    this.sessionsProvider.getData().subscribe(success => {
+      this.sessionsProvider.sessions = success;
+      this.day2Sessions = success.filter(session => session.day === 2);
       this.filteredSessions = this.day2Sessions
-    } else {
-      this.sessionsProvider.getData().subscribe(success => {
-        this.sessionsProvider.sessions = success;
-        this.day2Sessions = success.filter(session => session.day === 2)
-        this.filteredSessions = this.day2Sessions
-      })
-    }
+    })
   }
 
   openModal(){

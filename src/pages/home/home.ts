@@ -10,8 +10,10 @@ import { Post } from "../../model/Post.model";
 })
 export class HomePage implements OnInit{
   posts:Post[];
+  stopRequesting: boolean
 
   constructor(public navCtrl: NavController, public postsGetter: PostsProvider, public modalCtrl: ModalController) {
+    this.posts = []
   }
 
   ngOnInit(): void{
@@ -22,8 +24,13 @@ export class HomePage implements OnInit{
   }
 
   loadMore(infiniteScroll): void{
+    if (this.stopRequesting) return
     this.postsGetter.getMore().subscribe(
-      data => { this.posts.push(...data); infiniteScroll.complete() },
+      data => {
+        if (data.length === 0) {
+          this.stopRequesting = true
+        }
+        this.posts.push(...data); infiniteScroll.complete() },
       err => { console.log(err); infiniteScroll.complete() }
     )
   }

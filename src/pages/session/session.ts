@@ -22,16 +22,10 @@ export class SessionPage implements OnInit{
     this.session = new Session()
   }
 
-  //TODO: replace this to getSessionById only
   ngOnInit () {
-    if (this.sessionsProvider.sessions.length < 1) {
-      this.sessionsProvider.getData().subscribe((success) => {
-        this.sessionsProvider.sessions = success.data
-        this.session = this.sessionsProvider.getSessionById(this.navParams.get('id'))
-      })
-    } else {
-      this.session = this.sessionsProvider.getSessionById(this.navParams.get('id'))
-    }
+    this.sessionsProvider.getSessionById(this.navParams.get('id')).subscribe(response => {
+      this.session = response
+    })
   }
 
   goToSpeaker (id: number) {

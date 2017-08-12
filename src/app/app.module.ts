@@ -31,7 +31,7 @@ import {SessionPage} from "../pages/session/session";
 import { AppRoot } from "../pages/app_root/AppRoot";
 
 
-export const apiEndPoint = 'http://192.168.1.3:8000';
+export const apiEndPoint = 'http://192.168.1.8:8000';
 
 @NgModule({
   declarations: [
