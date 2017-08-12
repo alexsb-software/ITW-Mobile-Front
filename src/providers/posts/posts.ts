@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+<<<<<<< HEAD
 import {Hashtag} from "../../model/Hashtag.model";
 import {apiEndPoint} from "../../app/app.module";
+=======
+import {apiEndPoint} from "../../app/app.module";
+import { Storage } from "@ionic/storage"
+>>>>>>> ionic
 
 /*
   Generated class for the PostsProvider provider.
@@ -12,12 +17,20 @@ import {apiEndPoint} from "../../app/app.module";
 */
 @Injectable()
 export class PostsProvider {
+  user: any
 
+<<<<<<< HEAD
   user: any;
   constructor(public http: Http, public storage: Storage) {
       this.storage.get('user').then(data => {
           this.user = JSON.parse(data)
       });
+=======
+  constructor(public http: Http, public storage: Storage) {
+    this.storage.get('user').then(data => {
+      this.user = JSON.parse(data)
+    })
+>>>>>>> ionic
   }
 
   getData(){
@@ -29,6 +42,7 @@ export class PostsProvider {
   }
 
   sendPost(text:string, hashtagsArr: string[]){
+<<<<<<< HEAD
         console.log(this.user)
 
         return this.http.post(apiEndPoint + '/posts', {
@@ -36,6 +50,15 @@ export class PostsProvider {
             content: text,
             hashtags: hashtagsArr
   }).map(data => data.json())
+=======
+    console.log(this.user)
+
+    return this.http.post(apiEndPoint + '/posts', {
+      user: this.user,
+      content: text,
+      hashtags: hashtagsArr
+    }).map(data => data.json())
+>>>>>>> ionic
     //TODO: Authentication
   }
 
