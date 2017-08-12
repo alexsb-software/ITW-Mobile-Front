@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //import {LoginPage} from "../pages/login/login";
 import {Day1Page} from "../pages/agenda/day1/day1";
+import {PusherProvider} from "../providers/pusher/pusher";
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ export class MyApp {
 
   rootPage: any = Day1Page; //LoginPage;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public pusher: PusherProvider) {
     this.initializeApp();
 
   }

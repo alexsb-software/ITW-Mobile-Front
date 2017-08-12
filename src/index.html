@@ -29,21 +29,21 @@
   <link href="build/main.css" rel="stylesheet">
 
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-  <script>
 
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    <!--<script>-->
 
-    var pusher = new Pusher('80504eb8c8101f00cad9', {
-      cluster: 'eu',
-      encrypted: true
-    });
+    <!--// Enable pusher logging - don't include this in production-->
+    <!--Pusher.logToConsole = true;-->
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(data.message);
-    });
-  </script>
+    <!--var pusher = new Pusher('80504eb8c8101f00cad9', {-->
+      <!--cluster: 'eu',-->
+      <!--encrypted: true-->
+    <!--});-->
+
+    <!--channel.bind('my-event', function(data) {-->
+      <!--alert(data.message);-->
+    <!--});-->
+  <!--</script>-->
 
 </head>
 <body>
