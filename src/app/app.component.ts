@@ -3,7 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import {LoginPage} from "../pages/login/login";
+//import {LoginPage} from "../pages/login/login";
+import {Day1Page} from "../pages/agenda/day1/day1";
 
 @Component({
   templateUrl: 'app.html'
@@ -11,7 +12,7 @@ import {LoginPage} from "../pages/login/login";
 export class MyApp {
 
 
-  rootPage: any = LoginPage;
+  rootPage: any = Day1Page; //LoginPage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();

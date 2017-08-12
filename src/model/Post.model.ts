@@ -4,5 +4,5 @@ export interface Post{
   content: string;
   user: string;
   created_at: string;
-  hashtags: Hashtag[];
+  hashtags: string[];
 }

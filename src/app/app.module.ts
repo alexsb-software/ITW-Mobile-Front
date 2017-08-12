@@ -29,9 +29,10 @@ import {AgendaPage} from "../pages/agenda/agenda";
 import {FilterPage} from "../pages/agenda/filter/filter";
 import {SessionPage} from "../pages/session/session";
 import { AppRoot } from "../pages/app_root/AppRoot";
+import { BookmarkProvider } from '../providers/bookmark/bookmark';
 
 
-export const apiEndPoint = 'http://192.168.1.7:8000';
+export const apiEndPoint = 'http://192.168.1.3:8000';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ export const apiEndPoint = 'http://192.168.1.7:8000';
     PostsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpeakersProvider,
-    SessionsProvider
+    SessionsProvider,
+    BookmarkProvider
 
   ]
 })

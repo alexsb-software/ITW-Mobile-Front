@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Hashtag} from "../../model/Hashtag.model";
+import {apiEndPoint} from "../../app/app.module";
 
 /*
   Generated class for the PostsProvider provider.
@@ -12,8 +13,11 @@ import {Hashtag} from "../../model/Hashtag.model";
 @Injectable()
 export class PostsProvider {
 
-  constructor(public http: Http) {
-
+  user: any;
+  constructor(public http: Http, public storage: Storage) {
+      this.storage.get('user').then(data => {
+          this.user = JSON.parse(data)
+      });
   }
 
   getData(){
@@ -24,11 +28,14 @@ export class PostsProvider {
     return this.http.get("assets/API/posts.json").map(data => data.json())
   }
 
-  sendPost(text:string, hashtagsArr:Hashtag[]){
-    return this.http.post('', {
-      content:text,
-      hashtags:hashtagsArr
-    }).map(data => data.json())
+  sendPost(text:string, hashtagsArr: string[]){
+        console.log(this.user)
+
+        return this.http.post(apiEndPoint + '/posts', {
+            user: this.user,
+            content: text,
+            hashtags: hashtagsArr
+  }).map(data => data.json())
     //TODO: Authentication
   }
 
