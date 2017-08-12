@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Storage } from "@ionic/storage"
 import {apiEndPoint} from "../../app/app.module";
+import { Storage } from "@ionic/storage"
 
 /*
   Generated class for the PostsProvider provider.
@@ -12,7 +12,6 @@ import {apiEndPoint} from "../../app/app.module";
 */
 @Injectable()
 export class PostsProvider {
-  user: any
   pagination: number
   constructor(public http: Http, public storage: Storage) {
     this.pagination = 0;

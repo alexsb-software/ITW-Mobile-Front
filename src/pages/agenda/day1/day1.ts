@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {App, ModalController, NavController} from "ionic-angular";
+import {AlertController, App, ModalController, NavController} from "ionic-angular";
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
 import {FilterPage} from "../filter/filter";
 import {SessionPage} from "../../session/session";
+import {BookmarkProvider} from "../../../providers/bookmark/bookmark";
 
 @Component({
   selector: 'tab-day1',
@@ -17,7 +18,7 @@ export class Day1Page implements OnInit{
   filterCategory:string;
 
   constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
-  public appCtrl: App) {
+  public appCtrl: App , public bookmark : BookmarkProvider , public alertCtrl: AlertController) {
     this.filterType = 'all';
     this.filterCategory = 'all';
   }
@@ -67,6 +68,56 @@ export class Day1Page implements OnInit{
 
   goToSession (id: number) {
     this.appCtrl.getRootNav().push(SessionPage, {id: id})
+  }
+  bookmarkSession(sessionId: number){
+    this.bookmark.bookMarkSession(sessionId).subscribe(
+      (res)=>{
+      console.log(res);
+      this.showDoneAlert();
+      },
+      (err)=>{
+        this.showFailAlert();
+      }
+    );
+  }
+
+  showDoneAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Done',
+      subTitle: 'Session has been reserved',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  showFailAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Error',
+      subTitle: 'Something has gone wrong please reserve your session',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  showConfirm(sessionId: number) {
+    let confirm = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Are you sure you want to reserve this session?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.bookmarkSession(sessionId);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 

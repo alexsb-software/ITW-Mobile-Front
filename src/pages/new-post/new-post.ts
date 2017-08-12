@@ -17,6 +17,7 @@ import {Storage} from "@ionic/storage"
 })
 export class NewPostPage {
 
+
   hashtags: string[] = [];
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,public navParams:NavParams, public postsProvider: PostsProvider
@@ -35,7 +36,7 @@ export class NewPostPage {
 
   addHashtag(input):void{
     if(input.value !== '') {
-      this.hashtags.push(input.value);
+      this.hashtags.push( input.value);
       input.value = '';
     }
   }
