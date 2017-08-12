@@ -14,11 +14,8 @@ import {PostsProvider} from "../../providers/posts/posts";
 })
 export class NewPostPage {
 
-<<<<<<< HEAD
-  hashtags:string[] = [];
-=======
+
   hashtags: string[] = [];
->>>>>>> ionic
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,public navParams:NavParams, public postsProvider: PostsProvider
   ,public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
@@ -36,11 +33,7 @@ export class NewPostPage {
 
   addHashtag(input):void{
     if(input.value !== '') {
-<<<<<<< HEAD
       this.hashtags.push( input.value);
-=======
-      this.hashtags.push(input.value);
->>>>>>> ionic
       input.value = '';
     }
   }
