@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.postsGetter.getData().subscribe(
-      success => this.posts = success,
+      success => { this.posts = success; console.log(success) },
       err => console.log(err)
     )
   }

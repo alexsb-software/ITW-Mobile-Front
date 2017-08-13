@@ -77,7 +77,7 @@
           <img src="assets/img/user.png">
         </ion-avatar>
         <h2>{{post.user.name}}</h2>
-        <p>{{post.created_at}}</p>
+        <p>{{post.createdAt | date:'h:mm a MMMM d, y'}}</p>
       </ion-item>
 
       <ion-card-content>
