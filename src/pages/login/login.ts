@@ -38,9 +38,9 @@ export class LoginPage {
         password: this.loginForm.value.password
       }
       this.http.post(apiEndPoint + '/users/login', postParam).map(data => data.json()).subscribe((response) => {
-        this.storage.clear().then(() => {
+        // this.storage.clear().then(() => {
           this.storage.set('user', JSON.stringify(response.user))
-        })
+        // })
         this.navCtrl.setRoot(AppRoot)
       })
     }
