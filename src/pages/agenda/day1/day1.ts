@@ -72,9 +72,11 @@ export class Day1Page implements OnInit {
   bookmarkSession(sessionId: number) {
     this.bookmark.bookMarkSession(sessionId).subscribe(
       (res) => {
+        console.log(res)
         this.showDoneAlert();
       },
       (err) => {
+        console.log(err)
         this.showFailAlert();
       }
     );

@@ -24,12 +24,12 @@ export class AppRoot {
   constructor(public navCtrl: NavController, ) {
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Updates', component: UpdatesPage },
+      { title: 'Agenda', component: AgendaPage },
       { title: 'Speakers', component: SpeakersPage },
       { title: 'Sponsors', component: SponsorsPage },
+      { title: 'Updates', component: UpdatesPage },
       { title: 'About ITW', component: AboutPage },
-      { title: 'Agenda', component: AgendaPage },
-      { title: 'Login', component: LoginPage }
+      // { title: 'Login', component: LoginPage }
     ];
   }
 
