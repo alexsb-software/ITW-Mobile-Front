@@ -6,13 +6,14 @@
   <ion-list>
     <ion-item *ngFor="let session of filteredSessions" class="sessions-list-item">
       <ion-row>
-        <ion-col col-8 (click)="goToSession(session.id)" >
+        <ion-col col-8 (click)="goToSession(session.id)">
           <h1>{{ session.name }}</h1>
-          <h4> <ion-icon name="time" style="margin: 0.6rem 0.6rem 0"></ion-icon>From {{ session.start }} to {{ session.end }}</h4>
-          <h4> <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
+          <h4>
+            <ion-icon name="time" style="margin: 0.6rem 0.6rem 0"></ion-icon>From {{ session.start }} to {{ session.end }}</h4>
+          <h4>
+            <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
         </ion-col>
         <ion-col col-4 class="sessions-list-icons-container" (click)="showConfirm(session.id)">
-          <ion-icon name="thumbs-up"></ion-icon>
           <ion-icon name="bookmark"></ion-icon>
         </ion-col>
       </ion-row>

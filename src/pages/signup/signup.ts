@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import {Http} from "@angular/http";
+import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
-import {apiEndPoint} from "../../app/app.module";
+import { apiEndPoint } from "../../app/app.module";
 
 /**
  * Generated class for the SignupPage page.
@@ -22,14 +22,14 @@ export class SignupPage {
   submit: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public storage: Storage, public http: Http) {
     this.signupForm = formBuilder.group({
-      username: ['', Validators.compose([ Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]+([-_\.][a-zA-Z0-9]+)*[a-zA-Z0-9]$'), Validators.required ])],
-      email: ['', Validators.compose([ Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required ])],
+      username: ['', Validators.compose([Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]+([-_\.][a-zA-Z0-9]+)*[a-zA-Z0-9]$'), Validators.required])],
+      email: ['', Validators.compose([Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(8), Validators.required])],
       name: ['', Validators.required]
     })
   }
   // POST users/signup  {alias, name, email, password}
-  signUp () {
+  signUp() {
     this.signupForm.valid ? this.submit = true : this.submit = false;
     if (this.signupForm.valid) {
       let postParam = {

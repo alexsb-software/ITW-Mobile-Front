@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpModule } from "@angular/http";
-import {IonicStorageModule} from "@ionic/storage";
+import { IonicStorageModule } from "@ionic/storage";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,16 +23,16 @@ import { NewPostPage } from "../pages/new-post/new-post";
 import { SpeakersProvider } from '../providers/speakers/speakers';
 import { LoginPage } from "../pages/login/login";
 import { SessionsProvider } from '../providers/sessions/sessions';
-import {Day1Page} from "../pages/agenda/day1/day1";
-import {Day2Page} from "../pages/agenda/day2/day2";
-import {AgendaPage} from "../pages/agenda/agenda";
-import {FilterPage} from "../pages/agenda/filter/filter";
-import {SessionPage} from "../pages/session/session";
+import { Day1Page } from "../pages/agenda/day1/day1";
+import { Day2Page } from "../pages/agenda/day2/day2";
+import { AgendaPage } from "../pages/agenda/agenda";
+import { FilterPage } from "../pages/agenda/filter/filter";
+import { SessionPage } from "../pages/session/session";
 import { AppRoot } from "../pages/app_root/AppRoot";
 import { BookmarkProvider } from '../providers/bookmark/bookmark';
 
 
-export const apiEndPoint = 'http://192.168.1.8:8000';
+export const apiEndPoint = 'http://localhost:8000';// 'http://192.168.1.8:8000';
 
 @NgModule({
   declarations: [
@@ -85,11 +85,11 @@ export const apiEndPoint = 'http://192.168.1.8:8000';
     SplashScreen,
     Geolocation,
     PostsProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     SpeakersProvider,
     SessionsProvider,
     BookmarkProvider
 
   ]
 })
-export class AppModule {}
+export class AppModule { }

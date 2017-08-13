@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Session} from "../../model/Session.model";
-import {apiEndPoint} from "../../app/app.module";
+import { Session } from "../../model/Session.model";
+import { apiEndPoint } from "../../app/app.module";
 
 /*
   Generated class for the SessionsProvider provider.
@@ -19,13 +19,12 @@ export class SessionsProvider {
     this.sessions = [];
   }
 
-  getData(){
+  getData() {
     return this.http.get(apiEndPoint + '/sessions').map(data => data.json())
   }
 
-  getSessionById (id: number) {
+  getSessionById(id: number) {
     return this.http.get(apiEndPoint + '/sessions/' + id).map(data => data.json())
   }
-
 
 }

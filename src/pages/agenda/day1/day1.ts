@@ -1,29 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import {AlertController, App, ModalController, NavController} from "ionic-angular";
-import {Session} from "../../../model/Session.model";
-import {SessionsProvider} from "../../../providers/sessions/sessions";
-import {FilterPage} from "../filter/filter";
-import {SessionPage} from "../../session/session";
-import {BookmarkProvider} from "../../../providers/bookmark/bookmark";
+import { Component, OnInit } from '@angular/core';
+import { AlertController, App, ModalController, NavController } from "ionic-angular";
+import { Session } from "../../../model/Session.model";
+import { SessionsProvider } from "../../../providers/sessions/sessions";
+import { FilterPage } from "../filter/filter";
+import { SessionPage } from "../../session/session";
+import { BookmarkProvider } from "../../../providers/bookmark/bookmark";
 
 @Component({
   selector: 'tab-day1',
   templateUrl: 'day1.html',
 })
-export class Day1Page implements OnInit{
+export class Day1Page implements OnInit {
 
   day1Sessions: Session[];
   filteredSessions: Session[];
-  filterType:string;
-  filterCategory:string;
+  filterType: string;
+  filterCategory: string;
 
-  constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
-  public appCtrl: App , public bookmark : BookmarkProvider , public alertCtrl: AlertController) {
+  constructor(public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
+    public appCtrl: App, public bookmark: BookmarkProvider, public alertCtrl: AlertController) {
     this.filterType = 'all';
     this.filterCategory = 'all';
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.sessionsProvider.getData().subscribe(success => {
       this.sessionsProvider.sessions = success;
       this.day1Sessions = success.filter(session => session.day === 1);
@@ -31,12 +31,12 @@ export class Day1Page implements OnInit{
     })
   }
 
-  openModal(){
-    let modal = this.modalCtrl.create(FilterPage, {type: this.filterType, category: this.filterCategory}, {
+  openModal() {
+    let modal = this.modalCtrl.create(FilterPage, { type: this.filterType, category: this.filterCategory }, {
       enableBackdropDismiss: true
     });
     modal.onDidDismiss(data => {
-      if(data !== null){
+      if (data !== null) {
         this.filterType = data['type']
         this.filterCategory = data['category']
         this.filterSessions()
@@ -45,14 +45,14 @@ export class Day1Page implements OnInit{
     modal.present();
   }
 
-  filterSessions(){
+  filterSessions() {
     if (this.filterType === 'all' && this.filterCategory === 'all') {
       this.filteredSessions = this.day1Sessions;
       return
     }
     else if (this.filterType === 'all')
       this.filteredSessions = this.day1Sessions.filter(session => {
-        return session.categories.find( (category) => {
+        return session.categories.find((category) => {
           return category.name === this.filterCategory
         })
       });
@@ -62,20 +62,19 @@ export class Day1Page implements OnInit{
       this.filteredSessions = this.day1Sessions.filter(session => {
         return session.type === this.filterType && session.categories.find((category) => {
           return category.name === this.filterCategory;
-          })
+        })
       })
   }
 
-  goToSession (id: number) {
-    this.appCtrl.getRootNav().push(SessionPage, {id: id})
+  goToSession(id: number) {
+    this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
-  bookmarkSession(sessionId: number){
+  bookmarkSession(sessionId: number) {
     this.bookmark.bookMarkSession(sessionId).subscribe(
-      (res)=>{
-      console.log(res);
-      this.showDoneAlert();
+      (res) => {
+        this.showDoneAlert();
       },
-      (err)=>{
+      (err) => {
         this.showFailAlert();
       }
     );

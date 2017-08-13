@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {Session} from "../../model/Session.model";
-import {SessionsProvider} from "../../providers/sessions/sessions";
-import {SpeakerPage} from "../speaker/speaker";
+import { Session } from "../../model/Session.model";
+import { SessionsProvider } from "../../providers/sessions/sessions";
+import { SpeakerPage } from "../speaker/speaker";
 
 /**
  * Generated class for the SessionPage page.
@@ -14,7 +14,7 @@ import {SpeakerPage} from "../speaker/speaker";
   selector: 'page-session',
   templateUrl: 'session.html',
 })
-export class SessionPage implements OnInit{
+export class SessionPage implements OnInit {
 
   session: Session;
 
@@ -22,14 +22,14 @@ export class SessionPage implements OnInit{
     this.session = new Session()
   }
 
-  ngOnInit () {
+  ngOnInit() {
     this.sessionsProvider.getSessionById(this.navParams.get('id')).subscribe(response => {
       this.session = response
     })
   }
 
-  goToSpeaker (id: number) {
-    this.navCtrl.push(SpeakerPage, {id: id})
+  goToSpeaker(id: number) {
+    this.navCtrl.push(SpeakerPage, { id: id })
   }
 
 }
