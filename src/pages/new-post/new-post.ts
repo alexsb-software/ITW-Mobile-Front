@@ -55,42 +55,46 @@ export class NewPostPage {
 
     loading.present();
 
-    this.storage.get('user').then(data => {
-      let currentUser = JSON.parse(data)
-      // let headers = new Headers()
-      //
-      // headers.append('Authorization', 'Bearer ' + currentUser.token)
-      // headers.append('Access-Control-Allow-Origin', '*')
-      //
-      // let options = new RequestOptions({ headers: headers, withCredentials: true })
+    var self = this;
+    this.storage.get('token').then((token) => {
+      self.storage.get('user').then(data => {
+        let currentUser = JSON.parse(data)
+        let headers = new Headers()
+        //
+        headers.append('Authorization', 'Bearer ' + token.replace(/"/g, ''))
+        // console.log(token.replace(/"/g, ''));
+        headers.append('Access-Control-Allow-Origin', '*')
+        //
+        let options = new RequestOptions({ headers: headers })
 
-      this.http.post(apiEndPoint + '/posts', {
-        user: currentUser,
-        content: text,
-        hashtags: this.hashtags
-      }).map(data => data.json()).subscribe(success => {
+        this.http.post(apiEndPoint + '/posts', {
+          user: currentUser,
+          content: text,
+          hashtags: this.hashtags
+        }, options).map(data => data.json()).subscribe(success => {
 
-        console.log('post success', success);
-        this.viewCtrl.dismiss();
+          console.log('post success', success);
+          this.viewCtrl.dismiss();
 
-        setTimeout(() => {
-          loading.dismiss();
-          toast.setMessage('Your post has been successfully added');
-          toast.present()
+          setTimeout(() => {
+            loading.dismiss();
+            toast.setMessage('Your post has been successfully added');
+            toast.present()
 
-        }, 500);
+          }, 500);
 
-      }, err => {
-        console.log('post err', err);
-        this.viewCtrl.dismiss();
+        }, err => {
+          console.log('post err', err);
+          this.viewCtrl.dismiss();
 
-        setTimeout(() => {
-          loading.dismiss();
-          toast.setMessage('Unfortunately your post has not been added, Please check your internet connection');
-          toast.setDuration(3500);
-          toast.present()
+          setTimeout(() => {
+            loading.dismiss();
+            toast.setMessage('Unfortunately your post has not been added, Please check your internet connection');
+            toast.setDuration(3500);
+            toast.present()
 
-        }, 500);
+          }, 500);
+        })
       })
     })
 
