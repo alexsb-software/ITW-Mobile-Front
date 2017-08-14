@@ -32,6 +32,8 @@ export class SpeakersPage implements OnInit{
   }
 
   goToSpeaker(id: number): void{
+    console.log(id);
+    
     this.navCtrl.push(SpeakerPage, {id: id})
   }
 

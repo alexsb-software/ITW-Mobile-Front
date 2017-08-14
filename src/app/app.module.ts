@@ -32,7 +32,7 @@ import { AppRoot } from "../pages/app_root/AppRoot";
 import { BookmarkProvider } from '../providers/bookmark/bookmark';
 
 
-export const apiEndPoint = 'http://localhost:8000';// 'http://192.168.1.8:8000';
+export const apiEndPoint =  'http://192.168.1.7:8000';
 
 @NgModule({
   declarations: [

@@ -40,10 +40,8 @@ export class SignupPage {
       }
       this.http.post(apiEndPoint + '/users/signup', postParam).map(data => data.json()).subscribe((response) => {
         //TODO: show success msg
-        this.navCtrl.pop()
-      })
+        this.navCtrl.pop();
+      });
     }
-    // this.navCtrl.pop()
   }
-
 }

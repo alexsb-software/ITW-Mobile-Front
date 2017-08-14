@@ -25,5 +25,5 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
-
+  
 }
