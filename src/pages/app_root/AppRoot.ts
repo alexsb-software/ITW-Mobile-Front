@@ -18,17 +18,17 @@ export class AppRoot {
 
   rootPage: any = HomePage;
 
-  pages: Array<{ title: string, component: any }>;
+  pages: Array<{ title: string, component: any, icon:string }>;
 
 
   constructor(public navCtrl: NavController, ) {
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Agenda', component: AgendaPage },
-      { title: 'Speakers', component: SpeakersPage },
-      { title: 'Sponsors', component: SponsorsPage },
-      { title: 'Updates', component: UpdatesPage },
-      { title: 'About ITW', component: AboutPage },
+      { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'Agenda', component: AgendaPage, icon: 'calendar' },
+      { title: 'Speakers', component: SpeakersPage, icon: 'mic' },
+      { title: 'Sponsors', component: SponsorsPage, icon: 'star' },
+      { title: 'Updates', component: UpdatesPage, icon: 'refresh' },
+      { title: 'About ITW', component: AboutPage, icon: 'information-circle' },
       // { title: 'Login', component: LoginPage }
     ];
   }

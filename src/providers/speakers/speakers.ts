@@ -19,14 +19,6 @@ export class SpeakersProvider {
     this.speakers = []
   }
 
-  // getSpeakerById(id: number): Speaker {
-  //   let i;
-  //   for (i = 0; i < this.speakers.length; i++) {
-  //     if (this.speakers[i].id === id)
-  //       return this.speakers[i]
-  //   }
-  // }
-  //TODO: uncomment
   getSpeakerById (id:number) {
     return this.http.get(apiEndPoint + '/speakers/' + id).map(data => data.json())
   }

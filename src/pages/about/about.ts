@@ -15,10 +15,10 @@ export class AboutPage {
   map: any;
   directionsService: any;
   directionsDisplay: any;
-  aboutButton: AboutButtons[] = [{ iconName: 'logo-facebook', buttonTitle: 'FaceBook', color: '#3b5998', link: 'http://www.fb.com/IEEE.AlexSB' },
+  aboutButton: AboutButtons[] = [{ iconName: 'logo-facebook', buttonTitle: 'Facebook', color: '#3b5998', link: 'http://www.fb.com/IEEE.AlexSB' },
   { iconName: 'logo-twitter', buttonTitle: 'Twitter', color: '#0084b4', link: 'https://twitter.com/IEEEAlexSB' },
   { iconName: 'globe', buttonTitle: 'AlexSB', color: '#000000', link: 'http://www.alexsb.org' },
-  { iconName: 'bulb', buttonTitle: '#ITW_17', color: '#02bfdd', link: '#' }];
+  { iconName: 'bulb', buttonTitle: '#ITW_17', color: '#02bfdd', link: '' }];
 
   latitude: number = 31.2089;
   longitude: number = 29.9092;
