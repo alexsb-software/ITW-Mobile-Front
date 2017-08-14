@@ -36,7 +36,7 @@ export class Day1Page implements OnInit{
       enableBackdropDismiss: true
     });
     modal.onDidDismiss(data => {
-      if(data !== null){
+      if (data !== null) {
         this.filterType = data['type']
         this.filterCategory = data['category']
         this.filterSessions()
@@ -52,7 +52,7 @@ export class Day1Page implements OnInit{
     }
     else if (this.filterType === 'All')
       this.filteredSessions = this.day1Sessions.filter(session => {
-        return session.categories.find( (category) => {
+        return session.categories.find((category) => {
           return category.name === this.filterCategory
         })
       });
@@ -62,20 +62,21 @@ export class Day1Page implements OnInit{
       this.filteredSessions = this.day1Sessions.filter(session => {
         return session.type === this.filterType && session.categories.find((category) => {
           return category.name === this.filterCategory;
-          })
+        })
       })
   }
 
-  goToSession (id: number) {
-    this.appCtrl.getRootNav().push(SessionPage, {id: id})
+  goToSession(id: number) {
+    this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
-  bookmarkSession(sessionId: number){
+  bookmarkSession(sessionId: number) {
     this.bookmark.bookMarkSession(sessionId).subscribe(
-      (res)=>{
-      console.log(res);
-      this.showDoneAlert();
+      (res) => {
+        console.log(res)
+        this.showDoneAlert();
       },
-      (err)=>{
+      (err) => {
+        console.log(err)
         this.showFailAlert();
       }
     );

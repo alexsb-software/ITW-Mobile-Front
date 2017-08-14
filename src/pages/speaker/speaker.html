@@ -19,7 +19,9 @@
     <ion-img src="{{speaker.avatar}}"></ion-img>
     <h1>{{ speaker.name }}</h1>
     <h3>{{ speaker.position }}</h3>
-    <a class="social-logo" href="{{speaker.linkedin}}"><ion-icon name="logo-linkedin"></ion-icon></a>
+    <a *ngIf="speaker.linkedin" class="social-logo" href="{{speaker.linkedin}}">
+      <ion-icon name="logo-linkedin"></ion-icon>
+    </a>
   </div>
 
   <div class="bio-head">

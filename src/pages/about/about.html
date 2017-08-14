@@ -9,9 +9,8 @@
     <ion-row style="text-align: center;">
       <ion-col width-50 *ngFor="let button of aboutButton">
         <a href="{{ button.link }}">
-            <ion-icon [ngStyle]="{'color': button.color }" class="icon-big" name="{{button.iconName}}">
-          </ion-icon><br>
-            {{button.buttonTitle}}
+          <ion-icon [ngStyle]="{'color': button.color }" class="icon-big" name="{{button.iconName}}">
+          </ion-icon><br> {{button.buttonTitle}}
         </a>
       </ion-col>
     </ion-row>
@@ -19,7 +18,10 @@
   <div class="background">
     <div padding class="transbox">
       <p>
-        Interact with Today's World (or simply ITW), it is the largest technical awareness conference organized by IEEE in Egypt. Organized by IEEE Alexandria Student Branch; ITW is a series of high-quality sessions and talks held in Bibliotheca Alexandria (BA) aiming at delivering the required up-to-date technical and nontechnical knowledge to Egypt's brightest engineering student and fresh graduates.
+        Interact with Today's World (or simply ITW), it is the largest technical awareness conference organized by IEEE in Egypt.
+        Organized by IEEE Alexandria Student Branch; ITW is a series of high-quality sessions and talks held in Bibliotheca
+        Alexandria (BA) aiming at delivering the required up-to-date technical and nontechnical knowledge to Egypt's brightest
+        engineering student and fresh graduates.
       </p>
       <ion-row class="info">
         <ion-col col-13>
@@ -50,4 +52,3 @@
   <div #map id="map" position="relative"></div>
 
 </ion-content>
-

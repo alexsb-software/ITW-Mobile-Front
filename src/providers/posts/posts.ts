@@ -25,5 +25,4 @@ export class PostsProvider {
     return this.http.get(apiEndPoint + '/posts' + `/${++this.pagination}`).map(data => data.json())
   }
 
-
 }

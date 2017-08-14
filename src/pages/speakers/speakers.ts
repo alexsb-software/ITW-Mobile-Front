@@ -23,7 +23,7 @@ export class SpeakersPage implements OnInit{
 
   ngOnInit(){
     this.speakersProvider.getData().subscribe(success =>{
-      console.log(success);
+      // console.log(success);
       this.speakers = success;
       this.speakersProvider.speakers = success;
     }, err =>{
