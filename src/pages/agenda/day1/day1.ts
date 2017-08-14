@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertController, App, ModalController, NavController} from "ionic-angular";
+import { Storage } from '@ionic/storage'
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
 import {FilterPage} from "../filter/filter";
 import {SessionPage} from "../../session/session";
-import {BookmarkProvider} from "../../../providers/bookmark/bookmark";
+import {apiEndPoint} from "../../../app/app.module";
+import {Http, RequestOptions, Headers} from "@angular/http";
 
 @Component({
   selector: 'tab-day1',
@@ -18,7 +20,7 @@ export class Day1Page implements OnInit{
   filterCategory:string;
 
   constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
-  public appCtrl: App , public bookmark : BookmarkProvider , public alertCtrl: AlertController) {
+  public appCtrl: App , public http : Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
     this.filterCategory = 'All';
   }
@@ -70,16 +72,32 @@ export class Day1Page implements OnInit{
     this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
   bookmarkSession(sessionId: number) {
-    this.bookmark.bookMarkSession(sessionId).subscribe(
-      (res) => {
-        console.log(res)
-        this.showDoneAlert();
-      },
-      (err) => {
-        console.log(err)
-        this.showFailAlert();
-      }
-    );
+    this.storage.get('token').then(data => {
+      let token = JSON.parse(data)
+      this.storage.get('user').then(data => {
+        let user = JSON.parse(data)
+        let headers = new Headers()
+
+        headers.append('Authorization', 'Bearer ' + token.replace(/"/g, ''))
+        headers.append('Access-Control-Allow-Origin', '*')
+
+        let options = new RequestOptions({ headers: headers })
+
+        this.http.post(apiEndPoint + '/users/' + user.id + "/add/session/" + sessionId, {}, options).map(data => data.json()).subscribe(
+          (res) => {
+            console.log(res)
+
+            this.showDoneAlert();
+          },
+          (err) => {
+            console.log(err)
+            this.showFailAlert(JSON.parse(err._body).error);
+          }
+        );
+
+      })
+    })
+
   }
 
   showDoneAlert() {
@@ -91,10 +109,10 @@ export class Day1Page implements OnInit{
     alert.present();
   }
 
-  showFailAlert() {
+  showFailAlert(msg) {
     let alert = this.alertCtrl.create({
       title: 'Error',
-      subTitle: 'Something has gone wrong please reserve your session',
+      subTitle: msg === 'User already reserved this session'? 'You have already reserved this' : 'Something has gone wrong please reserve your session',
       buttons: ['OK']
     });
     alert.present();

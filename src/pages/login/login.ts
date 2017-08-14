@@ -46,9 +46,7 @@ export class LoginPage {
         // this.storage.clear().then(() => {
           // this.storage.get('user').then(data => { console.log("User data before set"); console.log(data);});
           this.storage.set('user', JSON.stringify(response.user));
-          this.storage.set('token', JSON.stringify(response.user.token)).then((data) => {
-            
-          });
+          this.storage.set('token', JSON.stringify(response.user.token))
         // })
         this.navCtrl.setRoot(AppRoot)
         loader.dismiss()
