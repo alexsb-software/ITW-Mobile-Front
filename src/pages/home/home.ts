@@ -9,17 +9,24 @@ import { AboutPage } from "../about/about";
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
-  posts: Post[];
+export class HomePage implements OnInit{
+  posts:Post[];
   stopRequesting: boolean
 
   constructor(public navCtrl: NavController, public postsGetter: PostsProvider, public modalCtrl: ModalController) {
     this.posts = []
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+    this.getPosts(null)
+  }
+
+  getPosts (refresher) {
     this.postsGetter.getData().subscribe(
-      success => this.posts = success,
+      success => {
+        this.posts = success
+        if (refresher) refresher.complete()
+      },
       err => console.log(err)
     )
   }

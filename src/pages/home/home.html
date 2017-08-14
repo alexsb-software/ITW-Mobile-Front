@@ -9,7 +9,12 @@
 
 </ion-header>
 <ion-content>
-  <ion-fab bottom right>
+  <ion-refresher (ionRefresh)="getPosts($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab bottom right >
     <button ion-fab><ion-icon name="add"></ion-icon></button>
 
     <ion-fab-list side="top">

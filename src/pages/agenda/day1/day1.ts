@@ -1,29 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController, App, ModalController, NavController } from "ionic-angular";
-import { Session } from "../../../model/Session.model";
-import { SessionsProvider } from "../../../providers/sessions/sessions";
-import { FilterPage } from "../filter/filter";
-import { SessionPage } from "../../session/session";
-import { BookmarkProvider } from "../../../providers/bookmark/bookmark";
+import {Component, OnInit} from '@angular/core';
+import {AlertController, App, ModalController, NavController} from "ionic-angular";
+import {Session} from "../../../model/Session.model";
+import {SessionsProvider} from "../../../providers/sessions/sessions";
+import {FilterPage} from "../filter/filter";
+import {SessionPage} from "../../session/session";
+import {BookmarkProvider} from "../../../providers/bookmark/bookmark";
 
 @Component({
   selector: 'tab-day1',
   templateUrl: 'day1.html',
 })
-export class Day1Page implements OnInit {
+export class Day1Page implements OnInit{
 
   day1Sessions: Session[];
   filteredSessions: Session[];
-  filterType: string;
-  filterCategory: string;
+  filterType:string;
+  filterCategory:string;
 
-  constructor(public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
-    public appCtrl: App, public bookmark: BookmarkProvider, public alertCtrl: AlertController) {
-    this.filterType = 'all';
-    this.filterCategory = 'all';
+  constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
+  public appCtrl: App , public bookmark : BookmarkProvider , public alertCtrl: AlertController) {
+    this.filterType = 'All';
+    this.filterCategory = 'All';
   }
 
-  ngOnInit() {
+  ngOnInit(){
     this.sessionsProvider.getData().subscribe(success => {
       this.sessionsProvider.sessions = success;
       this.day1Sessions = success.filter(session => session.day === 1);
@@ -31,8 +31,8 @@ export class Day1Page implements OnInit {
     })
   }
 
-  openModal() {
-    let modal = this.modalCtrl.create(FilterPage, { type: this.filterType, category: this.filterCategory }, {
+  openModal(){
+    let modal = this.modalCtrl.create(FilterPage, {type: this.filterType, category: this.filterCategory}, {
       enableBackdropDismiss: true
     });
     modal.onDidDismiss(data => {
@@ -45,18 +45,18 @@ export class Day1Page implements OnInit {
     modal.present();
   }
 
-  filterSessions() {
-    if (this.filterType === 'all' && this.filterCategory === 'all') {
+  filterSessions(){
+    if (this.filterType === 'All' && this.filterCategory === 'All') {
       this.filteredSessions = this.day1Sessions;
       return
     }
-    else if (this.filterType === 'all')
+    else if (this.filterType === 'All')
       this.filteredSessions = this.day1Sessions.filter(session => {
         return session.categories.find((category) => {
           return category.name === this.filterCategory
         })
       });
-    else if (this.filterCategory === 'all')
+    else if (this.filterCategory === 'All')
       this.filteredSessions = this.day1Sessions.filter(session => session.type === this.filterType);
     else
       this.filteredSessions = this.day1Sessions.filter(session => {
