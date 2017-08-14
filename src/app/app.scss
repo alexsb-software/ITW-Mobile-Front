@@ -26,8 +26,11 @@ ion-icon.ion-md-menu {
 div.toolbar-title {
   text-transform: uppercase;
   text-align: center;
-  margin-left: -20%;
 }
 ion-icon.ion-md-arrow-back:before {
   content: "\f112" !important;
+}
+.sign-up__button {
+  padding: 26px !important;
+  font-size: 26px !important;
 }
