@@ -44,7 +44,11 @@ export class LoginPage {
       }
       this.http.post(apiEndPoint + '/users/login', postParam).map(data => data.json()).subscribe((response) => {
         // this.storage.clear().then(() => {
-          this.storage.set('user', JSON.stringify(response.user))
+          // this.storage.get('user').then(data => { console.log("User data before set"); console.log(data);});
+          this.storage.set('user', JSON.stringify(response.user));
+          this.storage.set('token', JSON.stringify(response.user.token)).then((data) => {
+            
+          });
         // })
         this.navCtrl.setRoot(AppRoot)
         loader.dismiss()
