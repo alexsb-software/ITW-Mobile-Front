@@ -9,8 +9,8 @@ import {NavParams, ViewController} from "ionic-angular";
 export class FilterPage{
   sessionCategory:string;
   sessionType:string;
-  types:string[] = ['all', 'lecture', 'workshop', 'gallery'];
-  categories:string[] = ['all', 'computer', 'communication', 'civil'];
+  types:string[] = ['All', 'lecture', 'workshop', 'gallery'];
+  categories:string[] = ['All', 'General', 'Computer', 'Communications', 'Civil'];
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams){
     this.sessionCategory = this.navParams.get('category');

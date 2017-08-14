@@ -19,8 +19,8 @@ export class Day1Page implements OnInit{
 
   constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
   public appCtrl: App , public bookmark : BookmarkProvider , public alertCtrl: AlertController) {
-    this.filterType = 'all';
-    this.filterCategory = 'all';
+    this.filterType = 'All';
+    this.filterCategory = 'All';
   }
 
   ngOnInit(){
@@ -46,17 +46,17 @@ export class Day1Page implements OnInit{
   }
 
   filterSessions(){
-    if (this.filterType === 'all' && this.filterCategory === 'all') {
+    if (this.filterType === 'All' && this.filterCategory === 'All') {
       this.filteredSessions = this.day1Sessions;
       return
     }
-    else if (this.filterType === 'all')
+    else if (this.filterType === 'All')
       this.filteredSessions = this.day1Sessions.filter(session => {
         return session.categories.find( (category) => {
           return category.name === this.filterCategory
         })
       });
-    else if (this.filterCategory === 'all')
+    else if (this.filterCategory === 'All')
       this.filteredSessions = this.day1Sessions.filter(session => session.type === this.filterType);
     else
       this.filteredSessions = this.day1Sessions.filter(session => {

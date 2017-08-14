@@ -17,8 +17,15 @@ export class HomePage implements OnInit{
   }
 
   ngOnInit(): void{
+    this.getPosts(null)
+  }
+
+  getPosts (refresher) {
     this.postsGetter.getData().subscribe(
-      success => this.posts = success,
+      success => {
+        this.posts = success
+        if (refresher) refresher.complete()
+      },
       err => console.log(err)
     )
   }
@@ -39,6 +46,5 @@ export class HomePage implements OnInit{
     let modal = this.modalCtrl.create(NewPostPage,param? {hashtag: param}: {});
     modal.present()
   }
-
 
 }
