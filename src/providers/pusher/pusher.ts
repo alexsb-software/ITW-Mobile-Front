@@ -32,6 +32,7 @@ export class PusherProvider {
       env.storage.get('updates')
         .then(res=> res.push(data.message))
         .catch(e => console.log(e));
+      env.presentToast(data.message);
       env.localnotifications.schedule({
         title: "ITW",
         text: data.message
