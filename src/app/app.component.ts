@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import {AppRoot} from "../pages/app_root/AppRoot";
-import {PusherProvider} from "../providers/pusher/pusher";
+import { LoginPage } from "../pages/login/login";
+import { AppRoot } from "../pages/app_root/AppRoot";
+import { PusherProvider } from '../providers/pusher/pusher';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,11 +12,11 @@ import {PusherProvider} from "../providers/pusher/pusher";
 export class MyApp {
 
 
-  rootPage: any =  AppRoot;
+  rootPage: any = LoginPage;// AppRoot;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private pusher: PusherProvider) {
     this.initializeApp();
-    console.log("from root" , this.pusher);
+    console.log("from root", this.pusher);
   }
 
   initializeApp() {

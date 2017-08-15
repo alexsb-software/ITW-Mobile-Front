@@ -1,0 +1,38 @@
+page-reservations {
+    ion-item {
+        .item-inner {
+            border-bottom: none !important;
+        }
+    }
+    .sessions-list-icons-container {
+        text-align: center;
+        ion-icon {
+            font-size: 3.5rem;
+            margin: 20% 1rem;
+            color: #aaa;
+        }
+    }
+    .sessions-list-item {
+        border-bottom: 1px solid #aaa;
+        color: #fff;
+        h1 {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        h4 {
+            color: #000;
+        }
+    }
+    .sessions-list-item.blue {
+        background: #a4e7ff;
+    }
+    .sessions-list-item.green {
+        background: #a4fad8;
+    }
+    .sessions-list-item.rose {
+        background: #ffc5ca;
+    }
+}

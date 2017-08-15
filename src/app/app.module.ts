@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpModule } from "@angular/http";
-import {IonicStorageModule} from "@ionic/storage";
+import { IonicStorageModule } from "@ionic/storage";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,20 +23,22 @@ import { NewPostPage } from "../pages/new-post/new-post";
 import { SpeakersProvider } from '../providers/speakers/speakers';
 import { LoginPage } from "../pages/login/login";
 import { SessionsProvider } from '../providers/sessions/sessions';
-import {Day1Page} from "../pages/agenda/day1/day1";
-import {Day2Page} from "../pages/agenda/day2/day2";
-import {AgendaPage} from "../pages/agenda/agenda";
-import {FilterPage} from "../pages/agenda/filter/filter";
-import {SessionPage} from "../pages/session/session";
+import { Day1Page } from "../pages/agenda/day1/day1";
+import { Day2Page } from "../pages/agenda/day2/day2";
+import { AgendaPage } from "../pages/agenda/agenda";
+import { FilterPage } from "../pages/agenda/filter/filter";
+import { SessionPage } from "../pages/session/session";
 import { AppRoot } from "../pages/app_root/AppRoot";
 import { BookmarkProvider } from '../providers/bookmark/bookmark';
 import { PusherProvider } from '../providers/pusher/pusher';
 import { Facebook } from "@ionic-native/facebook";
 import { FbProvider } from '../providers/fb/fb';
-import {LocalNotifications} from "@ionic-native/local-notifications";
+import { LocalNotifications } from "@ionic-native/local-notifications";
+import { ReservationsProvider } from '../providers/reservations/reservations';
+import { ReservationsPage } from '../pages/reservations/reservations';
 
 
-export const apiEndPoint =  'https://itw-api.herokuapp.com';
+export const apiEndPoint = 'http://localhost:8000' // 'https://itw-api.herokuapp.com';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ export const apiEndPoint =  'https://itw-api.herokuapp.com';
     Day2Page,
     FilterPage,
     SessionPage,
-    AppRoot
+    AppRoot,
+    ReservationsPage
   ],
   imports: [
     BrowserModule,
@@ -82,22 +85,24 @@ export const apiEndPoint =  'https://itw-api.herokuapp.com';
     Day2Page,
     FilterPage,
     SessionPage,
-    AppRoot
+    AppRoot,
+    ReservationsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
     PostsProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     SpeakersProvider,
     SessionsProvider,
     BookmarkProvider,
     PusherProvider,
     FbProvider,
     Facebook,
-    LocalNotifications
+    LocalNotifications,
+    ReservationsProvider
 
   ]
 })
-export class AppModule {}
+export class AppModule { }
