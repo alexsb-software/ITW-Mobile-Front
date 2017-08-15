@@ -40,13 +40,14 @@ export class PusherProvider {
         text: data.message,
         at: date,
       });
+      env.localnotifications.getTriggeredIds().then(res=> alert(JSON.stringify(res)));
     });
   }
 
   presentToast(messege: string) {
     let toast = this.toastCtrl.create({
       message: messege,
-      duration: 10000,
+      duration: 3000,
       position: 'top'
     });
     toast.onDidDismiss(() => {
