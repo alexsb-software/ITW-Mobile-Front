@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import {Sponsor} from "../../model/Sponsor.model";
-import {NativeStorage} from "@ionic-native/native-storage";
-import {Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
-
 /**
  * Generated class for the SponsorsPage page.
  *
@@ -50,18 +47,12 @@ export class SponsorsPage {
   ];
   pageTitle: string = "SPONSORS";
 
-  FB_APP_ID: number = 855905901238851;
-  constructor(public navCtrl: NavController, public navParams: NavParams , public fb: Facebook ,public nativeStorage: NativeStorage) {
-    this.fb.browserInit(this.FB_APP_ID, "v2.8");
+  constructor(public navCtrl: NavController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SponsorsPage');
   }
-  doFbLogin(){
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-      .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-      .catch(e => console.log('Error logging into Facebook', e));
-  }
+
 
 }
