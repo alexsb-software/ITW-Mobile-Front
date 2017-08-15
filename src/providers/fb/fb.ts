@@ -28,6 +28,7 @@ export class FbProvider {
         if(res.status == 'connected'){
           this.userAccessToken = res.authResponse.accessToken;
           this.userId = res.authResponse.userID;
+          alert("I am connected"+JSON.stringify(res));
           this.writeCheckinPost().subscribe(
             (data)=> this.presentToast(this.checkInMessage),
             (err)=> this.presentToast(this.errMessage)
