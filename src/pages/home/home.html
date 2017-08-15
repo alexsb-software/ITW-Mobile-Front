@@ -89,7 +89,7 @@
         <p>{{post.content}}</p>
 
         <div class="hashtag-section">
-          <ion-badge *ngFor="let hashtag of post.hashtags" (click)="navToNewPost(hashtag)">{{ hashtag.title }}</ion-badge>
+          <ion-badge *ngFor="let hashtag of post.hashtags" (click)="hashtagSearch(hashtag)">{{ hashtag.title }}</ion-badge>
         </div>
 
       </ion-card-content>
