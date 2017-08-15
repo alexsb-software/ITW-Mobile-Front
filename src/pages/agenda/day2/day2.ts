@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertController, App, ModalController} from "ionic-angular";
+import {AlertController, App, ModalController , LoadingController , ToastController } from "ionic-angular";
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
 import {FilterPage} from "../filter/filter";
@@ -17,17 +17,22 @@ export class Day2Page implements OnInit{
   filterType:string;
   filterCategory:string;
 
-  constructor(public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public appCtrl: App,
+  constructor( public toastCtrl: ToastController , public loading: LoadingController , public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public appCtrl: App,
               public alertCtrl: AlertController,public bookmark: BookmarkProvider) {
     this.filterType = 'All';
     this.filterCategory = 'All';
   }
 
   ngOnInit(){
+    let loader = this.loading.create({
+        content: 'Please Wait...'
+      })
+    loader.present();
     this.sessionsProvider.getData().subscribe(success => {
       this.sessionsProvider.sessions = success;
       this.day2Sessions = success.filter(session => session.day === 2);
-      this.filteredSessions = this.day2Sessions
+      this.filteredSessions = this.day2Sessions;
+      loader.dismiss();
     })
   }
 
@@ -70,14 +75,26 @@ export class Day2Page implements OnInit{
     this.appCtrl.getRootNav().push(SessionPage, {id: id})
   }
   bookmarkSession(sessionId: number){
+    let loader = this.loading.create({
+        content: 'Please Wait...'
+      })
+      loader.present();
     this.bookmark.bookMarkSession(sessionId).subscribe(
       (res) => {
         console.log(res)
         this.showDoneAlert();
+        loader.dismiss();
       },
       (err) => {
         console.log(err)
         this.showFailAlert();
+        loader.dismiss();
+        let toast = this.toastCtrl.create({
+          message: 'Sorry something went wrong',
+          duration: 3500,
+          position: 'bottom'
+        })
+        toast.present()
       }
     );
   }

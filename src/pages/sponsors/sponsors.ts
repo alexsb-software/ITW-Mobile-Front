@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController , LoadingController } from 'ionic-angular';
 import {Sponsor} from "../../model/Sponsor.model";
 /**
  * Generated class for the SponsorsPage page.
@@ -47,11 +47,16 @@ export class SponsorsPage {
   ];
   pageTitle: string = "SPONSORS";
 
-  constructor(public navCtrl: NavController) {
+  constructor( public loading: LoadingController , public navCtrl: NavController) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
+    let loader = this.loading.create({
+        content: 'Please Wait...'
+      });
+    loader.present();
     console.log('ionViewDidLoad SponsorsPage');
+    loader.dismiss();
   }
 
 

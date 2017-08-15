@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertController, App, ModalController, NavController} from "ionic-angular";
+import {AlertController, App, ModalController, NavController , LoadingController} from "ionic-angular";
 import { Storage } from '@ionic/storage'
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
@@ -19,17 +19,22 @@ export class Day1Page implements OnInit{
   filterType:string;
   filterCategory:string;
 
-  constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
+  constructor(public loading: LoadingController , public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
   public appCtrl: App , public http : Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
     this.filterCategory = 'All';
   }
 
   ngOnInit(){
+    let loader = this.loading.create({
+        content: 'Please Wait...'
+      });
+      loader.present();
     this.sessionsProvider.getData().subscribe(success => {
       this.sessionsProvider.sessions = success;
       this.day1Sessions = success.filter(session => session.day === 1);
-      this.filteredSessions = this.day1Sessions
+      this.filteredSessions = this.day1Sessions;
+      loader.dismiss();
     })
   }
 
@@ -72,6 +77,10 @@ export class Day1Page implements OnInit{
     this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
   bookmarkSession(sessionId: number) {
+    let loader = this.loading.create({
+        content: 'Please Wait...'
+      })
+    loader.present();
     this.storage.get('token').then(data => {
       let token = JSON.parse(data)
       this.storage.get('user').then(data => {
@@ -93,11 +102,12 @@ export class Day1Page implements OnInit{
             console.log(err)
             this.showFailAlert(JSON.parse(err._body).error);
           }
+          
         );
 
       })
     })
-
+    loader.dismiss();
   }
 
   showDoneAlert() {
