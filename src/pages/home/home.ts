@@ -59,9 +59,13 @@ export class HomePage implements OnInit{
     if(!this.fb.logedIn){
       this.fb.onLogin().then((res: FacebookLoginResponse) => {
         console.log('Logged into Facebook!', res);
+        alert( "loged in tmam" + JSON.stringify(res));
         this.fb.logedIn = true;
         this.fb.checkIn();
-      }).catch(e => console.log('Error logging into Facebook', e));
+      }).catch(e => {
+        console.log('Error logging into Facebook', e);
+        alert("Error in login" + JSON.stringify(e));
+      });
     }else{
       this.fb.checkIn();
     }
