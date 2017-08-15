@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import { LoadingController, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { Http } from "@angular/http";
@@ -21,15 +21,16 @@ export class SignupPage {
   signupForm: FormGroup;
   submit: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public storage: Storage, public http: Http
-  , public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+    , public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
     this.signupForm = formBuilder.group({
       username: ['', Validators.compose([Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]+([-_\.][a-zA-Z0-9]+)*[a-zA-Z0-9]$'), Validators.required])],
       email: ['', Validators.compose([Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(8), Validators.required])],
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      key: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(8)])]
     })
   }
-  // POST users/signup  {alias, name, email, password}
+  // POST users/signup  {alias, name, email, password, key}
   signUp() {
     this.signupForm.valid ? this.submit = true : this.submit = false;
     if (this.signupForm.valid) {
@@ -41,7 +42,8 @@ export class SignupPage {
         alias: this.signupForm.value.username,
         name: this.signupForm.value.name,
         email: this.signupForm.value.email,
-        password: this.signupForm.value.password
+        password: this.signupForm.value.password,
+        key: this.signupForm.value.key
       }
       this.http.post(apiEndPoint + '/users/signup', postParam).map(data => data.json()).subscribe((response) => {
         loader.dismiss()
