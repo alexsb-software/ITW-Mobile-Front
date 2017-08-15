@@ -8,27 +8,27 @@
 </ion-header>
 
 <ion-content padding>
-    <p *ngIf="!submit" style="color: #ea6153;" text-center>Please fill out all details accurately</p>
+    <p *ngIf="!submit" style="color: #fff;" text-center>Please fill out all details accurately</p>
     <ion-list>
-        <form [formGroup]="signupForm">
+        <form [formGroup]="signupForm" class="sign-up__form">
             <ion-item>
-                <ion-label color="primary" floating>name</ion-label>
-                <ion-input type="text" formControlName="name" ></ion-input>
+                <ion-label color="black" stacked></ion-label>
+                <ion-input class="sign-up__input" type="text" formControlName="name" placeholder="NAME"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label color="primary" floating>username</ion-label>
-              <ion-input type="text" formControlName="username" ></ion-input>
+              <ion-label color="black" stacked></ion-label>
+              <ion-input class="sign-up__input" type="text" formControlName="username" placeholder="USERNAME"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary" floating>E-mail</ion-label>
-                <ion-input type="email" formControlName="email"></ion-input>
+                <ion-label color="black" stacked></ion-label>
+                <ion-input class="sign-up__input" type="email" formControlName="email" placeholder="E-MAIL"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary" floating >Password</ion-label>
-                <ion-input type="password" formControlName="password"></ion-input>
+                <ion-label color="black" stacked ></ion-label>
+                <ion-input class="sign-up__input" type="password" formControlName="password" placeholder="PASSWORD"></ion-input>
             </ion-item>
-            <ion-item>
-                <button ion-button block color="danger" padding (click)="signUp()">Sign Up</button>
+            <ion-item class="sign-up__label">
+                <button class="sign-up__button" ion-button block color="primary" padding (click)="signUp()">Sign Up</button>
             </ion-item>
         </form>
     </ion-list>

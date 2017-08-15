@@ -1,3 +1,33 @@
 page-login {
-
+    div.scroll-content {
+        background-image: url(../../assets/img/ITW-A1-Letters.png);
+        background-size: cover;
+    }
+    ion-item.item-block {
+        background-color: transparent;
+    }
+    .item-input ion-input {
+        background-color: rgba(255,255,255,0.7);
+        border-radius: 3px;
+    }
+    .sign-in__button {
+        font-size: 26px !important;
+        padding: 26px !important;
+        margin-top: 50px;
+        &--sign_up{
+            @extend .sign-in__button;
+            margin-top: 20px;
+        }
+    }
+    .sign-in__input {
+        input.text-input {
+            padding-left: 20px;
+            color: black;
+        }
+        padding: 4px;
+    }
+    h1{
+        color: white;
+        margin-top: 50px !important;
+    }
 }

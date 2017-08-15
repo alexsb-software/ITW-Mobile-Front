@@ -18,8 +18,7 @@
   <div class="session-head-container">
     <h1>{{ session.name }}</h1>
     <div class="head-circle">
-      <h4>Day {{ session.day }} <br>
-      {{ session.start }} <span>:</span> {{ session.end }}</h4>
+      <h4>Day {{ session.day }} <br> {{ session.start }} <span>-</span> {{ session.end }} <br> {{ session.place }} </h4>
     </div>
   </div>
   <div class="description-container section-container">
@@ -38,7 +37,7 @@
       <ion-badge *ngFor="let category of session.categories">{{ category.name }}</ion-badge>
     </div>
   </div>
-  <div class="speakers-container section-container">
+  <div class="speakers-container section-container" *ngIf="session.speakers && session.speakers.length > 0">
     <div class="speakers-head-container head-container">
       <h2>Speakers</h2>
     </div>

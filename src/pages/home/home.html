@@ -9,13 +9,18 @@
 
 </ion-header>
 <ion-content>
+  <ion-refresher (ionRefresh)="getPosts($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-fab bottom right >
     <button ion-fab><ion-icon name="add"></ion-icon></button>
 
-    <ion-fab-list side="top" >
+    <ion-fab-list side="top">
       <button ion-fab color="primary"><ion-icon name="share"></ion-icon></button>
       <button ion-fab color="primary" (click)="navToNewPost()"><ion-icon name="chatbubbles"></ion-icon></button>
-      <button ion-fab color="primary"><ion-icon name="pin"></ion-icon></button>
+      <button ion-fab color="primary" (click)="checkIn()"><ion-icon name="pin"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
   <ion-img src="assets/img/itw-background-crop.jpeg" menuToggle class="itw-back"></ion-img>
@@ -31,7 +36,7 @@
         </ion-col>
 
         <ion-col col-10 class="info-text">
-          <h6 class="no-margin"> Monday, March 20th to Thursday, March 23rd</h6>
+          <h6 class="no-margin"> Monday, August 21st & Tuesday, August 22nd</h6>
         </ion-col>
 
       </ion-row>
@@ -51,7 +56,7 @@
     </ion-col>
 
     <ion-col col-4 class="map-col">
-      <ion-img src="assets/img/map.jpg"></ion-img>
+      <ion-img (click)="goToAbout()" src="assets/img/map.jpg"></ion-img>
     </ion-col>
 
   </ion-row>
@@ -65,7 +70,8 @@
 
     <ion-card class="new_post" (click)="navToNewPost()">
       <ion-card-content>
-        <h2><ion-icon md="ios-create" ios="ios-create"></ion-icon> Write a new post </h2>
+        <h2>
+          <ion-icon md="ios-create" ios="ios-create"></ion-icon> Write a new post </h2>
       </ion-card-content>
     </ion-card>
 
@@ -75,8 +81,8 @@
         <ion-avatar item-start>
           <img src="assets/img/user.png">
         </ion-avatar>
-        <h2>{{post.user}}</h2>
-        <p>{{post.created_at}}</p>
+        <h2>{{post.user.name}}</h2>
+        <p>{{post.createdAt | date:'h:mm a MMMM d, y'}}</p>
       </ion-item>
 
       <ion-card-content>

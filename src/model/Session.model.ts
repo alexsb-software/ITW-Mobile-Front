@@ -1,5 +1,5 @@
-import {Speaker} from "./Speaker.model";
-export class Session{
+import { Speaker } from "./Speaker.model";
+export class Session {
   id: number;
   start: string;
   end: string;
@@ -9,7 +9,8 @@ export class Session{
   name: string;
   report_link: string;
   type: string;
-  categories: { name:string }[];
+  place: string;
+  categories: { name: string }[];
   available: boolean;
   speakers: Speaker[];
 }

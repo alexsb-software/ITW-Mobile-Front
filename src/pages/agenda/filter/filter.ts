@@ -6,18 +6,18 @@ import {NavParams, ViewController} from "ionic-angular";
   selector: 'filter-page',
   templateUrl: 'filter.html',
 })
-export class FilterPage{
-  sessionCategory:string;
-  sessionType:string;
-  types:string[] = ['all', 'lecture', 'workshop', 'gallery'];
-  categories:string[] = ['all', 'computer', 'communication', 'civil'];
+export class FilterPage {
+  sessionCategory: string;
+  sessionType: string;
+  types: string[] = ['All', 'lecture', 'workshop', 'gallery'];
+  categories: string[] = ['All', 'General', 'Computer', 'Communications', 'Power (Electrical)', 'Mechanical', 'Civil'];
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams){
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
     this.sessionCategory = this.navParams.get('category');
     this.sessionType = this.navParams.get('type');
   }
 
-  dismissFilter(){
-    this.viewCtrl.dismiss({ type: this.sessionType, category: this.sessionCategory })
+  dismissFilter() {
+    this.viewCtrl.dismiss({type: this.sessionType, category: this.sessionCategory})
   }
 }

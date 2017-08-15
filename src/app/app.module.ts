@@ -31,9 +31,11 @@ import {SessionPage} from "../pages/session/session";
 import { AppRoot } from "../pages/app_root/AppRoot";
 import { BookmarkProvider } from '../providers/bookmark/bookmark';
 import { PusherProvider } from '../providers/pusher/pusher';
+import { Facebook } from "@ionic-native/facebook";
+import { FbProvider } from '../providers/fb/fb';
 
 
-export const apiEndPoint = 'http://192.168.1.3:8000';
+export const apiEndPoint =  'https://itw-api.herokuapp.com';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,9 @@ export const apiEndPoint = 'http://192.168.1.3:8000';
     SpeakersProvider,
     SessionsProvider,
     BookmarkProvider,
-    PusherProvider
+    PusherProvider,
+    FbProvider,
+    Facebook
 
   ]
 })

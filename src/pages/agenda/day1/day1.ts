@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertController, App, ModalController, NavController} from "ionic-angular";
+import { Storage } from '@ionic/storage'
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
 import {FilterPage} from "../filter/filter";
 import {SessionPage} from "../../session/session";
-import {BookmarkProvider} from "../../../providers/bookmark/bookmark";
+import {apiEndPoint} from "../../../app/app.module";
+import {Http, RequestOptions, Headers} from "@angular/http";
 
 @Component({
   selector: 'tab-day1',
@@ -18,22 +20,17 @@ export class Day1Page implements OnInit{
   filterCategory:string;
 
   constructor(public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
-  public appCtrl: App , public bookmark : BookmarkProvider , public alertCtrl: AlertController) {
-    this.filterType = 'all';
-    this.filterCategory = 'all';
+  public appCtrl: App , public http : Http, public alertCtrl: AlertController, public storage: Storage) {
+    this.filterType = 'All';
+    this.filterCategory = 'All';
   }
 
   ngOnInit(){
-    if(this.sessionsProvider.sessions.length !== 0) {
-      this.day1Sessions = this.sessionsProvider.sessions.filter(session => session.day === 1);
+    this.sessionsProvider.getData().subscribe(success => {
+      this.sessionsProvider.sessions = success;
+      this.day1Sessions = success.filter(session => session.day === 1);
       this.filteredSessions = this.day1Sessions
-    } else {
-      this.sessionsProvider.getData().subscribe(success => {
-        this.sessionsProvider.sessions = success;
-        this.day1Sessions = success.filter(session => session.day === 1);
-        this.filteredSessions = this.day1Sessions
-      })
-    }
+    })
   }
 
   openModal(){
@@ -41,7 +38,7 @@ export class Day1Page implements OnInit{
       enableBackdropDismiss: true
     });
     modal.onDidDismiss(data => {
-      if(data !== null){
+      if (data !== null) {
         this.filterType = data['type']
         this.filterCategory = data['category']
         this.filterSessions()
@@ -51,39 +48,56 @@ export class Day1Page implements OnInit{
   }
 
   filterSessions(){
-    if (this.filterType === 'all' && this.filterCategory === 'all') {
+    if (this.filterType === 'All' && this.filterCategory === 'All') {
       this.filteredSessions = this.day1Sessions;
       return
     }
-    else if (this.filterType === 'all')
+    else if (this.filterType === 'All')
       this.filteredSessions = this.day1Sessions.filter(session => {
-        return session.categories.find( (category) => {
+        return session.categories.find((category) => {
           return category.name === this.filterCategory
         })
       });
-    else if (this.filterCategory === 'all')
+    else if (this.filterCategory === 'All')
       this.filteredSessions = this.day1Sessions.filter(session => session.type === this.filterType);
     else
       this.filteredSessions = this.day1Sessions.filter(session => {
         return session.type === this.filterType && session.categories.find((category) => {
           return category.name === this.filterCategory;
-          })
+        })
       })
   }
 
-  goToSession (id: number) {
-    this.appCtrl.getRootNav().push(SessionPage, {id: id})
+  goToSession(id: number) {
+    this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
-  bookmarkSession(sessionId: number){
-    this.bookmark.bookMarkSession(sessionId).subscribe(
-      (res)=>{
-      console.log(res);
-      this.showDoneAlert();
-      },
-      (err)=>{
-        this.showFailAlert();
-      }
-    );
+  bookmarkSession(sessionId: number) {
+    this.storage.get('token').then(data => {
+      let token = JSON.parse(data)
+      this.storage.get('user').then(data => {
+        let user = JSON.parse(data)
+        let headers = new Headers()
+
+        headers.append('Authorization', 'Bearer ' + token.replace(/"/g, ''))
+        headers.append('Access-Control-Allow-Origin', '*')
+
+        let options = new RequestOptions({ headers: headers })
+
+        this.http.post(apiEndPoint + '/users/' + user.id + "/add/session/" + sessionId, {}, options).map(data => data.json()).subscribe(
+          (res) => {
+            console.log(res)
+
+            this.showDoneAlert();
+          },
+          (err) => {
+            console.log(err)
+            this.showFailAlert(JSON.parse(err._body).error);
+          }
+        );
+
+      })
+    })
+
   }
 
   showDoneAlert() {
@@ -95,10 +109,10 @@ export class Day1Page implements OnInit{
     alert.present();
   }
 
-  showFailAlert() {
+  showFailAlert(msg) {
     let alert = this.alertCtrl.create({
       title: 'Error',
-      subTitle: 'Something has gone wrong please reserve your session',
+      subTitle: msg === 'User already reserved this session'? 'You have already reserved this' : 'Something has gone wrong please reserve your session',
       buttons: ['OK']
     });
     alert.present();

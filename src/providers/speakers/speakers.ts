@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { apiEndPoint } from '../../app/app.module';
 import { Speaker } from "../../model/Speaker.model"
 
 /*
@@ -19,19 +19,11 @@ export class SpeakersProvider {
     this.speakers = []
   }
 
-  getSpeakerById(id:number): Speaker{
-    let i;
-    for (i=0; i<this.speakers.length; i++){
-      if(this.speakers[i].id === id)
-        return this.speakers[i]
-    }
+  getSpeakerById (id:number) {
+    return this.http.get(apiEndPoint + '/speakers/' + id).map(data => data.json())
   }
-  //TODO: uncomment
-  // getSpeakerById (id:number) {
-  //   return this.http.get('' + id).map(data => data.json())
-  // }
 
-  getData(){
-    return this.http.get('assets/API/speakers.json').map(data => data.json())
+  getData() {
+    return this.http.get(apiEndPoint + '/speakers').map(data => data.json())
   }
 }

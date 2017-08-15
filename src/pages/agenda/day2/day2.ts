@@ -19,21 +19,16 @@ export class Day2Page implements OnInit{
 
   constructor(public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public appCtrl: App,
               public alertCtrl: AlertController,public bookmark: BookmarkProvider) {
-    this.filterType = 'all';
-    this.filterCategory = 'all';
+    this.filterType = 'All';
+    this.filterCategory = 'All';
   }
 
   ngOnInit(){
-    if(this.sessionsProvider.sessions.length !== 0) {
-      this.day2Sessions = this.sessionsProvider.sessions.filter(session => session.day === 2)
+    this.sessionsProvider.getData().subscribe(success => {
+      this.sessionsProvider.sessions = success;
+      this.day2Sessions = success.filter(session => session.day === 2);
       this.filteredSessions = this.day2Sessions
-    } else {
-      this.sessionsProvider.getData().subscribe(success => {
-        this.sessionsProvider.sessions = success;
-        this.day2Sessions = success.filter(session => session.day === 2)
-        this.filteredSessions = this.day2Sessions
-      })
-    }
+    })
   }
 
   openModal(){
@@ -51,17 +46,17 @@ export class Day2Page implements OnInit{
   }
 
   filterSessions(){
-    if (this.filterType === 'all' && this.filterCategory === 'all') {
+    if (this.filterType === 'All' && this.filterCategory === 'All') {
       this.filteredSessions = this.day2Sessions;
       return
     }
-    else if (this.filterType === 'all')
+    else if (this.filterType === 'All')
       this.filteredSessions = this.day2Sessions.filter(session => {
         return session.categories.find( (category) => {
           return category.name === this.filterCategory
         })
       });
-    else if (this.filterCategory === 'all')
+    else if (this.filterCategory === 'All')
       this.filteredSessions = this.day2Sessions.filter(session => session.type === this.filterType);
     else
       this.filteredSessions = this.day2Sessions.filter(session => {
@@ -76,11 +71,12 @@ export class Day2Page implements OnInit{
   }
   bookmarkSession(sessionId: number){
     this.bookmark.bookMarkSession(sessionId).subscribe(
-      (res)=>{
-        console.log(res);
+      (res) => {
+        console.log(res)
         this.showDoneAlert();
       },
-      (err)=>{
+      (err) => {
+        console.log(err)
         this.showFailAlert();
       }
     );

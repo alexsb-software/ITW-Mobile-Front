@@ -23,7 +23,7 @@ export class SpeakersPage implements OnInit{
 
   ngOnInit(){
     this.speakersProvider.getData().subscribe(success =>{
-      console.log(success);
+      // console.log(success);
       this.speakers = success;
       this.speakersProvider.speakers = success;
     }, err =>{
@@ -32,6 +32,8 @@ export class SpeakersPage implements OnInit{
   }
 
   goToSpeaker(id: number): void{
+    console.log(id);
+    
     this.navCtrl.push(SpeakerPage, {id: id})
   }
 
