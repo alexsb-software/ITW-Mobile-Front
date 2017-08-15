@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController , LoadingController} from 'ionic-angular';
 import {SpeakersProvider} from "../../providers/speakers/speakers";
 import {Speaker} from "../../model/Speaker.model";
 import {SpeakerPage} from "../speaker/speaker";
@@ -17,17 +17,23 @@ import {SpeakerPage} from "../speaker/speaker";
 export class SpeakersPage implements OnInit{
   speakers: Speaker[];
 
-  constructor(public navCtrl: NavController, public speakersProvider: SpeakersProvider) {
+  constructor(public navCtrl: NavController, public speakersProvider: SpeakersProvider, public loading: LoadingController) {
   }
 
 
   ngOnInit(){
+    let loader = this.loading.create({
+        content: 'Please Wait...'
+      })
+    loader.present();
     this.speakersProvider.getData().subscribe(success =>{
       // console.log(success);
       this.speakers = success;
       this.speakersProvider.speakers = success;
+      loader.dismiss();
     }, err =>{
       console.log("error getting speakers", err);
+      loader.dismiss();
     })
   }
 

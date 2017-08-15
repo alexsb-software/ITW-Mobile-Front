@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams , LoadingController } from 'ionic-angular';
 import { Session } from "../../model/Session.model";
 import { SessionsProvider } from "../../providers/sessions/sessions";
 import { SpeakerPage } from "../speaker/speaker";
@@ -18,13 +18,18 @@ export class SessionPage implements OnInit {
 
   session: Session;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sessionsProvider: SessionsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public sessionsProvider: SessionsProvider, public loading: LoadingController ) {
     this.session = new Session()
   }
 
   ngOnInit() {
+    let loader = this.loading.create({
+        content: 'Please Wait...'
+      })
+    loader.present();
     this.sessionsProvider.getSessionById(this.navParams.get('id')).subscribe(response => {
       this.session = response
+      loader.dismiss();
     })
   }
 
