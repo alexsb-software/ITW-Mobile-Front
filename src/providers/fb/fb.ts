@@ -15,9 +15,10 @@ export class FbProvider {
   private checkInMessage="You have Checked In successfully";
   private errMessage="Unfortunately, This action failed";
   private  place ='319131338420183';
+  private FB_APP_ID=855905901238851;
 
   constructor(private http: Http, private fb: Facebook , private toastCtrl: ToastController) {
-
+    this.fb.browserInit(this.FB_APP_ID,"v2.10")
   }
   onLogin(){
     return this.fb.login(['user_friends', 'email','publish_actions']);
