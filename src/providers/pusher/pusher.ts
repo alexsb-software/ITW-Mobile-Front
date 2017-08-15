@@ -35,17 +35,19 @@ export class PusherProvider {
       env.presentToast(data.message);
       let date = new Date();
       env.localnotifications.schedule({
+        id: 1,
         title: "ITW",
         text: data.message,
-        at: date
+        at: date,
       });
+      env.localnotifications.getTriggeredIds().then(res=> alert(JSON.stringify(res)));
     });
   }
 
   presentToast(messege: string) {
     let toast = this.toastCtrl.create({
       message: messege,
-      duration: 10000,
+      duration: 3000,
       position: 'top'
     });
     toast.onDidDismiss(() => {

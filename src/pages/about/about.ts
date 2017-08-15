@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
-import { AlertController , LoadingController} from 'ionic-angular';
+import { AlertController , LoadingController , ToastController} from 'ionic-angular';
 import { AboutButtons } from "../../model/AboutButton.model";
 
 declare var google;
@@ -24,26 +24,33 @@ export class AboutPage {
   longitude: number = 29.9092;
   position = new google.maps.LatLng(this.latitude, this.longitude);
   pageTitle: string = "About ITW";
-  constructor(public loading: LoadingController , private geolocation: Geolocation, private alertCtrl: AlertController) { }
+  constructor( public toastCtrl: ToastController , public loading: LoadingController , private geolocation: Geolocation, private alertCtrl: AlertController) { }
 
   ionViewDidLoad() {
-    
-    this.loadMap();
-  }
-
-  drawDirections() {
     let loader = this.loading.create({
         content: 'Please Wait...'
       });
     loader.present();
+    this.loadMap();
+    loader.dismiss();
+  }
+
+  drawDirections() {
+    
     this.geolocation.getCurrentPosition().then(
       (position) => {
         let myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay, myLatLng);
-        loader.dismiss();
       }).catch(
-      (error) => this.showAlert()
-      );
+      (error) => {
+        this.showAlert();
+        let toast = this.toastCtrl.create({
+            message: 'Sorry something went wrong',
+            duration: 3500,
+            position: 'bottom'
+          })
+        toast.present();
+      });
   }
   showAlert() {
     let alert = this.alertCtrl.create({

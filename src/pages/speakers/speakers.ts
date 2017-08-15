@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NavController , LoadingController} from 'ionic-angular';
+import { NavController , LoadingController , ToastController } from 'ionic-angular';
 import {SpeakersProvider} from "../../providers/speakers/speakers";
 import {Speaker} from "../../model/Speaker.model";
 import {SpeakerPage} from "../speaker/speaker";
@@ -17,7 +17,7 @@ import {SpeakerPage} from "../speaker/speaker";
 export class SpeakersPage implements OnInit{
   speakers: Speaker[];
 
-  constructor(public navCtrl: NavController, public speakersProvider: SpeakersProvider, public loading: LoadingController) {
+  constructor( public toastCtrl: ToastController , public navCtrl: NavController, public speakersProvider: SpeakersProvider, public loading: LoadingController) {
   }
 
 
@@ -34,6 +34,12 @@ export class SpeakersPage implements OnInit{
     }, err =>{
       console.log("error getting speakers", err);
       loader.dismiss();
+      let toast = this.toastCtrl.create({
+          message: 'Sorry something went wrong',
+          duration: 3500,
+          position: 'bottom'
+        })
+        toast.present()
     })
   }
 
