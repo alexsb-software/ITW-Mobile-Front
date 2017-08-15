@@ -33,6 +33,7 @@ import { BookmarkProvider } from '../providers/bookmark/bookmark';
 import { PusherProvider } from '../providers/pusher/pusher';
 import { Facebook } from "@ionic-native/facebook";
 import { FbProvider } from '../providers/fb/fb';
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 
 export const apiEndPoint =  'https://itw-api.herokuapp.com';
@@ -94,7 +95,8 @@ export const apiEndPoint =  'https://itw-api.herokuapp.com';
     BookmarkProvider,
     PusherProvider,
     FbProvider,
-    Facebook
+    Facebook,
+    LocalNotifications
 
   ]
 })
