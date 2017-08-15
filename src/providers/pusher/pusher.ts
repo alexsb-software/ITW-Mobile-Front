@@ -35,9 +35,10 @@ export class PusherProvider {
       env.presentToast(data.message);
       let date = new Date();
       env.localnotifications.schedule({
+        id: 1,
         title: "ITW",
         text: data.message,
-        at: date
+        at: date,
       });
     });
   }
