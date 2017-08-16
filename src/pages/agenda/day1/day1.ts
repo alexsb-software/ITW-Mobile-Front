@@ -1,35 +1,35 @@
-import {Component, OnInit} from '@angular/core';
-import {AlertController, App, ModalController, NavController , LoadingController} from "ionic-angular";
+import { Component, OnInit } from '@angular/core';
+import { AlertController, App, ModalController, NavController, LoadingController } from "ionic-angular";
 import { Storage } from '@ionic/storage'
-import {Session} from "../../../model/Session.model";
-import {SessionsProvider} from "../../../providers/sessions/sessions";
-import {FilterPage} from "../filter/filter";
-import {SessionPage} from "../../session/session";
-import {apiEndPoint} from "../../../app/app.module";
-import {Http, RequestOptions, Headers} from "@angular/http";
+import { Session } from "../../../model/Session.model";
+import { SessionsProvider } from "../../../providers/sessions/sessions";
+import { FilterPage } from "../filter/filter";
+import { SessionPage } from "../../session/session";
+import { apiEndPoint } from "../../../app/app.module";
+import { Http, RequestOptions, Headers } from "@angular/http";
 
 @Component({
   selector: 'tab-day1',
   templateUrl: 'day1.html',
 })
-export class Day1Page implements OnInit{
+export class Day1Page implements OnInit {
 
   day1Sessions: Session[];
   filteredSessions: Session[];
-  filterType:string;
-  filterCategory:string;
+  filterType: string;
+  filterCategory: string;
 
-  constructor(public loading: LoadingController , public sessionsProvider:SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
-  public appCtrl: App , public http : Http, public alertCtrl: AlertController, public storage: Storage) {
+  constructor(public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
+    public appCtrl: App, public http: Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
     this.filterCategory = 'All';
   }
 
-  ngOnInit(){
+  ngOnInit() {
     let loader = this.loading.create({
-        content: 'Please Wait...'
-      });
-      loader.present();
+      content: 'Please Wait...'
+    });
+    loader.present();
     this.sessionsProvider.getData().subscribe(success => {
       this.sessionsProvider.sessions = success;
       this.day1Sessions = success.filter(session => session.day === 1);
@@ -38,8 +38,8 @@ export class Day1Page implements OnInit{
     })
   }
 
-  openModal(){
-    let modal = this.modalCtrl.create(FilterPage, {type: this.filterType, category: this.filterCategory}, {
+  openModal() {
+    let modal = this.modalCtrl.create(FilterPage, { type: this.filterType, category: this.filterCategory }, {
       enableBackdropDismiss: true
     });
     modal.onDidDismiss(data => {
@@ -52,7 +52,7 @@ export class Day1Page implements OnInit{
     modal.present();
   }
 
-  filterSessions(){
+  filterSessions() {
     if (this.filterType === 'All' && this.filterCategory === 'All') {
       this.filteredSessions = this.day1Sessions;
       return
@@ -78,8 +78,8 @@ export class Day1Page implements OnInit{
   }
   bookmarkSession(sessionId: number) {
     let loader = this.loading.create({
-        content: 'Please Wait...'
-      })
+      content: 'Please Wait...'
+    })
     loader.present();
     this.storage.get('token').then(data => {
       let token = JSON.parse(data)
@@ -100,9 +100,14 @@ export class Day1Page implements OnInit{
           },
           (err) => {
             console.log(err)
-            this.showFailAlert(JSON.parse(err._body).error);
+            // try {
+              this.showFailAlert(JSON.parse(err._body).error);
+            // } catch (e) {
+              // this.showFailAlert(err._body);
+            // }
+
           }
-          
+
         );
 
       })
@@ -122,7 +127,7 @@ export class Day1Page implements OnInit{
   showFailAlert(msg) {
     let alert = this.alertCtrl.create({
       title: 'Error',
-      subTitle: msg === 'User already reserved this session'? 'You have already reserved this' : 'Something has gone wrong please reserve your session',
+      subTitle: msg === 'User already reserved this session' ? 'You have already reserved this' : 'Something has gone wrong please reserve your session',
       buttons: ['OK']
     });
     alert.present();

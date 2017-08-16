@@ -9,6 +9,7 @@ import { SpeakersPage } from "../speakers/speakers";
 import { UpdatesPage } from "../updates/updates";
 import { HomePage } from "../home/home";
 import { ReservationsPage } from "../reservations/reservations";
+import { VerifyPage } from "../verify/verify";
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,8 @@ export class AppRoot {
       { title: 'Speakers', component: SpeakersPage, icon: 'mic' },
       { title: 'Sponsors', component: SponsorsPage, icon: 'star' },
       { title: 'Updates', component: UpdatesPage, icon: 'refresh' },
-      { title: 'Reservations', component: ReservationsPage, icon: '' },
+      { title: 'Reservations', component: ReservationsPage, icon: 'bookmarks' },
+      { title: 'Verify', component: VerifyPage, icon: 'key' },
       { title: 'About ITW', component: AboutPage, icon: 'information-circle' },
       // { title: 'Login', component: LoginPage }
     ];
