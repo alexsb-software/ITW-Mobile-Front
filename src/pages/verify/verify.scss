@@ -1,0 +1,34 @@
+page-verify {
+    div.scroll-content {
+        background-image: url('../assets/img/ITW-A1-Letters.png');
+        background-size: cover;
+        overflow-y: hidden !important;
+    }
+    ion-item.item-block {
+        background-color: transparent;
+    }
+    .item-input ion-input {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 3px;
+    }
+    .verify__button {
+        font-size: 26px !important;
+        padding: 26px !important;
+        margin-top: 30px;
+    }
+    .verify__input {
+        input.text-input {
+            padding-left: 20px;
+            color: black;
+        }
+        padding: 4px;
+    }
+    .verify__form {
+        margin-top: 20% !important;
+    }
+    .verify__label {
+        ion-label {
+            margin: 20px 20px !important;
+        }
+    }
+}
