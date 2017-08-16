@@ -34,6 +34,7 @@ import { PusherProvider } from '../providers/pusher/pusher';
 import { Facebook } from "@ionic-native/facebook";
 import { FbProvider } from '../providers/fb/fb';
 import {LocalNotifications} from "@ionic-native/local-notifications";
+import {NotifPage} from "../pages/notif/notif";
 
 
 export const apiEndPoint =  'https://itw-api.herokuapp.com';
@@ -56,7 +57,8 @@ export const apiEndPoint =  'https://itw-api.herokuapp.com';
     Day2Page,
     FilterPage,
     SessionPage,
-    AppRoot
+    AppRoot,
+    NotifPage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ export const apiEndPoint =  'https://itw-api.herokuapp.com';
     Day2Page,
     FilterPage,
     SessionPage,
-    AppRoot
+    AppRoot,
+    NotifPage
   ],
   providers: [
     StatusBar,

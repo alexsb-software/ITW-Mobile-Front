@@ -3,8 +3,9 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import {AppRoot} from "../pages/app_root/AppRoot";
+//import {AppRoot} from "../pages/app_root/AppRoot";
 import {PusherProvider} from "../providers/pusher/pusher";
+import {NotifPage} from "../pages/notif/notif";
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +13,7 @@ import {PusherProvider} from "../providers/pusher/pusher";
 export class MyApp {
 
 
-  rootPage: any =  AppRoot;
+  rootPage: any = NotifPage;//AppRoot;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private pusher: PusherProvider) {
     this.initializeApp();
