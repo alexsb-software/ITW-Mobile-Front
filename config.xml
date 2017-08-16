@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.itw" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionic.itw" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ITW | IEEE AlexSB</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="software@alexsb.org" href="http://alexsb.org">IEEE AlexSB Software Development Committee</author>
@@ -80,9 +80,9 @@
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
-    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+    <plugin name="cordova-plugin-facebook4" spec="~1.9.1">
         <variable name="APP_ID" value="855905901238851" />
-        <variable name="APP_NAME" value="ITW app" />
+        <variable name="APP_NAME" value="ITW App" />
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
