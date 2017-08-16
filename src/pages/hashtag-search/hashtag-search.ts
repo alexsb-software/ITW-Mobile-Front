@@ -3,6 +3,7 @@ import {LoadingController, NavController, NavParams, ToastController} from 'ioni
 import {Post} from "../../model/Post.model";
 import {Http} from "@angular/http";
 import { Storage } from "@ionic/storage";
+import {apiEndPoint} from "../../app/app.module";
 
 /**
  * Generated class for the HashtagSearchPage page.
@@ -30,7 +31,7 @@ export class HashtagSearchPage implements OnInit{
     })
     loading.present()
     this.hashtag = this.navParams.get('hashtag')
-    this.http.get('hashtags/' + this.hashtag.title).map(data => data.json()).subscribe(success => {
+    this.http.get(apiEndPoint + '/hashtags/' + this.hashtag.title).map(data => data.json()).subscribe(success => {
       this.posts = success.posts
 
       loading.dismiss()

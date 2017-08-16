@@ -20,7 +20,7 @@ export class SessionsProvider {
   }
 
   getData() {
-    return this.http.get(apiEndPoint + '/sessions').map(data => data())
+    return this.http.get(apiEndPoint + '/sessions').map(data => data.json())
   }
 
   getSessionById(id: number) {
