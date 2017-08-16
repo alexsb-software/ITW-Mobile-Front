@@ -1,13 +1,14 @@
 
 import { Component, ViewChild } from "@angular/core";
 import { Nav, NavController } from "ionic-angular";
-//import { LoginPage } from "../login/login";
+import { LoginPage } from "../login/login";
 import { AgendaPage } from "../agenda/agenda";
 import { AboutPage } from "../about/about";
 import { SponsorsPage } from "../sponsors/sponsors";
 import { SpeakersPage } from "../speakers/speakers";
 import { UpdatesPage } from "../updates/updates";
 import { HomePage } from "../home/home";
+import { ReservationsPage } from "../reservations/reservations";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppRoot {
 
   rootPage: any = HomePage;
 
-  pages: Array<{ title: string, component: any, icon:string }>;
+  pages: Array<{ title: string, component: any, icon: string }>;
 
 
   constructor(public navCtrl: NavController, ) {
@@ -28,6 +29,7 @@ export class AppRoot {
       { title: 'Speakers', component: SpeakersPage, icon: 'mic' },
       { title: 'Sponsors', component: SponsorsPage, icon: 'star' },
       { title: 'Updates', component: UpdatesPage, icon: 'refresh' },
+      { title: 'Reservations', component: ReservationsPage, icon: '' },
       { title: 'About ITW', component: AboutPage, icon: 'information-circle' },
       // { title: 'Login', component: LoginPage }
     ];

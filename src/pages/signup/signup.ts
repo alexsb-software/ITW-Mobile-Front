@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import { LoadingController, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { Http } from "@angular/http";
@@ -21,7 +21,7 @@ export class SignupPage {
   signupForm: FormGroup;
   submit: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public storage: Storage, public http: Http
-  , public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+    , public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
     this.signupForm = formBuilder.group({
       username: ['', Validators.compose([Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]+([-_\.][a-zA-Z0-9]+)*[a-zA-Z0-9]$'), Validators.required])],
       email: ['', Validators.compose([Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required])],
@@ -52,7 +52,8 @@ export class SignupPage {
           duration: 3000,
           position: 'bottom'
         })
-        toast.present()
+        toast.present();
+        loader.dismiss();
       });
     }
   }
