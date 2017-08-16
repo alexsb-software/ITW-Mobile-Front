@@ -39,7 +39,7 @@ import { ReservationsPage } from '../pages/reservations/reservations';
 import { HashtagSearchPage } from "../pages/hashtag-search/hashtag-search";
 
 
-export const apiEndPoint = 'http://localhost:8000' // 'https://itw-api.herokuapp.com';
+export const apiEndPoint = 'https://itw-api.herokuapp.com';
 
 @NgModule({
   declarations: [
