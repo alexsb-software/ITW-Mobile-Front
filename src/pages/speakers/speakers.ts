@@ -27,7 +27,6 @@ export class SpeakersPage implements OnInit{
       })
     loader.present();
     this.speakersProvider.getData().subscribe(success =>{
-      // console.log(success);
       this.speakers = success;
       this.speakersProvider.speakers = success;
       loader.dismiss();
@@ -44,8 +43,6 @@ export class SpeakersPage implements OnInit{
   }
 
   goToSpeaker(id: number): void{
-    console.log(id);
-    
     this.navCtrl.push(SpeakerPage, {id: id})
   }
 

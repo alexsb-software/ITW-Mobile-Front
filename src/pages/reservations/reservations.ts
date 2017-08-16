@@ -21,17 +21,15 @@ export class ReservationsPage implements OnInit {
     this.sessions = [];
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad ReservationsPage');
-  }
-
   ngOnInit() {
-    this.storage.get('user').then(data => {
-      let user = JSON.parse(data)
+    this.storage.get('token').then(token => {
+      this.storage.get('user').then(data => {
+        let user = JSON.parse(data)
 
-      this.reservationsProvider.getReservations(user.id).subscribe((success) => {
-        this.reservationsProvider.sessions = success;
-        this.sessions = success;
+        this.reservationsProvider.getReservations(user.id, token).subscribe((success) => {
+          this.reservationsProvider.sessions = success;
+          this.sessions = success;
+        })
       })
     })
 

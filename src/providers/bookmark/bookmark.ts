@@ -24,7 +24,6 @@ export class BookmarkProvider {
 
   bookMarkSession(sessionId: Number) {
     let url = apiEndPoint + '/users/' + this.user_id + "/add/session/" + sessionId;
-    console.log(url);
     return this.http.post(url, {}).map(data => data.json());
   }
 

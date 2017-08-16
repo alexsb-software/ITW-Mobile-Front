@@ -47,16 +47,16 @@ export class VerifyPage {
         let url = apiEndPoint + '/users/' + user.id + '/verify';
 
         this.http.post(url, postParam).map(data => data.json()).subscribe((response) => {
-          this.storage.set('activated', true).then(response => {
-            console.log('from verify', response)
-          })
+          this.storage.set('activated', true)
           let toast = this.toastCtrl.create({
-            message: 'successful ! ',
+            message: 'Verification successful !',
             duration: 2000,
             position: 'bottom'
           });
+
           toast.present()
-          loader.dismiss()
+          loader.dismiss();
+          this.navCtrl.pop();
         }, (error) => {
           let toast = this.toastCtrl.create({
             message: 'Verification key not valid',
@@ -65,14 +65,9 @@ export class VerifyPage {
           });
           toast.present();
           loader.dismiss();
-
         });
       }
     })
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VerifyPage');
   }
 
 }

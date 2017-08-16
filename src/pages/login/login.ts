@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import { LoadingController, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SignupPage } from "../signup/signup";
-import {Http} from "@angular/http";
+import { Http } from "@angular/http";
 import { Storage } from "@ionic/storage";
-import {AppRoot} from "../app_root/AppRoot";
+import { AppRoot } from "../app_root/AppRoot";
 import { apiEndPoint } from "../../app/app.module";
 import 'rxjs/add/operator/map';
 
@@ -20,19 +20,19 @@ import 'rxjs/add/operator/map';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  loginForm : FormGroup;
+  loginForm: FormGroup;
   submit: boolean = true;
   user: object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public http: Http, public storage: Storage
-  , public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+    , public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
     this.loginForm = formBuilder.group({
-      email: ['', Validators.compose([ Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required ])],
+      email: ['', Validators.compose([Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required])],
       password: [''],
     })
   }
 
-  Login () {
+  Login() {
     this.loginForm.valid ? this.submit = true : this.submit = false;
     if (this.loginForm.valid) {
       let loader = this.loadingCtrl.create({
@@ -44,13 +44,9 @@ export class LoginPage {
         password: this.loginForm.value.password
       }
       this.http.post(apiEndPoint + '/users/login', postParam).map(data => data.json()).subscribe((response) => {
-        // this.storage.clear().then(() => {
-          // this.storage.get('user').then(data => { console.log("User data before set"); console.log(data);});
-          console.log(response.user)
-          this.storage.set('user', JSON.stringify(response.user));
-          this.storage.set('token', JSON.stringify(response.user.token))
-          this.storage.set('activated', response.user.activated)
-        // })
+        this.storage.set('user', JSON.stringify(response.user));
+        this.storage.set('token', JSON.stringify(response.user.token))
+        this.storage.set('activated', response.user.activated)
         this.navCtrl.setRoot(AppRoot)
         loader.dismiss()
       }, (error) => {
@@ -72,7 +68,7 @@ export class LoginPage {
 
 
   }
-  gotoSignup () {
+  gotoSignup() {
     this.navCtrl.push(SignupPage);
   }
 }

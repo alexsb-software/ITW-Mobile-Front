@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { RequestOptions, Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Session } from "../../model/Session.model";
 import { apiEndPoint } from '../../app/app.module';
@@ -14,14 +14,20 @@ import { apiEndPoint } from '../../app/app.module';
 export class ReservationsProvider {
 
   sessions: Session[];
-  
+
   constructor(public http: Http) {
-    this.sessions = [];  
+    this.sessions = [];
   }
 
-  getReservations(user_id) {
+  getReservations(user_id, user_token) {
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + user_token.replace(/"/g, ''))
+    headers.append('Access-Control-Allow-Origin', '*')
+
+    let options = new RequestOptions({ headers: headers })
+
     let url = apiEndPoint + '/users/' + user_id + '/sessions';
-    return this.http.get(url).map(data => data.json());
+    return this.http.get(url, options).map(data => data.json());
   }
 
 }

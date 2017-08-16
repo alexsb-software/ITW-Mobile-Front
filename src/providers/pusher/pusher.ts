@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {ToastController} from "ionic-angular";
-import {LocalNotifications} from "@ionic-native/local-notifications";
-import {Storage} from "@ionic/storage";
+import { ToastController } from "ionic-angular";
+import { LocalNotifications } from "@ionic-native/local-notifications";
+import { Storage } from "@ionic/storage";
 
 /*
   Generated class for the PusherProvider provider.
@@ -16,21 +16,21 @@ declare var Pusher: any;
 @Injectable()
 export class PusherProvider {
 
-  constructor(public http: Http,private toastCtrl: ToastController , private localnotifications: LocalNotifications,
-              private storage: Storage) {
-       // Enable pusher logging - don't include this in production
-   Pusher.logToConsole = true;
-   let env = this;
-   var pusher = new Pusher('80504eb8c8101f00cad9', {
-     cluster: 'eu',
-     encrypted: true
-   });
-   this.storage.set('updates',[]);
+  constructor(public http: Http, private toastCtrl: ToastController, private localnotifications: LocalNotifications,
+    private storage: Storage) {
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+    let env = this;
+    var pusher = new Pusher('80504eb8c8101f00cad9', {
+      cluster: 'eu',
+      encrypted: true
+    });
+    this.storage.set('updates', []);
     var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      console.log("Pusher data are : \n",data);
+    channel.bind('my-event', function (data) {
+      console.log("Pusher data are : \n", data);
       env.storage.get('updates')
-        .then(res=> res.push(data.message))
+        .then(res => res.push(data.message))
         .catch(e => console.log(e));
       env.presentToast(data.message);
       let date = new Date();
@@ -40,7 +40,7 @@ export class PusherProvider {
         text: data.message,
         at: date,
       });
-      env.localnotifications.getTriggeredIds().then(res=> alert(JSON.stringify(res)));
+      env.localnotifications.getTriggeredIds().then(res => alert(JSON.stringify(res)));
     });
   }
 

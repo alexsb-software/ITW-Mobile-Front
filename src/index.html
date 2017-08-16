@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
@@ -30,22 +31,22 @@
 
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 
-    <!--<script>-->
+  <!-- <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
 
-    <!--// Enable pusher logging - don't include this in production-->
-    <!--Pusher.logToConsole = true;-->
+    var pusher = new Pusher('80504eb8c8101f00cad9', {
+      cluster: 'eu',
+      encrypted: true
+    });
 
-    <!--var pusher = new Pusher('80504eb8c8101f00cad9', {-->
-      <!--cluster: 'eu',-->
-      <!--encrypted: true-->
-    <!--});-->
-
-    <!--channel.bind('my-event', function(data) {-->
-      <!--alert(data.message);-->
-    <!--});-->
-  <!--</script>-->
+    channel.bind('my-event', function (data) {
+      alert(data.message);
+    });
+  </script> -->
 
 </head>
+
 <body>
 
   <!-- Ionic's root component and where the app will load -->
@@ -62,4 +63,5 @@
   <script src="build/main.js"></script>
 
 </body>
+
 </html>
