@@ -94,25 +94,19 @@ export class Day1Page implements OnInit {
 
         this.http.post(apiEndPoint + '/users/' + user.id + "/add/session/" + sessionId, {}, options).map(data => data.json()).subscribe(
           (res) => {
-            console.log(res)
-
+            loader.dismiss();
             this.showDoneAlert();
           },
           (err) => {
-            console.log(err)
-            // try {
+            loader.dismiss();
               this.showFailAlert(JSON.parse(err._body).error);
-            // } catch (e) {
-              // this.showFailAlert(err._body);
-            // }
-
           }
 
         );
 
       })
     })
-    loader.dismiss();
+
   }
 
   showDoneAlert() {
@@ -125,9 +119,20 @@ export class Day1Page implements OnInit {
   }
 
   showFailAlert(msg) {
+    let content = null
+    let title = null
+    if (msg === 'User already reserved this session')
+      content = 'You have already reserved this.'
+    else if (msg === 'Unauthorized') {
+      content = 'Unverified users are not allowed to reserve a session.'
+      title = 'Verify'
+    } else {
+      content = 'Something has gone wrong please reserve your session'
+    }
+
     let alert = this.alertCtrl.create({
-      title: 'Error',
-      subTitle: msg === 'User already reserved this session' ? 'You have already reserved this' : 'Something has gone wrong please reserve your session',
+      title: title || 'Error',
+      subTitle: content,
       buttons: ['OK']
     });
     alert.present();

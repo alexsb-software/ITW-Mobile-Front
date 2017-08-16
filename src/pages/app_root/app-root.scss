@@ -1,0 +1,16 @@
+page-app-root {
+  ion-menu {
+    ion-content {
+      button.item.disabled {
+        background: #eee;
+        color: #222;
+        text-decoration: line-through;
+
+        ion-icon {
+          color: #222;
+        }
+
+      }
+    }
+  }
+}

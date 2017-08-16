@@ -24,12 +24,6 @@ export class NewPostPage {
     , public loadingCtrl: LoadingController, public toastCtrl: ToastController, public storage: Storage, public http: Http) {
   }
 
-  ionViewDidLoad() {
-    if (this.navParams.get('hashtag')) {
-      this.hashtags.push(this.navParams.get('hashtag'))
-    }
-  }
-
   deleteChip(i: number): void {
     this.hashtags.splice(i, 1)
   }

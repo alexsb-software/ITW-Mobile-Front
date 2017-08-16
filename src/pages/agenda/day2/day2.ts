@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertController, App, ModalController , LoadingController , ToastController } from "ionic-angular";
+import { Storage } from '@ionic/storage'
 import {Session} from "../../../model/Session.model";
 import {SessionsProvider} from "../../../providers/sessions/sessions";
 import {FilterPage} from "../filter/filter";
 import {SessionPage} from "../../session/session";
-import {BookmarkProvider} from "../../../providers/bookmark/bookmark";
+import {apiEndPoint} from "../../../app/app.module";
+import {RequestOptions, Headers, Http} from "@angular/http";
 
 @Component({
   selector: 'tab-day2',
@@ -17,8 +19,9 @@ export class Day2Page implements OnInit{
   filterType:string;
   filterCategory:string;
 
-  constructor( public toastCtrl: ToastController , public loading: LoadingController , public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public appCtrl: App,
-              public alertCtrl: AlertController,public bookmark: BookmarkProvider) {
+  constructor( public toastCtrl: ToastController , public loading: LoadingController , public sessionsProvider: SessionsProvider,
+               public modalCtrl: ModalController, public appCtrl: App,
+               public alertCtrl: AlertController,public http: Http, public storage: Storage) {
     this.filterType = 'All';
     this.filterCategory = 'All';
   }
@@ -76,27 +79,34 @@ export class Day2Page implements OnInit{
   }
   bookmarkSession(sessionId: number){
     let loader = this.loading.create({
-        content: 'Please Wait...'
+      content: 'Please Wait...'
+    })
+    loader.present();
+    this.storage.get('token').then(data => {
+      let token = JSON.parse(data)
+      this.storage.get('user').then(data => {
+        let user = JSON.parse(data)
+        let headers = new Headers()
+
+        headers.append('Authorization', 'Bearer ' + token.replace(/"/g, ''))
+        headers.append('Access-Control-Allow-Origin', '*')
+
+        let options = new RequestOptions({ headers: headers })
+
+        this.http.post(apiEndPoint + '/users/' + user.id + "/add/session/" + sessionId, {}, options).map(data => data.json()).subscribe(
+          (res) => {
+            loader.dismiss();
+            this.showDoneAlert();
+          },
+          (err) => {
+            loader.dismiss();
+            this.showFailAlert(JSON.parse(err._body).error);
+          }
+
+        );
+
       })
-      loader.present();
-    this.bookmark.bookMarkSession(sessionId).subscribe(
-      (res) => {
-        console.log(res)
-        this.showDoneAlert();
-        loader.dismiss();
-      },
-      (err) => {
-        console.log(err)
-        this.showFailAlert();
-        loader.dismiss();
-        let toast = this.toastCtrl.create({
-          message: 'Sorry something went wrong',
-          duration: 3500,
-          position: 'bottom'
-        })
-        toast.present()
-      }
-    );
+    })
   }
 
   showDoneAlert() {
@@ -108,10 +118,21 @@ export class Day2Page implements OnInit{
     alert.present();
   }
 
-  showFailAlert() {
+  showFailAlert(msg) {
+    let content = null
+    let title = null
+    if (msg === 'User already reserved this session')
+      content = 'You have already reserved this.'
+    else if (msg === 'Unauthorized') {
+      content = 'Unverified users are not allowed to reserve a session.'
+      title = 'Verify'
+    } else {
+      content = 'Something has gone wrong please reserve your session'
+    }
+
     let alert = this.alertCtrl.create({
-      title: 'Error',
-      subTitle: 'Something has gone wrong please reserve your session',
+      title: title || 'Error',
+      subTitle: content,
       buttons: ['OK']
     });
     alert.present();

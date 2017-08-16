@@ -1,6 +1,7 @@
 
 import { Component, ViewChild } from "@angular/core";
-import { Nav, NavController } from "ionic-angular";
+import {MenuController, Nav, NavController} from "ionic-angular";
+import { Storage } from "@ionic/storage";
 import { LoginPage } from "../login/login";
 import { AgendaPage } from "../agenda/agenda";
 import { AboutPage } from "../about/about";
@@ -12,7 +13,7 @@ import { ReservationsPage } from "../reservations/reservations";
 import { VerifyPage } from "../verify/verify";
 
 @Component({
-  selector: 'app-root',
+  selector: 'page-app-root',
   templateUrl: 'app-root.html'
 })
 export class AppRoot {
@@ -20,28 +21,46 @@ export class AppRoot {
 
   rootPage: any = HomePage;
 
-  pages: Array<{ title: string, component: any, icon: string }>;
+  pages: Array<{ title: string, component: any, icon: string, enabled: boolean }>;
+
+  activated: boolean
 
 
-  constructor(public navCtrl: NavController, ) {
+  constructor(public navCtrl: NavController, public storage: Storage, public menuCtrl: MenuController) {
+    this.activated = false;
     this.pages = [
-      { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'Agenda', component: AgendaPage, icon: 'calendar' },
-      { title: 'Speakers', component: SpeakersPage, icon: 'mic' },
-      { title: 'Sponsors', component: SponsorsPage, icon: 'star' },
-      { title: 'Updates', component: UpdatesPage, icon: 'refresh' },
-      { title: 'Reservations', component: ReservationsPage, icon: 'bookmarks' },
-      { title: 'Verify', component: VerifyPage, icon: 'key' },
-      { title: 'About ITW', component: AboutPage, icon: 'information-circle' },
+      { title: 'Home', component: HomePage, icon: 'home', enabled: true },
+      { title: 'Agenda', component: AgendaPage, icon: 'calendar', enabled: true },
+      { title: 'Speakers', component: SpeakersPage, icon: 'mic', enabled: true },
+      { title: 'Sponsors', component: SponsorsPage, icon: 'star', enabled: true },
+      { title: 'Updates', component: UpdatesPage, icon: 'refresh', enabled: true },
+      { title: 'Reservations', component: ReservationsPage, icon: 'bookmarks', enabled: false },
+      { title: 'Verify', component: VerifyPage, icon: 'key', enabled: true },
+      { title: 'About ITW', component: AboutPage, icon: 'information-circle', enabled: true },
       // { title: 'Login', component: LoginPage }
     ];
+
   }
 
-  openPage(page) {
+  openPage(page, isEnabled) {
     // push instead of setRoot to make home is the default root
     if (page.title === 'Home') return;
-    this.navCtrl.push(page.component);
+    if (isEnabled)
+      this.navCtrl.push(page.component);
   }
 
+
+  ionViewDidEnter () {
+    this.storage.get('activated').then((data) => {
+      this.activated = data;
+      console.log('from home', this.activated)
+      let verifyPage = this.pages.find(page => page.title === 'Verify')
+      let reservationsPage = this.pages.find(page => page.title === 'Reservations')
+
+      verifyPage.enabled = !this.activated
+      reservationsPage.enabled = this.activated
+
+    })
+  }
 
 }
