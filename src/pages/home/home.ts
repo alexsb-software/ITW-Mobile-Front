@@ -6,6 +6,7 @@ import { Post } from "../../model/Post.model";
 import { AboutPage } from "../about/about";
 import {FbProvider} from "../../providers/fb/fb";
 import {FacebookLoginResponse} from "@ionic-native/facebook";
+import {HashtagSearchPage} from "../hashtag-search/hashtag-search";
 
 @Component({
   selector: 'page-home',
@@ -50,6 +51,10 @@ export class HomePage implements OnInit{
   navToNewPost(param): void {
     let modal = this.modalCtrl.create(NewPostPage, param ? { hashtag: param } : {});
     modal.present()
+  }
+
+  hashtagSearch (hashtag) {
+    this.navCtrl.push(HashtagSearchPage, { hashtag: hashtag })
   }
 
   goToAbout() {

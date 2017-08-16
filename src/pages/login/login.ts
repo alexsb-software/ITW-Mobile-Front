@@ -6,6 +6,7 @@ import {Http} from "@angular/http";
 import { Storage } from "@ionic/storage";
 import {AppRoot} from "../app_root/AppRoot";
 import { apiEndPoint } from "../../app/app.module";
+import 'rxjs/add/operator/map';
 
 /**
  * Generated class for the LoginPage page.

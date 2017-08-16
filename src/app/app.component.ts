@@ -12,7 +12,7 @@ import { PusherProvider } from '../providers/pusher/pusher';
 export class MyApp {
 
 
-  rootPage: any = LoginPage;// AppRoot;
+  rootPage: any = LoginPage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private pusher: PusherProvider) {
     this.initializeApp();

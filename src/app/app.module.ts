@@ -36,6 +36,7 @@ import { FbProvider } from '../providers/fb/fb';
 import { LocalNotifications } from "@ionic-native/local-notifications";
 import { ReservationsProvider } from '../providers/reservations/reservations';
 import { ReservationsPage } from '../pages/reservations/reservations';
+import { HashtagSearchPage } from "../pages/hashtag-search/hashtag-search";
 
 
 export const apiEndPoint = 'http://localhost:8000' // 'https://itw-api.herokuapp.com';
@@ -59,7 +60,8 @@ export const apiEndPoint = 'http://localhost:8000' // 'https://itw-api.herokuapp
     FilterPage,
     SessionPage,
     AppRoot,
-    ReservationsPage
+    ReservationsPage,
+    HashtagSearchPage
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,8 @@ export const apiEndPoint = 'http://localhost:8000' // 'https://itw-api.herokuapp
     FilterPage,
     SessionPage,
     AppRoot,
-    ReservationsPage
+    ReservationsPage,
+    HashtagSearchPage
   ],
   providers: [
     StatusBar,
