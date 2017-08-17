@@ -38,6 +38,8 @@ import { ReservationsProvider } from '../providers/reservations/reservations';
 import { ReservationsPage } from '../pages/reservations/reservations';
 import { HashtagSearchPage } from "../pages/hashtag-search/hashtag-search";
 import { VerifyPage } from '../pages/verify/verify';
+import { LogoutPage } from "../pages/logout/logout";
+
 
 export const apiEndPoint = 'https://itw-api.herokuapp.com';
 
@@ -62,7 +64,8 @@ export const apiEndPoint = 'https://itw-api.herokuapp.com';
     AppRoot,
     ReservationsPage,
     HashtagSearchPage,
-    VerifyPage
+    VerifyPage,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,8 @@ export const apiEndPoint = 'https://itw-api.herokuapp.com';
     AppRoot,
     ReservationsPage,
     HashtagSearchPage,
-    VerifyPage
+    VerifyPage,
+    LogoutPage
   ],
   providers: [
     StatusBar,

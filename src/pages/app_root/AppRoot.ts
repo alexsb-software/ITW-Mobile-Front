@@ -11,6 +11,7 @@ import { UpdatesPage } from "../updates/updates";
 import { HomePage } from "../home/home";
 import { ReservationsPage } from "../reservations/reservations";
 import { VerifyPage } from "../verify/verify";
+import {LogoutPage} from "../logout/logout";
 
 @Component({
   selector: 'page-app-root',
@@ -37,6 +38,7 @@ export class AppRoot {
       { title: 'Reservations', component: ReservationsPage, icon: 'bookmarks', enabled: false },
       { title: 'Verify', component: VerifyPage, icon: 'key', enabled: true },
       { title: 'About ITW', component: AboutPage, icon: 'information-circle', enabled: true },
+      { title: 'Logout', component: LogoutPage, icon: 'log-out', enabled: true },
       // { title: 'Login', component: LoginPage }
     ];
 
