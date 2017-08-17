@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item *ngFor="let session of sessions" class="sessions-list-item">
       <ion-row>
-        <ion-col col-8 (click)="goToSession(session.id)">
+        <ion-col (click)="goToSession(session.id)">
           <h1>{{ session.name }}</h1>
           <h4>
             <ion-icon name="time" style="margin: 0.6rem 0.6rem 0"></ion-icon>From {{ session.start }} to {{ session.end }}</h4>
