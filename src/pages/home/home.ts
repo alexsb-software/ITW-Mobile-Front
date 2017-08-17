@@ -6,7 +6,6 @@ import { NewPostPage } from "../new-post/new-post";
 import { Post } from "../../model/Post.model";
 import { AboutPage } from "../about/about";
 import {FbProvider} from "../../providers/fb/fb";
-import {FacebookLoginResponse} from "@ionic-native/facebook";
 import {HashtagSearchPage} from "../hashtag-search/hashtag-search";
 
 @Component({
@@ -76,14 +75,11 @@ export class HomePage implements OnInit{
   }
   checkIn(){
     if(!this.fb.logedIn){
-      this.fb.onLogin().then((res: FacebookLoginResponse) => {
-        console.log('Logged into Facebook!', res);
-        alert( "loged in tmam" + JSON.stringify(res));
+      this.fb.onLogin().then(() => {
         this.fb.logedIn = true;
         this.fb.checkIn();
       }).catch(e => {
-        console.log('Error logging into Facebook', e);
-        alert("Error in login" + JSON.stringify(e));
+        alert(JSON.stringify(e));
       });
     }else{
       this.fb.checkIn();

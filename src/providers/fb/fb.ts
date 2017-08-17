@@ -7,7 +7,6 @@ import { ToastController } from "ionic-angular";
 @Injectable()
 export class FbProvider {
 
-  private message: string = '#IEEE #IEEE_AlexSB #ITW #ITW_17';
   private _logedIn: boolean = false;
   private FB_APP_ID = 855905901238851;
 
@@ -21,11 +20,10 @@ export class FbProvider {
     this.fb.getLoginStatus()
       .then((res) => {
         if (res.status == 'connected') {
-          alert("I am connected" + JSON.stringify(res));
           let options={
             method : 'share',
             href: 'https://www.facebook.com/IEEE.AlexSB.ITW/',
-            hashtag: this.message
+            hashtag: ['#ITW17','#IEEE', '#IEEE_AlexSB']
           };
           this.openDialog(options);
         }
