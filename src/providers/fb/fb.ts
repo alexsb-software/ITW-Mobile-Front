@@ -23,7 +23,7 @@ export class FbProvider {
           let options={
             method : 'share',
             href: 'https://www.facebook.com/IEEE.AlexSB.ITW/',
-            hashtag: ['#ITW17','#IEEE', '#IEEE_AlexSB']
+            hashtag: '#ITW17#IEEE#IEEE_AlexSB'
           };
           this.openDialog(options);
         }
