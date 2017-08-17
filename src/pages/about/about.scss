@@ -12,6 +12,11 @@ page-about {
 
     .info-text{
       margin-top: 0.2rem;
+
+      .place {
+        margin-top: 0.6rem;
+      }
+
     }
     .no-margin{
       margin:0;
@@ -25,12 +30,17 @@ page-about {
     z-index: 10;
     width: 150px;
     margin-top: 90px;
-    margin-left: -7px;
+    margin-left: -15px;
     background-color: white ;
     color:  #3498db;
+
+    ion-icon {
+      -webkit-transform: rotate(35deg);
+      transform: rotate(35deg);
+    }
   }
   div.background {
-    background-image: url(https://raw.githubusercontent.com/alexsb-software/ITW-Mobile-Frontend/ionic/src/assets/img/itw-background-crop.jpeg);
+    background-image: url('../assets/img/itw-background-crop.jpeg');
     background-size: cover;
     background-position: center;
 
