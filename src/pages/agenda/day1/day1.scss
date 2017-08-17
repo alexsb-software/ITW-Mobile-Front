@@ -5,11 +5,16 @@ ion-content{
     }
   }
   .sessions-list-icons-container {
-    text-align: center;
+    text-align: right;
     ion-icon {
       font-size: 3.5rem;
       margin: 20% 1rem;
       color: #aaa;
+    }
+    &--checked {
+      ion-icon {
+        color: #3498db;
+      }
     }
   }
   .sessions-list-item{

@@ -41,7 +41,9 @@ import { VerifyPage } from '../pages/verify/verify';
 import { LogoutPage } from "../pages/logout/logout";
 
 
-export const apiEndPoint = 'https://itw-api.herokuapp.com';
+// export const apiEndPoint = 'https://itw-api.herokuapp.com';
+export const apiEndPoint = 'http://192.168.1.13:8000';
+
 
 @NgModule({
   declarations: [

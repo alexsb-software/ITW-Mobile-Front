@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild , ElementRef , Renderer2 } from '@angular/core';
 import { AlertController, App, ModalController, NavController, LoadingController } from "ionic-angular";
 import { Storage } from '@ionic/storage'
 import { Session } from "../../../model/Session.model";
@@ -18,8 +18,9 @@ export class Day1Page implements OnInit {
   filteredSessions: Session[];
   filterType: string;
   filterCategory: string;
-
-  constructor(public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
+  class: boolean = false;
+  @ViewChild('bookmarkId') elem:ElementRef;
+  constructor( public rd: Renderer2 , public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
     public appCtrl: App, public http: Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
     this.filterCategory = 'All';
@@ -96,6 +97,8 @@ export class Day1Page implements OnInit {
           (res) => {
             loader.dismiss();
             this.showDoneAlert();
+            console.log('here');
+            this.class = true;
           },
           (err) => {
             loader.dismiss();
