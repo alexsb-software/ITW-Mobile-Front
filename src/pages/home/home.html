@@ -18,7 +18,7 @@
     <button ion-fab><ion-icon name="add"></ion-icon></button>
 
     <ion-fab-list side="top">
-      <button ion-fab color="primary"><ion-icon name="share"></ion-icon></button>
+      <button ion-fab color="primary"(click)="share()"><ion-icon name="share"></ion-icon></button>
       <button ion-fab color="primary" (click)="navToNewPost()"><ion-icon name="chatbubbles"></ion-icon></button>
       <button ion-fab color="primary" (click)="checkIn()"><ion-icon name="pin"></ion-icon></button>
     </ion-fab-list>

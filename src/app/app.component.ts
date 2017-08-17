@@ -14,7 +14,6 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private pusher: PusherProvider) {
     this.initializeApp();
-    console.log("from root", this.pusher);
   }
 
   initializeApp() {

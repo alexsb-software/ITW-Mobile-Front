@@ -15,4 +15,16 @@
 
 <ion-content padding>
 
+  <ion-refresher (ionRefresh)="getUpdates($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+  <div *ngFor="let update of updates">
+    <h4>{{update}}</h4>
+    <hr>
+  </div>
+
+
 </ion-content>

@@ -29,7 +29,10 @@ export class PusherProvider {
     channel.bind('my-event', function(data) {
       console.log("Pusher data are : \n",data);
       env.storage.get('updates')
-        .then(res=> res.push(data.message))
+        .then(res=> {
+          res.unshift(data.message);
+          env.storage.set('updates',res);
+        })
         .catch(e => console.log(e));
       env.localnotifications.schedule({
         text: data.message
