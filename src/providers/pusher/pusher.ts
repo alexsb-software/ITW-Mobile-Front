@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {ToastController} from "ionic-angular";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {Storage} from "@ionic/storage";
 
@@ -16,7 +15,7 @@ declare var Pusher: any;
 @Injectable()
 export class PusherProvider {
 
-  constructor(public http: Http,private toastCtrl: ToastController , private localnotifications: LocalNotifications,
+  constructor(public http: Http, private localnotifications: LocalNotifications,
               private storage: Storage) {
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
@@ -32,26 +31,10 @@ export class PusherProvider {
       env.storage.get('updates')
         .then(res=> res.push(data.message))
         .catch(e => console.log(e));
-      //uncomment this to show toast
-      // env.presentToast(data.message);
       env.localnotifications.schedule({
-        id: 1,
-        title: "ITW",
         text: data.message
       });
     });
-  }
-
-  presentToast(messege: string) {
-    let toast = this.toastCtrl.create({
-      message: messege,
-      duration: 3000,
-      position: 'top'
-    });
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-    toast.present();
   }
 
 }
