@@ -53,7 +53,6 @@ export class AppRoot {
   ionViewDidEnter () {
     this.storage.get('activated').then((data) => {
       this.activated = data;
-      console.log('from home', this.activated)
       let verifyPage = this.pages.find(page => page.title === 'Verify')
       let reservationsPage = this.pages.find(page => page.title === 'Reservations')
 

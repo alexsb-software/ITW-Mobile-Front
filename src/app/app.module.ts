@@ -39,7 +39,6 @@ import { ReservationsPage } from '../pages/reservations/reservations';
 import { HashtagSearchPage } from "../pages/hashtag-search/hashtag-search";
 import { VerifyPage } from '../pages/verify/verify';
 
-
 export const apiEndPoint = 'https://itw-api.herokuapp.com';
 
 @NgModule({

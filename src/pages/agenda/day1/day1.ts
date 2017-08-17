@@ -99,7 +99,7 @@ export class Day1Page implements OnInit {
           },
           (err) => {
             loader.dismiss();
-              this.showFailAlert(JSON.parse(err._body).error);
+            this.showFailAlert(JSON.parse(err._body).error);
           }
 
         );
@@ -126,6 +126,8 @@ export class Day1Page implements OnInit {
     else if (msg === 'Unauthorized') {
       content = 'Unverified users are not allowed to reserve a session.'
       title = 'Verify'
+    } else if (msg === 'Can\'t reserve more slots of this type') {
+      content = 'You can reserve only one gallery slot'
     } else {
       content = 'Something has gone wrong please reserve your session'
     }

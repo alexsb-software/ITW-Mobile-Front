@@ -6,9 +6,9 @@
 
 <ion-content>
   <div *ngFor="let sponsor of sponsors">
-    <ion-label class= "{{sponsor.className}}" >{{sponsor.title}}</ion-label>
+    <ion-label class="{{sponsor.className}}">{{sponsor.title}}</ion-label>
     <div>
-      <img *ngFor="let img of sponsor.imgs" src ="{{img}}">
+      <img src="{{sponsor.img}}">
     </div>
   </div>
 </ion-content>

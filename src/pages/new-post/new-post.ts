@@ -54,11 +54,9 @@ export class NewPostPage {
       self.storage.get('user').then(data => {
         let currentUser = JSON.parse(data)
         let headers = new Headers()
-        //
         headers.append('Authorization', 'Bearer ' + token.replace(/"/g, ''))
-        // console.log(token.replace(/"/g, ''));
         headers.append('Access-Control-Allow-Origin', '*')
-        //
+
         let options = new RequestOptions({ headers: headers })
 
         this.http.post(apiEndPoint + '/posts', {
@@ -67,7 +65,6 @@ export class NewPostPage {
           hashtags: this.hashtags
         }, options).map(data => data.json()).subscribe(success => {
 
-          console.log('post success', success);
           this.viewCtrl.dismiss();
 
           setTimeout(() => {
@@ -78,7 +75,6 @@ export class NewPostPage {
           }, 500);
 
         }, err => {
-          console.log('post err', err);
           this.viewCtrl.dismiss();
 
           setTimeout(() => {

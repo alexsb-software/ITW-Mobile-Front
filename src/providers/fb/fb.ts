@@ -8,45 +8,46 @@ import { ToastController } from "ionic-angular";
 @Injectable()
 export class FbProvider {
 
-  private userAccessToken:string;
+  private userAccessToken: string;
   private userId: number;
-  private message:string = '#IEEE #IEEE_AlexSB #ITW #ITW_17';
+  private message: string = '#IEEE #IEEE_AlexSB #ITW #ITW_17';
   private _logedIn: boolean = false;
-  private checkInMessage="You have Checked In successfully";
-  private errMessage="Unfortunately, This action failed";
-  private  place ='319131338420183';
-  private FB_APP_ID=855905901238851;
+  private checkInMessage = "You have Checked In successfully";
+  private errMessage = "Unfortunately, This action failed";
+  private place = '319131338420183';
+  private FB_APP_ID = 855905901238851;
 
-  constructor(private http: Http, private fb: Facebook , private toastCtrl: ToastController) {
-    this.fb.browserInit(this.FB_APP_ID,"v2.10")
+  constructor(private http: Http, private fb: Facebook, private toastCtrl: ToastController) {
+    this.fb.browserInit(this.FB_APP_ID, "v2.10")
   }
-  onLogin(){
-    return this.fb.login(['user_friends', 'email','publish_actions']);
+  onLogin() {
+    return this.fb.login(['user_friends', 'email', 'publish_actions']);
   }
-  checkIn(){
+  checkIn() {
     this.fb.getLoginStatus()
       .then((res) => {
-        if(res.status == 'connected'){
+        if (res.status == 'connected') {
           this.userAccessToken = res.authResponse.accessToken;
           this.userId = res.authResponse.userID;
-          alert("I am connected"+JSON.stringify(res));
+          alert("I am connected" + JSON.stringify(res));
           this.writeCheckinPost().subscribe(
-            (data)=> this.presentToast(this.checkInMessage),
-            (err)=> this.presentToast(this.errMessage)
+            (data) => this.presentToast(this.checkInMessage),
+            (err) => this.presentToast(this.errMessage)
           );
         }
       })
-      .catch( e => console.log("Error in Check in",e));
+      .catch(e => console.log("Error in Check in", e));
   }
-  writeCheckinPost(){
-  let graphUrl = 'https://graph.facebook.com/';
-  let url = graphUrl + this.userId + '/feed/';
-  return this.http.post(url,
-    { 'place' : this.place,
-            'message' : this.message,
-            'access_token' : this.userAccessToken
-          })
-    .map(response => response.json());
+  writeCheckinPost() {
+    let graphUrl = 'https://graph.facebook.com/';
+    let url = graphUrl + this.userId + '/feed/';
+    return this.http.post(url,
+      {
+        'place': this.place,
+        'message': this.message,
+        'access_token': this.userAccessToken
+      })
+      .map(response => response.json());
   }
 
 
@@ -69,13 +70,13 @@ export class FbProvider {
 
     toast.present();
   }
-  share(){
+  share() {
     let options = {
       method: 'share'
     };
     this.fb.showDialog(options)
-      .then(res=> console.log(res))
-      .catch( e => console.log("Error in Share ",e));
+      .then(res => console.log(res))
+      .catch(e => console.log("Error in Share ", e));
   }
 
 }

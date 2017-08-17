@@ -10,8 +10,6 @@ import { PusherProvider } from '../providers/pusher/pusher';
   templateUrl: 'app.html'
 })
 export class MyApp {
-
-
   rootPage: any = LoginPage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private pusher: PusherProvider) {

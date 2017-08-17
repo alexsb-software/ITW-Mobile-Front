@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController , LoadingController } from 'ionic-angular';
-import {Sponsor} from "../../model/Sponsor.model";
+import { NavController, LoadingController } from 'ionic-angular';
+import { Sponsor } from "../../model/Sponsor.model";
 /**
  * Generated class for the SponsorsPage page.
  *
@@ -12,50 +12,33 @@ import {Sponsor} from "../../model/Sponsor.model";
   templateUrl: 'sponsors.html',
 })
 export class SponsorsPage {
-
-  plat: string[] = [
-    'https://s-media-cache-ak0.pinimg.com/736x/7c/dd/3c/7cdd3c7dd3c55788892c3ecdbe66fb5d.jpg'
-  ];
-  gold: string[] = [
-    'https://www.logogarden.com/wp-content/uploads/lg-logo-samples/Technology-Science-Logo-3.png',
-    'https://ckgd.net/wp2/wp-content/uploads/rapid-connect-logo-design-technology-it-servers.jpg',
-    'https://www.logogarden.com/wp-content/uploads/lg-logo-samples/Technology-Science-Logo-3.png',
-    'https://ckgd.net/wp2/wp-content/uploads/rapid-connect-logo-design-technology-it-servers.jpg'
-  ];
-  silver: string[] = [
-    'https://www.logogarden.com/wp-content/uploads/lg-logo-samples/Technology-Science-Logo-3.png',
-    'https://ckgd.net/wp2/wp-content/uploads/rapid-connect-logo-design-technology-it-servers.jpg',
-    'https://www.logogarden.com/wp-content/uploads/lg-logo-samples/Technology-Science-Logo-3.png',
-    'https://ckgd.net/wp2/wp-content/uploads/rapid-connect-logo-design-technology-it-servers.jpg'
-  ];
   sponsors: Sponsor[] = [
     {
-      title: 'PLATINUM SPONSORS',
+      title: 'NTRA Egypt',
       className: 'platinum',
-      imgs: this.plat
+      img: 'http://i.imgur.com/wLKl9dU.jpg'
     },
     {
-      title: 'GOLDEN SPONSORS',
+      title: 'Vodafone Egypt',
       className: 'golden',
-      imgs: this.gold
+      img: 'http://dandymegamall.com/UpFiles/products/6d0dbdd7-5763-4a19-839f-8490978a1cbdxxx_m.png.ashx?width=236&height=236&crop=auto'
     },
     {
-      title: 'SILVER SPONSORS',
+      title: 'ITIDA Egypt',
       className: 'silver',
-      imgs: this.silver
+      img: 'http://beta.itida.gov.eg/en/Gallery/PhotoGallery/Pictures/Album3/itida-1.jpg'
     }
   ];
   pageTitle: string = "SPONSORS";
 
-  constructor( public loading: LoadingController , public navCtrl: NavController) {
+  constructor(public loading: LoadingController, public navCtrl: NavController) {
   }
 
   ionViewWillEnter() {
     let loader = this.loading.create({
-        content: 'Please Wait...'
-      });
+      content: 'Please Wait...'
+    });
     loader.present();
-    console.log('ionViewDidLoad SponsorsPage');
     loader.dismiss();
   }
 
