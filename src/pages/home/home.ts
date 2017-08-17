@@ -37,7 +37,10 @@ export class HomePage implements OnInit{
   }
 
   loadMore(infiniteScroll): void {
-    if (this.stopRequesting) return
+    if (this.stopRequesting) {
+      infiniteScroll.complete()
+      return
+    }
     this.postsGetter.getMore().subscribe(
       data => {
         if (data.length === 0) {
