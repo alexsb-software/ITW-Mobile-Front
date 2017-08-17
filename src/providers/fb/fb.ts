@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook';
 import 'rxjs/add/operator/map';
-import { ToastController } from "ionic-angular";
 
 
 @Injectable()
@@ -10,7 +9,7 @@ export class FbProvider {
   private _logedIn: boolean = false;
   private FB_APP_ID = 855905901238851;
 
-  constructor(private fb: Facebook, private toastCtrl: ToastController) {
+  constructor(private fb: Facebook) {
     this.fb.browserInit(this.FB_APP_ID, "v2.10")
   }
   onLogin() {
@@ -41,23 +40,10 @@ export class FbProvider {
   set logedIn(value: boolean) {
     this._logedIn = value;
   }
-  presentToast(message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 3000,
-      position: 'top'
-    });
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
-  }
-
   share(){
     let options={
       method : 'share'
-    }
+    };
     this.openDialog(options);
   }
 
