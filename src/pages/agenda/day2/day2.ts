@@ -7,6 +7,7 @@ import { FilterPage } from "../filter/filter";
 import { SessionPage } from "../../session/session";
 import { apiEndPoint } from "../../../app/app.module";
 import { RequestOptions, Headers, Http } from "@angular/http";
+import { ReservationsProvider } from '../../../providers/reservations/reservations';
 
 @Component({
   selector: 'tab-day2',
@@ -16,10 +17,11 @@ export class Day2Page implements OnInit {
 
   day2Sessions: Session[];
   filteredSessions: Session[];
+  sessions: Session[];
   filterType: string;
   filterCategory: string;
 
-  constructor(public toastCtrl: ToastController, public loading: LoadingController, public sessionsProvider: SessionsProvider,
+  constructor(public reservationsProvider: ReservationsProvider,public toastCtrl: ToastController, public loading: LoadingController, public sessionsProvider: SessionsProvider,
     public modalCtrl: ModalController, public appCtrl: App,
     public alertCtrl: AlertController, public http: Http, public storage: Storage) {
     this.filterType = 'All';
@@ -31,12 +33,32 @@ export class Day2Page implements OnInit {
       content: 'Please Wait...'
     })
     loader.present();
-    this.sessionsProvider.getData().subscribe(success => {
-      this.sessionsProvider.sessions = success;
-      this.day2Sessions = success.filter(session => session.day === 2);
-      this.filteredSessions = this.day2Sessions;
-      loader.dismiss();
+    this.storage.get('token').then(token => {
+      this.storage.get('user').then(data => {
+        let user = JSON.parse(data)
+        this.reservationsProvider.getReservations(user.id, token).subscribe((success) => {
+          this.reservationsProvider.sessions = success;
+          this.sessions = success;
+          this.sessionsProvider.getData().subscribe(success => {
+            this.sessionsProvider.sessions = success;
+            this.day2Sessions = success.filter(session => session.day === 2);
+            this.filteredSessions = this.day2Sessions;
+            for ( let filter of this.filteredSessions ) {
+              for ( let session of this.sessions) {
+                if ( filter.id === session.id && filter.bookmark !== true) { filter.bookmark = true;}
+                else { filter.bookmark = false;}
+              }
+            }
+            loader.dismiss();
+          }, err => {
+            loader.dismiss();
+          })
+        }, (err) => {
+          loader.dismiss();
+        })
+      })
     })
+    
   }
 
   openModal() {
@@ -77,7 +99,7 @@ export class Day2Page implements OnInit {
   goToSession(id: number) {
     this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
-  bookmarkSession(sessionId: number) {
+  bookmarkSession(session: any,sessionId: number) {
     let loader = this.loading.create({
       content: 'Please Wait...'
     })
@@ -97,6 +119,7 @@ export class Day2Page implements OnInit {
           (res) => {
             loader.dismiss();
             this.showDoneAlert();
+            session.bookmark = true;
           },
           (err) => {
             loader.dismiss();
@@ -122,12 +145,12 @@ export class Day2Page implements OnInit {
     let content = null
     let title = null
     if (msg === 'User already reserved this session')
-      content = 'You have already reserved this.'
+      content = 'Please go to the registration desk to remove your reservation'
     else if (msg === 'Unauthorized') {
       content = 'Unverified users are not allowed to reserve a session.'
       title = 'Verify'
     } else if (msg === 'Can\'t reserve more slots of this type') {
-      content = 'You can reserve only one gallery slot';
+      content = 'You can reserve only one slot of this type';
     } else {
       content = 'Something has gone wrong please reserve your session'
     }
@@ -139,7 +162,7 @@ export class Day2Page implements OnInit {
     });
     alert.present();
   }
-  showConfirm(sessionId: number) {
+  showConfirm(session: any,sessionId: number) {
     let confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure you want to reserve this session?',
@@ -153,7 +176,7 @@ export class Day2Page implements OnInit {
         {
           text: 'Agree',
           handler: () => {
-            this.bookmarkSession(sessionId);
+            this.bookmarkSession(session,sessionId);
           }
         }
       ]

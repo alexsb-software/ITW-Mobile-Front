@@ -13,4 +13,5 @@ export class Session {
   categories: { name: string }[];
   available: boolean;
   speakers: Speaker[];
+  bookmark: boolean;
 }

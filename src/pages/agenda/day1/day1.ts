@@ -1,4 +1,4 @@
-import { Component, OnInit , ViewChild , ElementRef , Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, App, ModalController, NavController, LoadingController } from "ionic-angular";
 import { Storage } from '@ionic/storage'
 import { Session } from "../../../model/Session.model";
@@ -7,7 +7,7 @@ import { FilterPage } from "../filter/filter";
 import { SessionPage } from "../../session/session";
 import { apiEndPoint } from "../../../app/app.module";
 import { Http, RequestOptions, Headers } from "@angular/http";
-
+import { ReservationsProvider } from '../../../providers/reservations/reservations';
 @Component({
   selector: 'tab-day1',
   templateUrl: 'day1.html',
@@ -16,11 +16,11 @@ export class Day1Page implements OnInit {
 
   day1Sessions: Session[];
   filteredSessions: Session[];
+  sessions: Session[];
   filterType: string;
   filterCategory: string;
-  class: boolean = false;
-  @ViewChild('bookmarkId') elem:ElementRef;
-  constructor( public rd: Renderer2 , public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
+  
+  constructor(public reservationsProvider: ReservationsProvider, public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
     public appCtrl: App, public http: Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
     this.filterCategory = 'All';
@@ -31,12 +31,33 @@ export class Day1Page implements OnInit {
       content: 'Please Wait...'
     });
     loader.present();
-    this.sessionsProvider.getData().subscribe(success => {
-      this.sessionsProvider.sessions = success;
-      this.day1Sessions = success.filter(session => session.day === 1);
-      this.filteredSessions = this.day1Sessions;
-      loader.dismiss();
+    this.storage.get('token').then(token => {
+      this.storage.get('user').then(data => {
+        let user = JSON.parse(data)
+
+        this.reservationsProvider.getReservations(user.id, token).subscribe((success) => {
+          this.reservationsProvider.sessions = success;
+          this.sessions = success;
+          this.sessionsProvider.getData().subscribe(success => {
+            this.sessionsProvider.sessions = success;
+            this.day1Sessions = success.filter(session => session.day === 1);
+            this.filteredSessions = this.day1Sessions;
+            for ( let filter of this.filteredSessions) {
+              for ( let session of this.sessions ) {
+                if ( filter.id === session.id && filter.bookmark !== true ) { filter.bookmark = true}
+                else { filter.bookmark = false;}
+              }
+            }
+            loader.dismiss();
+          }, err => {
+            loader.dismiss();
+          })
+        }, err => {
+          loader.dismiss();
+        })
+      })
     })
+    
   }
 
   openModal() {
@@ -77,7 +98,7 @@ export class Day1Page implements OnInit {
   goToSession(id: number) {
     this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
-  bookmarkSession(sessionId: number) {
+  bookmarkSession(session: any,sessionId: number) {
     let loader = this.loading.create({
       content: 'Please Wait...'
     })
@@ -97,8 +118,8 @@ export class Day1Page implements OnInit {
           (res) => {
             loader.dismiss();
             this.showDoneAlert();
-            console.log('here');
-            this.class = true;
+            session.bookmark = true;
+            console.log(session);
           },
           (err) => {
             loader.dismiss();
@@ -125,12 +146,12 @@ export class Day1Page implements OnInit {
     let content = null
     let title = null
     if (msg === 'User already reserved this session')
-      content = 'You have already reserved this.'
+      content = 'Please go to the registration desk to remove your reservation'
     else if (msg === 'Unauthorized') {
       content = 'Unverified users are not allowed to reserve a session.'
       title = 'Verify'
     } else if (msg === 'Can\'t reserve more slots of this type') {
-      content = 'You can reserve only one gallery slot'
+      content = 'You can reserve only one slot of this type'
     } else {
       content = 'Something has gone wrong please reserve your session'
     }
@@ -142,7 +163,7 @@ export class Day1Page implements OnInit {
     });
     alert.present();
   }
-  showConfirm(sessionId: number) {
+  showConfirm(session: any,sessionId: number) {
     let confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure you want to reserve this session?',
@@ -156,7 +177,7 @@ export class Day1Page implements OnInit {
         {
           text: 'Agree',
           handler: () => {
-            this.bookmarkSession(sessionId);
+            this.bookmarkSession(session,sessionId);
           }
         }
       ]
