@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item style="border-bottom: 1px solid #e2e2e2;" *ngFor="let speaker of speakers" (click)="goToSpeaker(speaker.id)">
       <ion-avatar item-start>
-        <ion-img src="{{speaker.avatar}}"></ion-img>
+        <ion-img src="{{ speaker.avatar }}"></ion-img>
       </ion-avatar>
       <h2>{{ speaker.name }}</h2>
       <p>{{ speaker.position }}</p>

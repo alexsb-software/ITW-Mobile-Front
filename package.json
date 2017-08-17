@@ -29,7 +29,7 @@
         "@ionic-native/status-bar": "3.12.1",
         "@ionic/storage": "^2.0.1",
         "cordova-android": "^6.2.3",
-        "cordova-plugin-app-event": "file:node_modules\\cordova-plugin-app-event",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-compat": "^1.1.0",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
@@ -72,7 +72,8 @@
             "de.appplant.cordova.plugin.local-notification": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }

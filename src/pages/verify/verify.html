@@ -1,0 +1,29 @@
+<!--
+  Generated template for the VerifyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Verify</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p *ngIf="!submit" style="color: #fff;" text-center>Please enter a valid key</p>
+  <ion-list>
+    <form [formGroup]="verifyForm" class="verify__form">
+      <ion-item>
+        <ion-label color="black" stacked></ion-label>
+        <ion-input class="verify__input" type="text" formControlName="code" placeholder="VOUCHER KEY"></ion-input>
+      </ion-item>
+      <ion-item class="verify__label">
+        <button class="verify__button" ion-button block color="primary" padding (click)="verify()">Verify</button>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>

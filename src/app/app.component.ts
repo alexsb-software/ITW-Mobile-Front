@@ -2,22 +2,18 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-//import {AppRoot} from "../pages/app_root/AppRoot";
-import {PusherProvider} from "../providers/pusher/pusher";
-import {NotifPage} from "../pages/notif/notif";
+import { LoginPage } from "../pages/login/login";
+import { AppRoot } from "../pages/app_root/AppRoot";
+import { PusherProvider } from '../providers/pusher/pusher';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-
-
-  rootPage: any = NotifPage;//AppRoot;
+  rootPage: any = LoginPage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private pusher: PusherProvider) {
     this.initializeApp();
-    console.log("from root" , this.pusher);
   }
 
   initializeApp() {

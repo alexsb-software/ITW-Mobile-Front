@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from 'ionic-angular';
+import {AlertController, ModalController, NavController} from 'ionic-angular';
+import { Storage } from '@ionic/storage'
 import { PostsProvider } from "../../providers/posts/posts";
 import { NewPostPage } from "../new-post/new-post";
 import { Post } from "../../model/Post.model";
 import { AboutPage } from "../about/about";
 import {FbProvider} from "../../providers/fb/fb";
 import {FacebookLoginResponse} from "@ionic-native/facebook";
+import {HashtagSearchPage} from "../hashtag-search/hashtag-search";
 
 @Component({
   selector: 'page-home',
@@ -16,7 +18,7 @@ export class HomePage implements OnInit{
   stopRequesting: boolean
 
   constructor(public navCtrl: NavController, public postsGetter: PostsProvider, public modalCtrl: ModalController,
-              private fb: FbProvider) {
+              private fb: FbProvider,public storage: Storage, public alertCtrl: AlertController) {
     this.posts = []
   }
 
@@ -47,9 +49,26 @@ export class HomePage implements OnInit{
     )
   }
 
-  navToNewPost(param): void {
-    let modal = this.modalCtrl.create(NewPostPage, param ? { hashtag: param } : {});
-    modal.present()
+  navToNewPost(): void {
+    this.storage.get('activated').then(data => {
+      if (data) {
+        let modal = this.modalCtrl.create(NewPostPage);
+        modal.present()
+      }
+      else {
+        let alert = this.alertCtrl.create({
+          title: 'Verify',
+          subTitle: 'Unverified users are not allowed to add a post.',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      }
+    })
+
+  }
+
+  hashtagSearch (hashtag) {
+    this.navCtrl.push(HashtagSearchPage, { hashtag: hashtag })
   }
 
   goToAbout() {

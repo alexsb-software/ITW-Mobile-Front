@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams , LoadingController } from 'ionic-angular';
+import { NavController, NavParams , LoadingController , ToastController} from 'ionic-angular';
 import { Session } from "../../model/Session.model";
 import { SessionsProvider } from "../../providers/sessions/sessions";
 import { SpeakerPage } from "../speaker/speaker";
@@ -18,7 +18,7 @@ export class SessionPage implements OnInit {
 
   session: Session;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sessionsProvider: SessionsProvider, public loading: LoadingController ) {
+  constructor( public toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, public sessionsProvider: SessionsProvider, public loading: LoadingController ) {
     this.session = new Session()
   }
 
@@ -27,10 +27,20 @@ export class SessionPage implements OnInit {
         content: 'Please Wait...'
       })
     loader.present();
-    this.sessionsProvider.getSessionById(this.navParams.get('id')).subscribe(response => {
+    this.sessionsProvider.getSessionById(this.navParams.get('id')).subscribe(
+      response => {
       this.session = response
       loader.dismiss();
-    })
+      },
+      (err) => {
+        loader.dismiss();
+        let toast = this.toastCtrl.create({
+          message: 'Sorry something went wrong',
+          duration: 3500,
+          position: 'bottom'
+        })
+        toast.present()
+      })
   }
 
   goToSpeaker(id: number) {
