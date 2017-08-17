@@ -13,7 +13,7 @@
           <h4>
             <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
         </ion-col>
-        <ion-col *ngIf="session.type == 'gallery' || session.type == 'workshop'" col-4 class="sessions-list-icons-container" (click)="showConfirm(session.id)">
+        <ion-col *ngIf="session.type != 'lecture'" col-4 class="sessions-list-icons-container" (click)="showConfirm(session.id)">
           <ion-icon name="bookmark"></ion-icon>
         </ion-col>
       </ion-row>
