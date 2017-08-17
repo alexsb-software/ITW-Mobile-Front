@@ -9,15 +9,15 @@ page-sponsors {
     }
     .platinum {
         @extend .sponsor;
-        background-color: #444444;
+        background-color: #e5e4e2;
     }
     .golden {
         @extend .sponsor;
-        background-color: #444444;
+        background-color: gold;
     }
     .silver {
         @extend .sponsor;
-        background-color: #444444;
+        background-color: silver;
     }
     img {
         width: 50%;

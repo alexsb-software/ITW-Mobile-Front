@@ -16,7 +16,7 @@ export class SponsorsPage {
     {
       title: 'NTRA Egypt',
       className: 'platinum',
-      img: 'http://i.imgur.com/wLKl9dU.jpg'
+      img: 'http://i.imgur.com/JkhA9rq.png'
     },
     {
       title: 'Vodafone Egypt',
