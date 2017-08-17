@@ -14,8 +14,7 @@
             <ion-icon name="people" style="margin: 0.6rem 0.6rem 0"></ion-icon>{{ session.type }}</h4>
 
         </ion-col>
-        <ion-col #bookmarkId *ngIf="session.type != 'lecture'" col-4 class="sessions-list-icons-container" [ngClass]="{'sessions-list-icons-container--checked': class}"
-          (click)="showConfirm(session.id)">
+        <ion-col *ngIf="session.type != 'lecture'" col-4 class="sessions-list-icons-container" [ngClass]="{'sessions-list-icons-container--checked': session.bookmark}" (click)="showConfirm(session,session.id)">
           <ion-icon name="bookmark"></ion-icon>
         </ion-col>
       </ion-row>
