@@ -29,6 +29,11 @@ export class LoginPage {
       email: ['', Validators.compose([Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required])],
       password: [''],
     })
+    this.storage.get('user').then((data) => {
+      if (data) {
+        this.navCtrl.setRoot(AppRoot)
+      }
+    })
   }
 
   Login() {
@@ -58,7 +63,7 @@ export class LoginPage {
           message = 'Sorry something went wrong'
         let toast = this.toastCtrl.create({
           message: message,
-          duration: 3500,
+          duration: 3000,
           position: 'bottom'
         })
         toast.present()

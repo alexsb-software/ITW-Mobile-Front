@@ -18,9 +18,9 @@ export class PusherProvider {
   constructor(public http: Http, private localnotifications: LocalNotifications,
               private storage: Storage) {
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
     let env = this;
-    var pusher = new Pusher('a77c6db33a10e6568489', {
+    var pusher = new Pusher('80504eb8c8101f00cad9', {
       cluster: 'eu',
       encrypted: true
     });
