@@ -16,17 +16,17 @@ export class SponsorsPage {
     {
       title: 'NTRA Egypt',
       className: 'platinum',
-      img: 'http://i.imgur.com/JkhA9rq.png'
+      img: 'assets/img/ntra.png'
     },
     {
       title: 'Vodafone Egypt',
       className: 'golden',
-      img: 'http://dandymegamall.com/UpFiles/products/6d0dbdd7-5763-4a19-839f-8490978a1cbdxxx_m.png.ashx?width=236&height=236&crop=auto'
+      img: 'assets/img/vodafone.png'
     },
     {
       title: 'ITIDA Egypt',
       className: 'silver',
-      img: 'http://beta.itida.gov.eg/en/Gallery/PhotoGallery/Pictures/Album3/itida-1.jpg'
+      img: 'assets/img/itida.jpg'
     }
   ];
   pageTitle: string = "SPONSORS";

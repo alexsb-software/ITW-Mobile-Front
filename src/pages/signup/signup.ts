@@ -23,13 +23,12 @@ export class SignupPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public storage: Storage, public http: Http
     , public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
     this.signupForm = formBuilder.group({
-      username: ['', Validators.compose([Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]+([-_\.][a-zA-Z0-9]+)*[a-zA-Z0-9]$'), Validators.required])],
       email: ['', Validators.compose([Validators.pattern('([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+'), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(8), Validators.required])],
       name: ['', Validators.required]
     })
   }
-  // POST users/signup  {alias, name, email, password}
+  // POST users/signup  {name, email, password}
   signUp() {
     this.signupForm.valid ? this.submit = true : this.submit = false;
     if (this.signupForm.valid) {
@@ -38,7 +37,6 @@ export class SignupPage {
       })
       loader.present()
       let postParam = {
-        alias: this.signupForm.value.username,
         name: this.signupForm.value.name,
         email: this.signupForm.value.email,
         password: this.signupForm.value.password
