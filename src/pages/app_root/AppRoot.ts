@@ -1,8 +1,7 @@
 
-import { Component, ViewChild } from "@angular/core";
-import {MenuController, Nav, NavController} from "ionic-angular";
+import { Component } from "@angular/core";
+import { NavController } from "ionic-angular";
 import { Storage } from "@ionic/storage";
-import { LoginPage } from "../login/login";
 import { AgendaPage } from "../agenda/agenda";
 import { AboutPage } from "../about/about";
 import { SponsorsPage } from "../sponsors/sponsors";
@@ -18,7 +17,6 @@ import {LogoutPage} from "../logout/logout";
   templateUrl: 'app-root.html'
 })
 export class AppRoot {
-  @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
 
@@ -27,7 +25,7 @@ export class AppRoot {
   activated: boolean
 
 
-  constructor(public navCtrl: NavController, public storage: Storage, public menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, public storage: Storage) {
     this.activated = false;
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home', enabled: true },

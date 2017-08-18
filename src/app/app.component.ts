@@ -3,8 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from "../pages/login/login";
-import { AppRoot } from "../pages/app_root/AppRoot";
-import { PusherProvider } from '../providers/pusher/pusher';
+import {PusherProvider} from "../providers/pusher/pusher";
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +11,9 @@ import { PusherProvider } from '../providers/pusher/pusher';
 export class MyApp {
   rootPage: any = LoginPage;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private pusher: PusherProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+  public pusher: PusherProvider) {
+    console.log(pusher)
     this.initializeApp();
   }
 

@@ -23,13 +23,14 @@
       <ion-icon name="logo-linkedin"></ion-icon>
     </a>
   </div>
+  <div *ngIf="speaker.bio && speaker.bio.length > 0">
+    <div class="bio-head">
+      <h2>BIO</h2>
+    </div>
+    <div class="bio-cont" padding>
+      <h6 [innerHtml]="speaker.bio"></h6>
 
-  <div class="bio-head">
-    <h2>BIO</h2>
-  </div>
-  <div class="bio-cont" padding>
-    <h6 [innerHtml]="speaker.bio"></h6>
-
+    </div>
   </div>
 
 </ion-content>

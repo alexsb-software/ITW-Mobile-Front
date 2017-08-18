@@ -3,27 +3,21 @@ page-sponsors {
         color: white;
         font-size: 17px;
         padding: 6px;
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         text-align: center;
+        background-color: #b3b3b3;
     }
-    .platinum {
-        @extend .sponsor;
-        background-color: #e5e4e2;
-    }
-    .golden {
-        @extend .sponsor;
-        background-color: gold;
-    }
-    .silver {
-        @extend .sponsor;
-        background-color: silver;
-    }
+
     img {
         width: 50%;
         margin-top: 1rem;
     }
     div {
         text-align: center;
+    }
+
+    .toolbar-title {
+      width: auto;
     }
 }

@@ -46,7 +46,6 @@ export class Day2Page implements OnInit {
             for ( let filter of this.filteredSessions ) {
               for ( let session of this.sessions) {
                 if ( filter.id === session.id && filter.bookmark !== true) { filter.bookmark = true;}
-                else { filter.bookmark = false;}
               }
             }
             loader.dismiss();
@@ -58,7 +57,7 @@ export class Day2Page implements OnInit {
         })
       })
     })
-    
+
   }
 
   openModal() {
@@ -145,14 +144,16 @@ export class Day2Page implements OnInit {
     let content = null
     let title = null
     if (msg === 'User already reserved this session')
-      content = 'Please go to the registration desk to remove your reservation'
+      content = 'Please go to the registration desk to remove your reservation.'
     else if (msg === 'Unauthorized') {
       content = 'Unverified users are not allowed to reserve a session.'
       title = 'Verify'
     } else if (msg === 'Can\'t reserve more slots of this type') {
-      content = 'You can reserve only one slot of this type';
+      content = 'You can reserve only one slot of this type'
+    } else if (msg === 'No enough seats') {
+      content = 'Sorry, No place left in this slot.'
     } else {
-      content = 'Something has gone wrong please reserve your session'
+      content = 'Something has gone wrong please reserve your session.'
     }
 
     let alert = this.alertCtrl.create({
