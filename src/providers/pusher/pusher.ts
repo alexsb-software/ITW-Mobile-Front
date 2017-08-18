@@ -24,7 +24,7 @@ export class PusherProvider {
       cluster: 'eu',
       encrypted: true
     });
-    this.storage.set('updates',[]);
+    this.storage.get('updates').catch(e => this.storage.set('updates',[]) );
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
       console.log("Pusher data are : \n",data);
