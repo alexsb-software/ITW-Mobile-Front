@@ -159,7 +159,7 @@ export class Day2Page implements OnInit {
     } else if (msg === 'No enough seats') {
       content = 'Sorry, No place left in this slot.'
     } else if (msg === 'User already reserved a session in this time slot') {
-      content = 'You already reserved a session in the same time slot.'
+      content = 'You already reserved a session in the same time slot. Please go to the registration desk to remove your reservation'
     } else {
       content = 'Something has gone wrong please reserve your session.'
     }
