@@ -19,7 +19,7 @@ export class Day1Page implements OnInit {
   sessions: Session[];
   filterType: string;
   filterCategory: string;
-
+  
   constructor(public reservationsProvider: ReservationsProvider, public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
     public appCtrl: App, public http: Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
@@ -56,7 +56,7 @@ export class Day1Page implements OnInit {
         })
       })
     })
-
+    
   }
 
   openModal() {
@@ -145,7 +145,7 @@ export class Day1Page implements OnInit {
     let content = null
     let title = null
     if (msg === 'User already reserved this session')
-      content = 'Please go to the registration desk to remove your reservation.'
+      content = 'Please go to the registration desk to remove your reservation'
     else if (msg === 'Unauthorized') {
       content = 'Unverified users are not allowed to reserve a session.'
       title = 'Verify'
@@ -156,7 +156,7 @@ export class Day1Page implements OnInit {
     } else if (msg === 'User already reserved a session in this time slot') {
       content = 'You already reserved a session in the same time slot.'
     } else {
-      content = 'Something has gone wrong please reserve your session.'
+      content = 'Something has gone wrong please reserve your session'
     }
 
     let alert = this.alertCtrl.create({
