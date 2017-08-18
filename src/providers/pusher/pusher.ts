@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {LocalNotifications} from "@ionic-native/local-notifications";
-import {Storage} from "@ionic/storage";
+import { LocalNotifications } from "@ionic-native/local-notifications";
+import { Storage } from "@ionic/storage";
 
 /*
  Generated class for the PusherProvider provider.
@@ -16,7 +16,7 @@ declare var Pusher: any;
 export class PusherProvider {
 
   constructor(public http: Http, private localnotifications: LocalNotifications,
-              private storage: Storage) {
+    private storage: Storage) {
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
     let env = this;
@@ -24,14 +24,14 @@ export class PusherProvider {
       cluster: 'eu',
       encrypted: true
     });
-    this.storage.get('updates').catch(e => this.storage.set('updates',[]) );
+    this.storage.set('updates', []);
     var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      console.log("Pusher data are : \n",data);
+    channel.bind('my-event', function (data) {
+      console.log("Pusher data are : \n", data);
       env.storage.get('updates')
-        .then(res=> {
+        .then(res => {
           res.unshift(data.message);
-          env.storage.set('updates',res);
+          env.storage.set('updates', res);
         })
         .catch(e => console.log(e));
       env.localnotifications.schedule({
