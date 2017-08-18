@@ -21,7 +21,7 @@
       <h4>Day {{ session.day }} <br> {{ session.start }} <span>-</span> {{ session.end }} <br> {{ session.place }} </h4>
     </div>
   </div>
-  <div class="description-container section-container">
+  <div class="description-container section-container" *ngIf="session.description && session.description.length > 0">
     <div class="description-head-container head-container">
       <h2>Description</h2>
     </div>
