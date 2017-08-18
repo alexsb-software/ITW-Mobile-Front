@@ -19,7 +19,7 @@ export class Day1Page implements OnInit {
   sessions: Session[];
   filterType: string;
   filterCategory: string;
-  
+
   constructor(public reservationsProvider: ReservationsProvider, public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
     public appCtrl: App, public http: Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
@@ -52,11 +52,17 @@ export class Day1Page implements OnInit {
             loader.dismiss();
           })
         }, err => {
+          // if user not verified load agenda normally
+          this.sessionsProvider.getData().subscribe(success => {
+            this.sessionsProvider.sessions = success;
+            this.day1Sessions = success.filter(session => session.day === 1);
+            this.filteredSessions = this.day1Sessions;
+          })
           loader.dismiss();
         })
       })
     })
-    
+
   }
 
   openModal() {

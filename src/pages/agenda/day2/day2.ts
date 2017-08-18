@@ -53,6 +53,12 @@ export class Day2Page implements OnInit {
             loader.dismiss();
           })
         }, (err) => {
+          // if user not verified load agenda normally
+          this.sessionsProvider.getData().subscribe(success => {
+            this.sessionsProvider.sessions = success;
+            this.day2Sessions = success.filter(session => session.day === 2);
+            this.filteredSessions = this.day2Sessions;
+          })
           loader.dismiss();
         })
       })
