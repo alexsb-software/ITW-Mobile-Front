@@ -2,7 +2,6 @@
 import { Component, ViewChild } from "@angular/core";
 import {MenuController, Nav, NavController} from "ionic-angular";
 import { Storage } from "@ionic/storage";
-import { LoginPage } from "../login/login";
 import { AgendaPage } from "../agenda/agenda";
 import { AboutPage } from "../about/about";
 import { SponsorsPage } from "../sponsors/sponsors";
