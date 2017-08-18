@@ -21,7 +21,7 @@ export class Day2Page implements OnInit {
   filterType: string;
   filterCategory: string;
 
-  constructor(public reservationsProvider: ReservationsProvider,public toastCtrl: ToastController, public loading: LoadingController, public sessionsProvider: SessionsProvider,
+  constructor(public reservationsProvider: ReservationsProvider, public toastCtrl: ToastController, public loading: LoadingController, public sessionsProvider: SessionsProvider,
     public modalCtrl: ModalController, public appCtrl: App,
     public alertCtrl: AlertController, public http: Http, public storage: Storage) {
     this.filterType = 'All';
@@ -43,9 +43,9 @@ export class Day2Page implements OnInit {
             this.sessionsProvider.sessions = success;
             this.day2Sessions = success.filter(session => session.day === 2);
             this.filteredSessions = this.day2Sessions;
-            for ( let filter of this.filteredSessions ) {
-              for ( let session of this.sessions) {
-                if ( filter.id === session.id && filter.bookmark !== true) { filter.bookmark = true;}
+            for (let filter of this.filteredSessions) {
+              for (let session of this.sessions) {
+                if (filter.id === session.id && filter.bookmark !== true) { filter.bookmark = true; }
               }
             }
             loader.dismiss();
@@ -98,7 +98,7 @@ export class Day2Page implements OnInit {
   goToSession(id: number) {
     this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
-  bookmarkSession(session: any,sessionId: number) {
+  bookmarkSession(session: any, sessionId: number) {
     let loader = this.loading.create({
       content: 'Please Wait...'
     })
@@ -152,6 +152,8 @@ export class Day2Page implements OnInit {
       content = 'You can reserve only one slot of this type'
     } else if (msg === 'No enough seats') {
       content = 'Sorry, No place left in this slot.'
+    } else if (msg === 'User already reserved a session in this time slot') {
+      content = 'You already reserved a session in the same time slot.'
     } else {
       content = 'Something has gone wrong please reserve your session.'
     }
@@ -163,7 +165,7 @@ export class Day2Page implements OnInit {
     });
     alert.present();
   }
-  showConfirm(session: any,sessionId: number) {
+  showConfirm(session: any, sessionId: number) {
     let confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure you want to reserve this session?',
@@ -177,7 +179,7 @@ export class Day2Page implements OnInit {
         {
           text: 'Agree',
           handler: () => {
-            this.bookmarkSession(session,sessionId);
+            this.bookmarkSession(session, sessionId);
           }
         }
       ]
