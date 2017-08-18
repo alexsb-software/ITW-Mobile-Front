@@ -17,7 +17,6 @@ import { SponsorsPage } from "../pages/sponsors/sponsors";
 import { SpeakerPage } from "../pages/speaker/speaker";
 import { UpdatesPage } from "../pages/updates/updates";
 import { SignupPage } from "../pages/signup/signup";
-import { HeaderComponent } from '../components/header/header';
 import { PostsProvider } from '../providers/posts/posts';
 import { NewPostPage } from "../pages/new-post/new-post";
 import { SpeakersProvider } from '../providers/speakers/speakers';
@@ -29,7 +28,6 @@ import { AgendaPage } from "../pages/agenda/agenda";
 import { FilterPage } from "../pages/agenda/filter/filter";
 import { SessionPage } from "../pages/session/session";
 import { AppRoot } from "../pages/app_root/AppRoot";
-import { BookmarkProvider } from '../providers/bookmark/bookmark';
 import { PusherProvider } from '../providers/pusher/pusher';
 import { Facebook } from "@ionic-native/facebook";
 import { FbProvider } from '../providers/fb/fb';
@@ -54,7 +52,6 @@ export const apiEndPoint = 'https://itw-api.herokuapp.com';
     SpeakerPage,
     UpdatesPage,
     SignupPage,
-    HeaderComponent,
     NewPostPage,
     LoginPage,
     AgendaPage,
@@ -84,7 +81,6 @@ export const apiEndPoint = 'https://itw-api.herokuapp.com';
     SpeakerPage,
     UpdatesPage,
     SignupPage,
-    HeaderComponent,
     NewPostPage,
     LoginPage,
     AgendaPage,
@@ -106,7 +102,6 @@ export const apiEndPoint = 'https://itw-api.herokuapp.com';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     SpeakersProvider,
     SessionsProvider,
-    BookmarkProvider,
     PusherProvider,
     FbProvider,
     Facebook,
