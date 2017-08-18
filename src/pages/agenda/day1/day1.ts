@@ -42,9 +42,9 @@ export class Day1Page implements OnInit {
             this.sessionsProvider.sessions = success;
             this.day1Sessions = success.filter(session => session.day === 1);
             this.filteredSessions = this.day1Sessions;
-            for ( let filter of this.filteredSessions) {
-              for ( let session of this.sessions ) {
-                if ( filter.id === session.id && filter.bookmark !== true ) { filter.bookmark = true }
+            for (let filter of this.filteredSessions) {
+              for (let session of this.sessions) {
+                if (filter.id === session.id && filter.bookmark !== true) { filter.bookmark = true }
               }
             }
             loader.dismiss();
@@ -97,7 +97,7 @@ export class Day1Page implements OnInit {
   goToSession(id: number) {
     this.appCtrl.getRootNav().push(SessionPage, { id: id })
   }
-  bookmarkSession(session: any,sessionId: number) {
+  bookmarkSession(session: any, sessionId: number) {
     let loader = this.loading.create({
       content: 'Please Wait...'
     })
@@ -153,6 +153,8 @@ export class Day1Page implements OnInit {
       content = 'You can reserve only one slot of this type'
     } else if (msg === 'No enough seats') {
       content = 'Sorry, No place left in this slot.'
+    } else if (msg === 'User already reserved a session in this time slot') {
+      content = 'You already reserved a session in the same time slot.'
     } else {
       content = 'Something has gone wrong please reserve your session.'
     }
@@ -164,7 +166,7 @@ export class Day1Page implements OnInit {
     });
     alert.present();
   }
-  showConfirm(session: any,sessionId: number) {
+  showConfirm(session: any, sessionId: number) {
     let confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure you want to reserve this session?',
@@ -178,7 +180,7 @@ export class Day1Page implements OnInit {
         {
           text: 'Agree',
           handler: () => {
-            this.bookmarkSession(session,sessionId);
+            this.bookmarkSession(session, sessionId);
           }
         }
       ]
