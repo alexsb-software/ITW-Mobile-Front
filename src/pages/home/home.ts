@@ -29,9 +29,14 @@ export class HomePage implements OnInit{
     this.postsGetter.getData().subscribe(
       success => {
         this.posts = success
+        this.postsGetter.pagination = 0;
+        this.stopRequesting = false;
         if (refresher) refresher.complete()
       },
-      err => console.log(err)
+      err => {
+        console.log(err)
+        if (refresher) refresher.complete()
+      }
     )
   }
 
