@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.alexsb.itw17" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ITW</name>
+<widget id="com.ionic.itw" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ITW | IEEE AlexSB</name>
     <description>Mobile App for ITW conference organized by IEEE AlexSB</description>
     <author email="software@alexsb.org" href="http://alexsb.org">IEEE AlexSB Software Development Committee</author>
     <content src="index.html" />
