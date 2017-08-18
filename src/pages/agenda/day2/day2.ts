@@ -46,7 +46,6 @@ export class Day2Page implements OnInit {
             for ( let filter of this.filteredSessions ) {
               for ( let session of this.sessions) {
                 if ( filter.id === session.id && filter.bookmark !== true) { filter.bookmark = true;}
-                else { filter.bookmark = false;}
               }
             }
             loader.dismiss();
@@ -58,7 +57,7 @@ export class Day2Page implements OnInit {
         })
       })
     })
-    
+
   }
 
   openModal() {

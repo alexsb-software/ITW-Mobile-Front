@@ -21,16 +21,7 @@ export class SpeakerPage implements OnInit {
     this.speaker = new Speaker();
   }
 
-  //TODO: change this to fetch speaker by id from api
   ngOnInit() {
-    // if (this.speakersProvider.speakers.length < 1)
-    //   this.speakersProvider.getData().subscribe(success => {
-    //     this.speakersProvider.speakers = success;
-    //     this.speaker = this.speakersProvider.getSpeakerById(this.navParams.get('id'))
-    //   }, err => {
-    //     console.log("error while getting speakers", err)
-    //   });
-    // else
       let loader = this.loading.create({
         content: 'Please Wait...'
       })

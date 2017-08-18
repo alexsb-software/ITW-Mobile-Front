@@ -3,7 +3,7 @@ import { LoadingController, NavController, NavParams, ToastController } from 'io
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { apiEndPoint } from "../../app/app.module";
 import { Storage } from "@ionic/storage";
-import { RequestOptions, Headers, Http } from "@angular/http";
+import { Http } from "@angular/http";
 
 /**
  * Generated class for the VerifyPage page.

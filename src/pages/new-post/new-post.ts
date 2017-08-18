@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoadingController, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
-import { PostsProvider } from "../../providers/posts/posts";
 import { apiEndPoint } from "../../app/app.module";
 import { RequestOptions, Headers, Http } from "@angular/http";
 import { Storage } from "@ionic/storage"
@@ -20,8 +19,8 @@ export class NewPostPage {
 
   hashtags: string[] = [];
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public postsProvider: PostsProvider
-    , public loadingCtrl: LoadingController, public toastCtrl: ToastController, public storage: Storage, public http: Http) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
+              public loadingCtrl: LoadingController, public toastCtrl: ToastController, public storage: Storage, public http: Http) {
   }
 
   deleteChip(i: number): void {

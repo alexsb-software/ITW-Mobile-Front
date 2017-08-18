@@ -19,7 +19,7 @@ export class Day1Page implements OnInit {
   sessions: Session[];
   filterType: string;
   filterCategory: string;
-  
+
   constructor(public reservationsProvider: ReservationsProvider, public loading: LoadingController, public sessionsProvider: SessionsProvider, public modalCtrl: ModalController, public navCtrl: NavController,
     public appCtrl: App, public http: Http, public alertCtrl: AlertController, public storage: Storage) {
     this.filterType = 'All';
@@ -44,8 +44,7 @@ export class Day1Page implements OnInit {
             this.filteredSessions = this.day1Sessions;
             for ( let filter of this.filteredSessions) {
               for ( let session of this.sessions ) {
-                if ( filter.id === session.id && filter.bookmark !== true ) { filter.bookmark = true}
-                else { filter.bookmark = false;}
+                if ( filter.id === session.id && filter.bookmark !== true ) { filter.bookmark = true }
               }
             }
             loader.dismiss();
@@ -57,7 +56,7 @@ export class Day1Page implements OnInit {
         })
       })
     })
-    
+
   }
 
   openModal() {
