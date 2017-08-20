@@ -18,13 +18,17 @@ export class PusherProvider {
   constructor(public http: Http, private localnotifications: LocalNotifications,
     private storage: Storage) {
     // Enable pusher logging - don't include this in production
-    // Pusher.logToConsole = true;
+    //Pusher.logToConsole = true;
     let env = this;
     var pusher = new Pusher('80504eb8c8101f00cad9', {
       cluster: 'eu',
       encrypted: true
     });
-    this.storage.set('updates', []);
+    this.storage.get('updates').then((data)=> {
+      if(!data){
+        this.storage.set('updates',[]);
+      }
+    });
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
       console.log("Pusher data are : \n", data);

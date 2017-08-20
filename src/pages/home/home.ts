@@ -87,7 +87,12 @@ export class HomePage implements OnInit{
         this.fb.logedIn = true;
         this.fb.checkIn();
       }).catch(e => {
-        alert(JSON.stringify(e));
+        let alert = this.alertCtrl.create({
+          title: 'Permission Denied',
+          subTitle: 'You have canceled our app access!',
+          buttons: ['Dismiss']
+        });
+        alert.present();
       });
     }else{
       this.fb.checkIn();
